@@ -11,7 +11,7 @@ export default useAuth = () => {
     const user = authToken;
     setUser(user);
     authStorage.storeToken(authToken);
-  };
+   };
 
   const logOut = () => {
     setUser(null);

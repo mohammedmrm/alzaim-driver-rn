@@ -10,11 +10,10 @@ const DashboardNavigator = () => {
   return (
     <Stack.Navigator initialRouteName={Routes.CHAT}>
       <Stack.Screen
-        name={Routes.CHAT}
+        name={Routes.CHAT + "2"}
         component={Chat}
         options={{ headerShown: false, title: "صفحة المحادثات" }}
       />
-
       <Stack.Screen
         name={Routes.CHAT_MODEL}
         component={ChatModel}

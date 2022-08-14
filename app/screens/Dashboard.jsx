@@ -2,16 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   ScrollView,
   View,
-  StyleSheet,
   Pressable,
   Animated,
   Image,
+  RefreshControl,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
 import SummaryBoxes from "../components/dashboard/SummaryBoxes";
 import OptionsList from "../components/dashboard/OptionsList";
-import { Headline, Title } from "react-native-paper";
+import { Headline } from "react-native-paper";
 import getAdsAPI from "../api/getAds";
 import useAuth from "../auth/useAuth";
 import getStatistic from "../api/getSummayBoxed";
@@ -26,7 +26,12 @@ const Dashboard = () => {
   let { user } = useAuth();
   const startValue = useRef(new Animated.Value(0.2)).current;
   const endValue = 1;
-
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await loadStatic();
+    setRefreshing(false);
+  };
   const loadStatic = async () => {
     setIsLoading(true);
     const results = await getStatistic.get(user.token);
@@ -35,15 +40,8 @@ const Dashboard = () => {
     setIsLoading(false);
   };
 
-  const adsView = async () => {
-    setIsLoading(true);
-    const results = await getAdsAPI.get(user.token);
-    setText(results.data?.config);
-    setIsLoading(false);
-  };
   useEffect(() => {
     loadStatic();
-    adsView();
     Animated.loop(
       Animated.timing(startValue, {
         toValue: endValue,
@@ -109,7 +107,11 @@ const Dashboard = () => {
           </Pressable>
         </View>
       </View>
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         <SummaryBoxes oneDay={oneDay} isLoading={isLoading} />
         <OptionsList data={data} />
       </ScrollView>

@@ -11,7 +11,7 @@ const DashboardNavigator = () => {
   return (
     <Stack.Navigator initialRouteName={Routes.DASHBOARD}>
       <Stack.Screen
-        name={Routes.SEARCH_RESULTS}
+        name={Routes.SEARCH_RESULTS + "2"}
         component={SearchResults}
         options={{ headerShown: false, title: "صفحة البحث" }}
       />

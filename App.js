@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import "./warnings";
 import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
+import { RootSiblingParent } from "react-native-root-siblings";
 import AppLoading from "expo-app-loading";
 import {
   useFonts,
@@ -41,7 +43,6 @@ export default function App() {
         startAsync={restoreUser}
         onFinish={async () => {
           setIsReady(true);
-          await SplashScreen.hideAsync();
         }}
         onError={(e) => console.log(e)}
       />
@@ -50,19 +51,21 @@ export default function App() {
     return null;
   }
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      <OfflineNotice />
-      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-        {user ? (
-          user.token ? (
-            <AppNavigator />
+    <RootSiblingParent>
+      <AuthContext.Provider value={{ user, setUser }}>
+        <OfflineNotice />
+        <NavigationContainer ref={navigationRef} theme={navigationTheme}>
+          {user ? (
+            user.token ? (
+              <AppNavigator />
+            ) : (
+              <AuthNavigator />
+            )
           ) : (
             <AuthNavigator />
-          )
-        ) : (
-          <AuthNavigator />
-        )}
-      </NavigationContainer>
-    </AuthContext.Provider>
+          )}
+        </NavigationContainer>
+      </AuthContext.Provider>
+    </RootSiblingParent>
   );
 }

@@ -11,7 +11,7 @@ const DashboardNavigator = () => {
   return (
     <Stack.Navigator initialRouteName={Routes.Notificaitons}>
       <Stack.Screen
-        name={Routes.NOTIFICATION}
+        name={Routes.NOTIFICATION + "1"}
         component={Notificaitons}
         options={{ headerShown: false, title: "صفحة الاشعارات" }}
       />

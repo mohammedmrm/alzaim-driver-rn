@@ -15,7 +15,7 @@ const DashboardNavigator = () => {
   return (
     <Stack.Navigator initialRouteName={Routes.DASHBOARD}>
       <Stack.Screen
-        name={Routes.DASHBOARD}
+        name={Routes.DASHBOARD + "2"}
         component={Dashboard}
         options={{ headerShown: false, title: "لوحة التحكم" }}
       />

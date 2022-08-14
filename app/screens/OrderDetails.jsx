@@ -8,6 +8,8 @@ import {
   Text,
   TouchableWithoutFeedback,
   TouchableHighlight,
+  ToastAndroid,
+  RefreshControl,
   View,
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -17,12 +19,31 @@ import ListItemOrderDetail from "../components/ListItemOrderDetail";
 import AppPickerReasons from "./../components/AppPickerReasons";
 import StatusBottm from "../components/StatusBottom";
 import TrackingBox from "../components/TrackingBox";
-import { handleCopy } from "../utility/helper";
+import Toast from "react-native-root-toast";
 import getOrder from "../api/getOrder";
 import useAuth from "../auth/useAuth";
 import colors from "../config/colors";
 import Routes from "../Routes";
-
+function successToast() {
+  Toast.show("تم تحديث الحالة", {
+    duration: 3000,
+    shadow: true,
+    animation: true,
+    hideOnPress: true,
+    backgroundColor: colors.success,
+    textColor: colors.white,
+  });
+}
+function errorToast() {
+  Toast.show("خطأ!", {
+    duration: 3000,
+    shadow: true,
+    animation: true,
+    hideOnPress: true,
+    backgroundColor: colors.returned,
+    textColor: colors.white,
+  });
+}
 const OrderDetails = () => {
   const returnCases = [
     { value: "لايرد", label: "لايرد" },
@@ -59,10 +80,10 @@ const OrderDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [order, setOrder] = useState(null);
   const navigation = useNavigation();
-  const [amount, onChangeAmount] = React.useState("0");
-  const [note, onChangeNote] = React.useState("");
-  const [returnNo, onChangeReturnNo] = React.useState("");
-
+  const [amount, onChangeAmount] = useState("0");
+  const [note, onChangeNote] = useState("");
+  const [returnNo, onChangeReturnNo] = useState("");
+  const [refreshing, setRefreshing] = useState(false);
   const [modalVisible, setModalVisible] = useState({
     arrive: false,
     return: false,
@@ -87,7 +108,7 @@ const OrderDetails = () => {
       amount,
       note
     );
-    handleCopy(null, "تم تحديث الحالة");
+    results.data.success === 1 ? successToast() : errorToast();
     loadDetails(user.token, route.params.id);
   };
   const returned = async () => {
@@ -97,7 +118,7 @@ const OrderDetails = () => {
       route.params.id,
       note.label
     );
-    handleCopy(null, "تم تحديث الحالة");
+    results.data.success === 1 ? successToast() : errorToast();
     loadDetails(user.token, route.params.id);
   };
   const partReturn = async () => {
@@ -109,7 +130,7 @@ const OrderDetails = () => {
       note,
       returnNo
     );
-    handleCopy(null, "تم تحديث الحالة");
+    results.data.success === 1 ? successToast() : errorToast();
     loadDetails(user.token, route.params.id);
   };
 
@@ -122,14 +143,14 @@ const OrderDetails = () => {
       note,
       returnNo
     );
-    handleCopy(null, "تم تحديث الحالة");
+    results.data.success === 1 ? successToast() : errorToast();
     loadDetails(user.token, route.params.id);
   };
 
   const postponed = async () => {
     setIsLoading(true);
     const results = await getOrder.postponed(user.token, route.params.id, note);
-    handleCopy(null, "تم تحديث الحالة");
+    results.data.success === 1 ? successToast() : errorToast();
     loadDetails(user.token, route.params.id);
   };
   useEffect(() => {
@@ -158,8 +179,17 @@ const OrderDetails = () => {
   const startChating = (item) => {
     navigation.navigate(Routes.CHAT_MODEL, { item: item });
   };
+  const onRefresh = () => {
+    setRefreshing(true);
+    loadDetails(user.token, route.params.id, "");
+    setRefreshing(false);
+  };
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <View style={{ flex: 1, marginBottom: 10, paddingBottom: 5 }}>
         {order ? (
           <View style={{ flex: 1, marginBottom: 10, paddingBottom: 5 }}>
@@ -1014,17 +1044,9 @@ const styles = StyleSheet.create({
   },
   titleOrderStatusView: {
     backgroundColor: colors.primery,
-    padding: 15,
-    borderRadius: 5,
+    padding: 10,
+    borderRadius: 2,
     margin: 5,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   contanerBox: {
     height: "100%",

@@ -20,7 +20,7 @@ const AuthNavigator = () => {
         component={LoginScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name={Routes.DASHBOARD} component={Dashboard} />
+      <Stack.Screen name={Routes.DASHBOARD + "1"} component={Dashboard} />
     </Stack.Navigator>
   );
 };
