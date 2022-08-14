@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "alzaim-driver",
+    "name": "الزعيم - المندوب",
     "slug": "alzaim-driver",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./app/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,16 +18,28 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.alzaim.driver",
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "useNextNotificationsApi": true,
+      "package": "com.alzaim.driver",
+      "versionCode": 1
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./app/assets/logo/logo.png"
+    },
+    "notification": {
+      "icon": "./app/assets/logo/logo.png",
+      "color": "#FFFFFF",
+      "iosDisplayInForeground": true,
+      "androidMode": "default"
     }
   }
 }

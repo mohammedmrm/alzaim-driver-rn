@@ -10,7 +10,8 @@ import Swipeable from "react-native-gesture-handler/Swipeable";
 import Icon from "../Icon";
 import Text from "../AppText";
 import colors from "../../config/colors";
-
+import Moment from "react-moment";
+import "moment/locale/ar";
 export default class ReportCard extends PureComponent {
   numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -44,7 +45,7 @@ export default class ReportCard extends PureComponent {
               >
                 <View style={styles.detailsContainer}>
                   <Text style={styles.title} numberOfLines={1}>
-                    {this.props.item.in_date}
+                    {this.props.item.id}
                   </Text>
                   {this.props.item.driver_price && (
                     <Text style={styles.subTitle} numberOfLines={1}>
@@ -63,16 +64,23 @@ export default class ReportCard extends PureComponent {
                       )}
                     </Text>
                   )}
+                  <Text style={styles.title} numberOfLines={1}>
+                    <Moment
+                      style={{ color: "#111", fontSize: 10 }}
+                      element={Text}
+                      locale="ar"
+                      interval={30000}
+                      fromNow
+                    >
+                      {this.props.item.in_date}
+                    </Moment>
+                  </Text>
                 </View>
               </View>
             </TouchableHighlight>
 
             <TouchableWithoutFeedback onPress={this.props.onPress}>
-              <Icon
-                backgroundColor={colors.returned}
-                name="file-pdf"
-                size={60}
-              />
+              <Icon backgroundColor={colors.returned} name="file" size={60} />
             </TouchableWithoutFeedback>
           </View>
         </View>

@@ -1,54 +1,119 @@
-import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
-import ActivityIndecator from '../components/ActivtyIndectors/ActivityIndecatorAds';
-import SummaryBoxes from '../components/dashboard/SummaryBoxes'
-import AdsCompany from './../components/dashboard/AdsCompany'
-import OptionsList from '../components/dashboard/OptionsList'
-import loadings from '../config/loadings';
-import Screen from '../components/Screen';
-import getAdsAPI from '../api/getAds';
+import React, { useEffect, useRef, useState } from "react";
+import {
+  ScrollView,
+  View,
+  StyleSheet,
+  Pressable,
+  Animated,
+  Image,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import Constants from "expo-constants";
+import SummaryBoxes from "../components/dashboard/SummaryBoxes";
+import OptionsList from "../components/dashboard/OptionsList";
+import { Headline, Title } from "react-native-paper";
+import getAdsAPI from "../api/getAds";
 import useAuth from "../auth/useAuth";
-import getStatistic from '../api/getSummayBoxed'
-
+import getStatistic from "../api/getSummayBoxed";
+import colors from "../config/colors";
+import Routes from "../Routes";
 const Dashboard = () => {
-    const [adsText, setText] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [oneDay, setOneDay] = useState(null);
-    const [data, setData] = useState(null);
-    let { user } = useAuth();
+  const navigator = useNavigation();
+  const [adsText, setText] = useState({ d_ad2: "" });
+  const [isLoading, setIsLoading] = useState(false);
+  const [oneDay, setOneDay] = useState(null);
+  const [data, setData] = useState(null);
+  let { user } = useAuth();
+  const startValue = useRef(new Animated.Value(0.2)).current;
+  const endValue = 1;
 
-    const loadStatic = async () => {
-        setIsLoading(true);
-        const results = (await getStatistic.get(user.token));
-        setOneDay(results.data.data[0]);
-        setData(results.data.static[0]);
-        setIsLoading(false);
-    };
+  const loadStatic = async () => {
+    setIsLoading(true);
+    const results = await getStatistic.get(user.token);
+    setOneDay(results.data.data[0]);
+    setData(results.data.static[0]);
+    setIsLoading(false);
+  };
 
-    const adsView = async () => {
-        setIsLoading(true);
-        const results = (await getAdsAPI.get(user.token));
-        setText(results.data.config);
-        setIsLoading(false);
-    };
-    useEffect(() => {
-        loadStatic();
-        adsView();
-    }, []);
+  const adsView = async () => {
+    setIsLoading(true);
+    const results = await getAdsAPI.get(user.token);
+    setText(results.data?.config);
+    setIsLoading(false);
+  };
+  useEffect(() => {
+    loadStatic();
+    adsView();
+    Animated.loop(
+      Animated.timing(startValue, {
+        toValue: endValue,
+        duration: 1000,
+        useNativeDriver: true,
+      })
+    ).start();
+  }, []);
 
-    return (
-        <Screen>
-            <ScrollView>
-                {!adsText.c_ad1 ? <ActivityIndecator visable={isLoading} type={loadings.adsTab} /> :
-                    adsText.d_ad1 && <AdsCompany title={adsText.d_ad1} />}
-                <SummaryBoxes oneDay={oneDay} isLoading={isLoading} />
-                <OptionsList data={data} />
-            </ScrollView>
-        </Screen>
-    )
-}
+  return (
+    <>
+      <View
+        style={{
+          paddingTop: Constants.statusBarHeight,
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexDirection: "row-reverse",
+          backgroundColor: colors.white,
+        }}
+      >
+        <Headline
+          style={{
+            fontFamily: "app_r",
+            alignSelf: "flex-end",
+            paddingTop: 0,
+            paddingHorizontal: 10,
+            color: colors.black,
+          }}
+        >
+          الزعيم
+        </Headline>
+        <View
+          style={{
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexDirection: "row",
+          }}
+        >
+          <Pressable
+            style={{ marginLeft: 10 }}
+            onPress={() =>
+              navigator.navigate(Routes.AdsCompany, { text: adsText.d_ad2 })
+            }
+          >
+            <Animated.View
+              style={{
+                opacity: startValue,
+                width: 30,
+                height: 30,
+              }}
+            >
+              <Image
+                style={{
+                  width: "90%",
+                  height: "90%",
+                  alignSelf: "center",
+                  top: 5,
+                  borderRadius: 5,
+                }}
+                source={require("../assets/dashboard/advertisement.png")}
+              />
+            </Animated.View>
+          </Pressable>
+        </View>
+      </View>
+      <ScrollView>
+        <SummaryBoxes oneDay={oneDay} isLoading={isLoading} />
+        <OptionsList data={data} />
+      </ScrollView>
+    </>
+  );
+};
 export default Dashboard;
-const styles = StyleSheet.create({
-})

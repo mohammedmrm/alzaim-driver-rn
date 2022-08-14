@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     paddingTop: 2,
   },
   title: {
-    fontWeight: "bold",
+    fontFamily: "app_sb",
     fontSize: 12,
   },
 });

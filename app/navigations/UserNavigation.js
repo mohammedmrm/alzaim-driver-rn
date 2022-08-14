@@ -10,11 +10,7 @@ const Stack = createStackNavigator();
 const UserNavigator = () => {
   return (
     <Stack.Navigator initialRouteName={Routes.Profile}>
-      <Stack.Screen
-        name={Routes.Profile}
-        component={Profile}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name={Routes.Profile} component={Profile} options={{}} />
       <Stack.Screen
         name={Routes.EDIT_PROFILE}
         component={EditProfile}

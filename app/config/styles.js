@@ -8,6 +8,6 @@ export default {
     textAlign: "right",
     color: colors.dark,
     width: "100%",
-    // fontFamily: Platform.OS === "andriod" ? "Roboto" : "Avenir",
+    fontFamily: "app_l",
   },
 };

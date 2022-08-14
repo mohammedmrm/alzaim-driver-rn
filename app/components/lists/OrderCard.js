@@ -2,12 +2,16 @@ import React from "react";
 import { View, StyleSheet, Linking, TouchableHighlight } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useNavigation } from "@react-navigation/native";
+import Moment from "react-moment";
+import "moment/locale/ar";
 
 import Icon from "./../Icon";
 import Text from "../AppText";
 import colors from "../../config/colors";
 import Routes from "../../Routes";
-
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 function OrderCard({ item, onPress, renderRightActions }) {
   const navigation = useNavigation();
   const handelColor = (id) => {
@@ -39,8 +43,8 @@ function OrderCard({ item, onPress, renderRightActions }) {
         style={{
           alignSelf: "center",
           width: "90%",
-          height: 80,
-          paddingTop: 10,
+          height: 75,
+          paddingTop: 5,
         }}
       >
         <View
@@ -75,9 +79,17 @@ function OrderCard({ item, onPress, renderRightActions }) {
                     {item.city} - {item.town}
                   </Text>
                 )}
-                {item.days && (
+                {item?.date && (
                   <Text style={styles.subTitle} numberOfLines={1}>
-                    {item.days} منذ تسجيل الطلب
+                    <Moment
+                      style={{ color: "#111", fontSize: 10 }}
+                      element={Text}
+                      locale="ar"
+                      interval={30000}
+                      fromNow
+                    >
+                      {item?.date}
+                    </Moment>
                   </Text>
                 )}
               </View>
@@ -87,19 +99,30 @@ function OrderCard({ item, onPress, renderRightActions }) {
                 </Text>
                 {item.city && (
                   <Text style={styles.subTitle} numberOfLines={1}>
-                    {item.status_name} {item.t_note ? item.t_note : ""}
+                    {item.status_name}
+                  </Text>
+                )}
+                {item.order_status_id !== "9" ? (
+                  <Text style={styles.subTitle2} numberOfLines={1}>
+                    المبلغ: {numberWithCommas(item?.new_price)}
+                  </Text>
+                ) : (
+                  <Text style={styles.subTitle} numberOfLines={1}>
+                    {item?.t_note ? item?.t_note : ""}
                   </Text>
                 )}
               </View>
             </View>
           </TouchableHighlight>
           <TouchableHighlight
+            style={styles.icon}
             onPress={() => Linking.openURL(`tel:${item.client_phone}`)}
           >
             <Icon
-              backgroundColor={handelColor(item.order_status_id)}
-              name="phone"
-              size={60}
+              iconColor={handelColor(item.order_status_id)}
+              shadow={false}
+              name="phone-outline"
+              size={70}
             />
           </TouchableHighlight>
         </View>
@@ -110,8 +133,8 @@ function OrderCard({ item, onPress, renderRightActions }) {
 
 const styles = StyleSheet.create({
   text: {
-    paddingRight: 20,
-    paddingTop: 10,
+    paddingRight: 10,
+    paddingTop: 5,
     fontSize: 14,
     fontWeight: "bold",
   },
@@ -119,17 +142,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row-reverse",
     borderRadius: 5,
-    borderTopLeftRadius: 35,
-    borderBottomLeftRadius: 35,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
     elevation: 5,
-    marginBottom: 10,
+    marginBottom: 5,
     width: "100%",
   },
   detailsContainer: {
@@ -140,11 +154,21 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     color: colors.medium,
+    fontSize: 13,
+    fontFamily: "app_r",
+  },
+  subTitle2: {
+    color: colors.medium,
+    fontFamily: "app_sb",
     fontSize: 12,
   },
   title: {
-    fontWeight: "bold",
+    fontFamily: "app_sb",
+    color: colors.primery,
     fontSize: 12,
+  },
+  icon: {
+    right: 15,
   },
 });
 

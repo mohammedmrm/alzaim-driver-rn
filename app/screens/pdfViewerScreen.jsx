@@ -1,50 +1,28 @@
-import { useRoute } from '@react-navigation/native';
-import React, { useState } from 'react'
-import WebView from 'react-native-webview';
-import { View, StyleSheet } from 'react-native';
-import PDFReader from 'rn-pdf-reader-js'
-import ActivityIndecator from '../components/ActivtyIndectors/ActivityIndecatorLoading'
-import settings from '../config/settings'
-const pdfViewerScreen = () => {
-    const route = useRoute();
-    const [isLoading, setLoading] = useState(true);
-    const PdfReader = ({ url: uri }) =>
-        <WebView
-            bounces={true}
-            useWebKit={true}
-            scrollEnabled={true}
-            javaScriptEnabled={true}
-            style={{ flex: 1 }} source={{ uri }} />
+import { useRoute } from "@react-navigation/native";
+import React from "react";
+import WebView from "react-native-webview";
+import settings from "../config/settings";
+import { Platform } from "react-native";
+const PdfViewerScreen = () => {
+  const route = useRoute();
+  console.log(
+    `https://docs.google.com/gview?embedded=true&url=${settings.apiUrl}/../../dash/invoice/${route?.params.item.path}`
+  );
+  return (
+    <WebView
+      bounces={true}
+      useWebKit={true}
+      scrollEnabled={true}
+      javaScriptEnabled={true}
+      style={{ flex: 1 }}
+      source={{
+        uri:
+          Platform.OS == "ios"
+            ? `${settings.apiUrl}/../../dash/driver_invoice/${route?.params.item.path}`
+            : `https://docs.google.com/gview?embedded=true&url=${settings.apiUrl}/../../dash/driver_invoice/${route?.params.item.path}`,
+      }}
+    />
+  );
+};
 
-
-    return (
-        <View style={styles.container}>
-            {isLoading && <ActivityIndecator />}
-            <PDFReader
-                onLoadEnd={() => setLoading(false)}
-                onLoad={() => setLoading(true)}
-
-                withScroll={true}
-
-                source={{
-                    uri: `${settings.apiUrl}/../../dash/driver_invoice/${route.params.item.path}`,
-                }}
-            />
-
-
-
-
-        </View>
-
-    )
-}
-
-export default pdfViewerScreen
-
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#ecf0f1',
-    },
-});
+export default PdfViewerScreen;

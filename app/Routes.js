@@ -17,4 +17,5 @@ export default Object.freeze({
   CHAT_MODEL: "ChatModel",
   PDF_VIEW: "pdfView",
   DASHBOARD_LIST: "dashboardList",
+  AdsCompany: "AdsCompany",
 });

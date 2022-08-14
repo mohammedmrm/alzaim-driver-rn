@@ -49,18 +49,16 @@ const AppNavigator = (ref) => {
     }
   };
   return (
-    // <Tab.Navigator
-    //   // activeColor={colors.primery}
-    //   // style={{ backgroundColor: colors.primery }}
-    //
-    //   // style={{ backgroundColor: "tomato" }}
-    //   // screenOptions={{ headerShown: false }}
-    // >
     <Tab.Navigator
       initialRouteName={Routes.DASHBOARD}
-      activeColor="#f0edf6"
-      inactiveColor={colors.medium}
-      barStyle={{ backgroundColor: colors.black }}
+      activeColor={colors.primery}
+      inactiveColor={colors.secondery}
+      barStyle={{ backgroundColor: "#f0edf6" }}
+      tabBarLabel={{
+        labelStyle: {
+          fontSize: 15,
+        },
+      }}
     >
       <Tab.Screen
         name={Routes.SEARCH_RESULTS}

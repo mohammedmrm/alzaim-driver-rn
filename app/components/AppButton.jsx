@@ -1,44 +1,55 @@
-import React from 'react'
-import { ActivityIndicator, StyleSheet, Text, TouchableOpacity } from 'react-native'
-import colors from '../config/colors'
+import React from "react";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
+import colors from "../config/colors";
 
-const AppButton = ({ title, onPress, color = 'primery', isLoading = false }) => {
-    return (
-        <TouchableOpacity style={[styles.button, { backgroundColor: colors[color] }]} onPress={onPress}>
-            <Text style={styles.text}>
-                <ActivityIndicator animating={isLoading} size="small" />
-                {title}</Text>
-        </TouchableOpacity>
-    )
-}
+const AppButton = ({
+  title,
+  onPress,
+  color = "primery",
+  textColor = "#fff",
+  isLoading = false,
+  width = "85%",
+  height = 50,
+  children,
+}) => {
+  return (
+    <TouchableOpacity
+      style={[
+        styles.button,
+        { height: height, width: width, backgroundColor: colors[color] },
+      ]}
+      onPress={onPress}
+    >
+      <Text style={{ ...styles.text, color: textColor }}>
+        <ActivityIndicator animating={isLoading} size="small" />
+        {title}
+      </Text>
+      {children}
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
-    button: {
-        backgroundColor: colors.primery,
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
-        padding: 10,
-        width: '95%',
-        marginVertical: 5,
-        shadowColor: colors.black,
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-
-        elevation: 3,
-    },
-    text: {
-        fontSize: 18,
-        color: colors.white,
-        fontWeight: "bold"
-    }
-
-
-})
+  button: {
+    backgroundColor: colors.primery,
+    borderRadius: 5,
+    flexDirection: "row-reverse",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    padding: 10,
+    marginBottom: 3,
+    elevation: 5,
+  },
+  text: {
+    fontSize: 18,
+    color: colors.white,
+    fontFamily: "app_r",
+  },
+});
 export default AppButton;
-

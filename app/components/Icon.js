@@ -6,8 +6,9 @@ import colors from "../config/colors";
 function Icon({
   name,
   size = 40,
-  backgroundColor = "#000",
+  backgroundColor = "#00000000",
   iconColor = "#fff",
+  shadow = true,
 }) {
   return (
     <View
@@ -18,15 +19,7 @@ function Icon({
         backgroundColor,
         justifyContent: "center",
         alignItems: "center",
-        shadowColor: colors.black,
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5,
+        elevation: shadow ? 5 : 0,
       }}
     >
       <MaterialCommunityIcons name={name} color={iconColor} size={size * 0.5} />

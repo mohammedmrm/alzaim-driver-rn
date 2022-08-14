@@ -1,43 +1,62 @@
-import React from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import HTML from 'react-native-render-html';
-import { ScrollView } from 'react-native-gesture-handler';
-
-import colors from '../../config/colors'
-
-const AdsCompany = ({ title }) => {
-    return (
-        <View style={styles.adsContainer}>
-            <ScrollView>
-                {/* <Image style={styles.adsAlart} source={require('../../assets/avatar/002-promotion-1.png')} /> */}
-                <HTML html={title} style={styles.htmltag} imagesMaxWidth={Dimensions.get('window').width} tagsStyles={{ p: { marginTop: 0, marginBottom: 12 }, blockquote: { backgroundColor: "#f1f1f1", padding: 12, paddingBottom: 0, marginTop: 6 } }} />
-            </ScrollView>
-        </View>
-
-    )
-}
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import colors from "../../config/colors";
+const AdsCompany = (props) => {
+  var text = props.route.params.text;
+  return (
+    <View style={styles.adsContainer}>
+      <View>
+        <Text
+          style={{
+            textAlign: "right",
+            fontFamily: "app_sb",
+            paddingHorizontal: 10,
+            fontSize: 15,
+            marginVertical: 20,
+            color: colors.black,
+          }}
+        >
+          {text ? text : ""}
+        </Text>
+      </View>
+    </View>
+  );
+};
 export default AdsCompany;
 const styles = StyleSheet.create({
-    adsContainer: {
-        direction: "rtl",
-        width: "98%",
-        height: 200,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        backgroundColor: colors.white,
-        margin: "1%",
-        padding: 20,
-        borderColor: colors.black,
-        borderWidth: 2,
+  adsContainer: {
+    width: "95%",
+    alignSelf: "center",
+    minHeight: 100,
+    borderRadius: 5,
+    flexDirection: "row",
+    justifyContent: "center",
+    overflow: "hidden",
+    backgroundColor: colors.white,
+    margin: 5,
+    padding: 5,
+    elevation: 5,
+  },
+  centeredView: {
+    flex: 1,
+    backgroundColor: "#00000099",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    marginTop: 22,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
     },
-    adsAlart: {
-        width: 60,
-        height: 60,
-        borderRadius: 5,
-        margin: 5,
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
 
-    },
-    htmltag: {
-        direction: "rtl",
-    }
-})
+    elevation: 24,
+  },
+  textStyle: {
+    color: "white",
+    fontFamily: "app_b",
+    textAlign: "justify",
+  },
+});
