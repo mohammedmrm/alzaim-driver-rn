@@ -36,6 +36,7 @@ function OrderCard({ item, onPress, renderRightActions }) {
   };
   return (
     <Swipeable
+      key={item.id || Date.now()}
       renderRightActions={renderRightActions}
       renderLeftActions={renderRightActions}
     >

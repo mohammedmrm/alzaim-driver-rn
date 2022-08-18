@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import Constants from "expo-constants";
 import ActivityIndecatorLoadingList from "./../components/ActivtyIndectors/ActivityIndecatorLoadingList";
 import { ListItem, ListItemSeparator } from "../components/lists";
 import getNotifications from "../api/getNofification";
 import AppText from "../components/AppText";
-import Screen from "../components/Screen";
 import useAuth from "../auth/useAuth";
 import colors from "../config/colors";
 import Routes from "../Routes";
+import { StatusBar } from "expo-status-bar";
 
 function NotificationScreen(props) {
   const [messages, setMessages] = useState([]);
@@ -69,17 +69,19 @@ function NotificationScreen(props) {
     );
   };
   return (
-    <Screen>
+    <View style={{ paddingTop: Constants.statusBarHeight }}>
+      <StatusBar color="light"></StatusBar>
       <AppText style={styles.header}>
         جميع الاشعارات: {totalNotificaiton}
       </AppText>
       <FlatList
         data={messages}
-        keyExtractor={(item) => `${item.id}-${prefix}`.toString()}
+        keyExtractor={(item) => `${item.id}-${prefix + Date.now()}`.toString()}
         renderItem={({ item }) => (
           <ListItem
             title={`${item.title} - ${item.order_no}`}
             subTitle={`${item.body} `}
+            itemKey={item.id}
             date={item.date}
             seen={item.client_seen === "1" ? colors.white : colors.unseen}
             image={
@@ -102,7 +104,7 @@ function NotificationScreen(props) {
         onEndReached={() => onEndReachedMohamed()}
         ListFooterComponent={footer}
       />
-    </Screen>
+    </View>
   );
 }
 const styles = StyleSheet.create({

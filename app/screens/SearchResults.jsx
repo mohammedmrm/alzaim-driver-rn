@@ -7,7 +7,6 @@ import {
   ListOrderCopyAction,
 } from "../components/lists";
 import AppFormField from "../components/AppTextInput";
-import Screen from "./../components/Screen";
 import AppPickerCity from "./../components/AppPickerCites";
 import Button from "./../components/AppButton";
 import useAuth from "../auth/useAuth";
@@ -17,6 +16,7 @@ import getStatues from "../api/getStatues";
 import getOrders from "../api/getOrders";
 import colors from "../config/colors";
 import { handleCopy } from "../utility/helper";
+import Constants from "expo-constants";
 //-------------------------------------------------------------------------
 function Dashboard() {
   let { user } = useAuth();
@@ -52,23 +52,13 @@ function Dashboard() {
     if (nextPage === "1") {
       setNoOrders(results.data.orders);
       setOrders(results.data.data);
+      console.log(orders);
       return setIsLoading(false);
     }
     setOrders([...orders, ...results.data.data]);
+    console.log(orders);
     setIsLoading(false);
   };
-
-  useEffect(() => {
-    setIsLoading(true);
-    loadOrders("1");
-  }, [status, city, store]);
-
-  useEffect(() => {
-    setIsLoading(true);
-    loadCities();
-    loadStores();
-    loadStatues();
-  }, []);
 
   const loadCities = async () => {
     const results = await getCities.getCities(user.token);
@@ -127,9 +117,16 @@ function Dashboard() {
       </View>
     );
   };
-
+  useEffect(() => {
+    setIsLoading(true);
+    loadCities();
+    loadStores();
+    loadStatues();
+    loadOrders("1");
+    setIsLoading(false);
+  }, []);
   return (
-    <Screen>
+    <View style={{ paddingTop: Constants.statusBarHeight, flex: 1 }}>
       <AppFormField
         rightIcon="table-search"
         autoCapitalize="none"
@@ -203,6 +200,12 @@ function Dashboard() {
                 onPress={() => handleCopy(item)}
               />
             )}
+            renderLeftActions={() => (
+              <ListOrderCopyAction
+                icon="content-copy"
+                onPress={() => handleCopy(item)}
+              />
+            )}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
@@ -212,7 +215,7 @@ function Dashboard() {
         onRefresh={() => refreshingMethod()}
         ListFooterComponent={footer}
       />
-    </Screen>
+    </View>
   );
 }
 export default Dashboard;

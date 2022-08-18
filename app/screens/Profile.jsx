@@ -9,6 +9,7 @@ import Screen from "../components/Screen";
 import useAuth from "../auth/useAuth";
 import Routes from "../Routes";
 import { useNavigation } from "@react-navigation/native";
+import Constants from "expo-constants";
 
 const menuItems = [
   {
@@ -38,7 +39,7 @@ function AccountScreen({ navigation }) {
   };
 
   return (
-    <Screen style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <ListItem
           title={user.data.name}
@@ -70,13 +71,14 @@ function AccountScreen({ navigation }) {
         }
         onPress={() => logOut()}
       />
-    </Screen>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.light,
+    paddingTop: Constants.statusBarHeight,
   },
   container: {
     marginVertical: 20,

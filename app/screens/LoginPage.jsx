@@ -54,7 +54,7 @@ export default function LoginPage() {
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={settings.logo} />
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, paddingLeft: 20, alignContent: "center" }}>
         <ScrollView
           contentContainerStyle={{ flexGrow: 1, alignContent: "center" }}
         >
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
 
   formContainer: {
     top: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
     backgroundColor: colors.white,
     width: "95%",
     borderRadius: 15,

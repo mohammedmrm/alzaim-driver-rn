@@ -3,37 +3,67 @@ import expoPushTokenApi from "../api/expoPushTokens";
 import useAuth from "../auth/useAuth";
 import navitation from "../navigations/rootNavigation";
 import * as Notifications from "expo-notifications";
-import * as Permissions from "expo-permissions";
 import { Platform } from "react-native";
 import Routes from "../Routes";
 
 export default useNotifications = () => {
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
   const { user } = useAuth();
   useEffect(() => {
-    regesterForPushNotificaition();
-    Notifications.addNotificationReceivedListener(
-      (notificationListener) =>
-        navitation.navigate(Routes.ORDER_DETAILS, { id: "233469" })
-      //console.log(notificationListener)
-    );
+    registerForPushNotificationsAsync().then((token) => {
+      console.log(token);
+      setExpoPushToken(token);
+    });
+
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        setNotification(notification);
+      });
+
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        console.log(response);
+      });
+
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
   }, []);
-  const regesterForPushNotificaition = async () => {
-    try {
-      const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-      if (!permission.granted) return null;
-      const token = await Notifications.getExpoPushTokenAsync();
-      await expoPushTokenApi.register(user.token, JSON.stringify(token));
-      if (Platform.OS === "android") {
-        Notifications.setNotificationChannelAsync(
-          "haydermohamedaliweaakalialiweaakalihellosafarticabogauallylayer",
-          {
-            name: "haydermohamedaliweaakalialiweaakalihellosafarticabogauallylayer",
-            sound: true,
-          }
-        );
+  async function registerForPushNotificationsAsync() {
+    let token;
+    if (Device.isDevice) {
+      const { status: existingStatus } =
+        await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
+      if (existingStatus !== "granted") {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
       }
-    } catch (error) {
-      console.log("Error getting a push token", error);
+      if (finalStatus !== "granted") {
+        console, log("Failed to get push token for push notification!");
+        return;
+      }
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+      await expoPushTokenApi.register(user.token, JSON.stringify(token.data));
+      console.log(token);
+    } else {
+      console, log("Must use physical device for Push Notifications");
     }
-  };
+
+    if (Platform.OS === "android") {
+      Notifications.setNotificationChannelAsync("default", {
+        name: "default",
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: "#FF231F7C",
+      });
+    }
+    return token;
+  }
 };

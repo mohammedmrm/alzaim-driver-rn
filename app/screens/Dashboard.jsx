@@ -6,6 +6,7 @@ import {
   Animated,
   Image,
   RefreshControl,
+  SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
@@ -52,10 +53,9 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <>
+    <View style={{ paddingTop: Constants.statusBarHeight }}>
       <View
         style={{
-          paddingTop: Constants.statusBarHeight,
           justifyContent: "space-between",
           alignItems: "center",
           flexDirection: "row-reverse",
@@ -115,7 +115,7 @@ const Dashboard = () => {
         <SummaryBoxes oneDay={oneDay} isLoading={isLoading} />
         <OptionsList data={data} />
       </ScrollView>
-    </>
+    </View>
   );
 };
 export default Dashboard;

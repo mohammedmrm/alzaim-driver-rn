@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 // import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialIcons, Ionicons, FontAwesome } from "@expo/vector-icons";
@@ -15,47 +15,75 @@ import useAuth from "../auth/useAuth";
 import navitation from "../navigations/rootNavigation";
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
+import Constants from "expo-constants";
+import { useNavigation } from "@react-navigation/native";
 import { Platform } from "react-native";
 const Tab = createMaterialBottomTabNavigator();
-
-// const Tab = createBottomTabNavigator();
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
 const AppNavigator = (ref) => {
   const { user } = useAuth();
+  const navitation = useNavigation();
+  const notificationListener = useRef();
+  const responseListener = useRef();
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: true,
+      shouldSetBadge: false,
+    }),
+  });
+  const lastNotificationResponse = Notifications.useLastNotificationResponse();
   useEffect(() => {
-    regesterForPushNotificaition();
-    Notifications.addNotificationReceivedListener(
-      (notificationListener) =>
-        navitation.navigate(Routes.ORDER_DETAILS, { id: "233469" })
-      //console.log(notificationListener)
-    );
-  }, []);
-  const regesterForPushNotificaition = async () => {
+    if (lastNotificationResponse) {
+      var id = lastNotificationResponse.notification.request.content.data.id;
+      console.log(
+        "Noti ORDER ID",
+        lastNotificationResponse.notification.request.content.data.id
+      );
+      id &&
+        navitation.navigate(Routes.ORDER_DETAILS, {
+          id: id,
+          notify_id: "",
+        });
+    }
+  }, [lastNotificationResponse]);
+
+  registerForPushNotificationsAsync = async () => {
     try {
-      const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-      if (!permission.granted) return null;
-      const token = await Notifications.getExpoPushTokenAsync();
-      expoPushTokenApi.register(user.token, JSON.stringify(token.data));
-      if (Platform.OS === "android") {
-        Notifications.setNotificationChannelAsync(
-          `alnahr_user_id_${user.data.id}`,
-          {
-            name: `alnahr_user_id_${user.data.id}`,
-            sound: true,
-          }
-        );
+      const { status: existingStatus } =
+        await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
+      if (existingStatus !== "granted") {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
       }
+      if (finalStatus !== "granted") {
+        console.log("Failed to get push token for push notification!");
+        return;
+      }
+      const token = (await Notifications.getExpoPushTokenAsync()).data;
+      await expoPushTokenApi.register(user.token, token);
     } catch (error) {
-      console.log("Error getting a push token", error);
+      console.log("Push Notifications", error);
+    }
+
+    if (Platform.OS === "android") {
+      Notifications.setNotificationChannelAsync("default", {
+        name: "default",
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: "#FF231F7C",
+      });
     }
   };
+  registerForPushNotificationsAsync();
   return (
-    // <Tab.Navigator
-    //   // activeColor={colors.primery}
-    //   // style={{ backgroundColor: colors.primery }}
-    //
-    //   // style={{ backgroundColor: "tomato" }}
-    //   // screenOptions={{ headerShown: false }}
-    // >
     <Tab.Navigator
       initialRouteName={Routes.DASHBOARD}
       activeColor={colors.primery}

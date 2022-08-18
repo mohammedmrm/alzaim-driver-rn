@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, View, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { ListItem, ListItemSeparator } from "../components/lists";
 
-import Screen from "../components/Screen";
 import getChatListAPI from "../api/getChatList";
 import useAuth from "../auth/useAuth";
 import Routes from "../Routes";
 import colors from "../config/colors";
 import AppText from "../components/AppText";
 import ActivityIndecator from "../components/ActivtyIndectors/ActivityIndecatorSimpleLine";
+import Constants from "expo-constants";
 
 function NotificationScreen(props) {
   const [messages, setMessages] = useState([]);
@@ -29,7 +29,7 @@ function NotificationScreen(props) {
     loadNotification();
   }, []);
   return (
-    <Screen>
+    <View style={{ paddingTop: Constants.statusBarHeight, flex: 1 }}>
       <AppText style={styles.header}>
         جميع المحادثات المفتوحة: {totalNotificaiton}
       </AppText>
@@ -42,6 +42,7 @@ function NotificationScreen(props) {
           <ListItem
             title={item.order_no}
             subTitle={item.message}
+            key={item.id + Date.now()}
             date={item.date}
             seen={item.client_seen === "1" ? colors.white : colors.unseen}
             image={
@@ -56,7 +57,7 @@ function NotificationScreen(props) {
         )}
         ItemSeparatorComponent={ListItemSeparator}
       />
-    </Screen>
+    </View>
   );
 }
 const styles = StyleSheet.create({
