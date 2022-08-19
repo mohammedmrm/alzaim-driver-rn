@@ -8,10 +8,7 @@ import colors from "../../config/colors";
 export default class ListItem extends PureComponent {
   render() {
     return (
-      <Swipeable
-        key={this.props.itemKey.id || Date.now()}
-        renderRightActions={this.props.renderRightActions}
-      >
+      <Swipeable renderRightActions={this.props.renderRightActions}>
         <TouchableHighlight
           underlayColor={colors.light}
           onPress={this.props.onPress}

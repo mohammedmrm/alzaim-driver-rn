@@ -20,7 +20,7 @@ import colors from "../config/colors";
 import Routes from "../Routes";
 const Dashboard = () => {
   const navigator = useNavigation();
-  const [adsText, setText] = useState({ d_ad2: "" });
+  const [adsText, setText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [oneDay, setOneDay] = useState(null);
   const [data, setData] = useState(null);
@@ -33,6 +33,10 @@ const Dashboard = () => {
     await loadStatic();
     setRefreshing(false);
   };
+  const loadAds = async () => {
+    const results = await getAdsAPI.get(user.token);
+    setText(results.data.config.d_ad2);
+  };
   const loadStatic = async () => {
     setIsLoading(true);
     const results = await getStatistic.get(user.token);
@@ -43,6 +47,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     loadStatic();
+    loadAds();
     Animated.loop(
       Animated.timing(startValue, {
         toValue: endValue,
@@ -83,7 +88,7 @@ const Dashboard = () => {
           <Pressable
             style={{ marginLeft: 10 }}
             onPress={() =>
-              navigator.navigate(Routes.AdsCompany, { text: adsText.d_ad2 })
+              navigator.navigate(Routes.AdsCompany, { text: adsText })
             }
           >
             <Animated.View
