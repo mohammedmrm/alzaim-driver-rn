@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     paddingVertical: 5,
-    color: colors.primery,
+    color: colors.white,
     fontFamily: "app_bb",
   },
 

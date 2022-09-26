@@ -1,12 +1,15 @@
-import React from 'react'
-import LottieView from 'lottie-react-native';
-import Loading from '../../config/loadings'
-import { View, StyleSheet, ScrollView } from 'react-native';
+import React from "react";
+import LottieView from "lottie-react-native";
+import Loading from "../../config/loadings";
+import { View, StyleSheet, Platform } from "react-native";
 
 const ActivityIndecator = (visable = false, style) => {
-    const t = Loading.simpleLine;
-    if (!visable) return null;
-    return <View>
+  const t = Loading.simpleLine;
+  if (!visable || Platform.OS == "web") {
+    return null;
+  } else {
+    return (
+      <View>
         <LottieView style={styles.item} autoPlay loop source={t} />
         <LottieView style={styles.item} autoPlay loop source={t} />
         <LottieView style={styles.item} autoPlay loop source={t} />
@@ -16,17 +19,16 @@ const ActivityIndecator = (visable = false, style) => {
         <LottieView style={styles.item} autoPlay loop source={t} />
         <LottieView style={styles.item} autoPlay loop source={t} />
         <LottieView style={styles.item} autoPlay loop source={t} />
-
-
-    </View>
-}
+      </View>
+    );
+  }
+};
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    item: {
-        width: "100%",
-    }
-
-})
-export default ActivityIndecator
+  container: {
+    flex: 1,
+  },
+  item: {
+    width: "100%",
+  },
+});
+export default ActivityIndecator;

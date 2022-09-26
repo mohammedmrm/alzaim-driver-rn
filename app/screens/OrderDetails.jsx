@@ -8,12 +8,10 @@ import {
   Text,
   TouchableWithoutFeedback,
   TouchableHighlight,
-  ToastAndroid,
   RefreshControl,
   View,
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { TextInputMask } from "react-native-masked-text";
 import ActivityIndicator from "../components/ActivtyIndectors/ActivityIndecatorOrderDetails";
 import ListItemOrderDetail from "../components/ListItemOrderDetail";
 import AppPickerReasons from "./../components/AppPickerReasons";
@@ -382,14 +380,7 @@ const OrderDetails = () => {
                         width: "100%",
                       }}
                     >
-                      <TextInputMask
-                        type={"money"}
-                        options={{
-                          precision: 0,
-                          separator: ".",
-                          delimiter: ",",
-                          unit: "",
-                        }}
+                      <TextInput
                         style={{
                           height: 40,
                           borderColor: "gray",
@@ -419,7 +410,7 @@ const OrderDetails = () => {
                           height: 40,
                           borderColor: "gray",
                           borderBottomWidth: 1,
-                          width: "70%",
+                          width: "80%",
                           marginBottom: 10,
                           backgroundColor: colors.lightGreen,
                           textAlign: "right",
@@ -575,19 +566,12 @@ const OrderDetails = () => {
                         alignItems: "center",
                       }}
                     >
-                      <TextInputMask
-                        type={"money"}
-                        options={{
-                          precision: 0,
-                          separator: ".",
-                          delimiter: ",",
-                          unit: "",
-                        }}
+                      <TextInput
                         style={{
                           height: 40,
                           borderColor: "gray",
                           borderBottomWidth: 1,
-                          width: "70%",
+                          width: "80%",
                           marginBottom: 10,
                           backgroundColor: colors.lightGreen,
                           textAlign: "right",
@@ -611,7 +595,7 @@ const OrderDetails = () => {
                           height: 40,
                           borderColor: "gray",
                           borderBottomWidth: 1,
-                          width: "70%",
+                          width: "80%",
                           marginBottom: 10,
                           backgroundColor: colors.lightGreen,
                           textAlign: "right",
@@ -715,19 +699,12 @@ const OrderDetails = () => {
                         alignItems: "center",
                       }}
                     >
-                      <TextInputMask
-                        type={"money"}
-                        options={{
-                          precision: 0,
-                          separator: ".",
-                          delimiter: ",",
-                          unit: "",
-                        }}
+                      <TextInput
                         style={{
                           height: 40,
                           borderColor: "gray",
                           borderBottomWidth: 1,
-                          width: "70%",
+                          width: "80%",
                           marginBottom: 10,
                           backgroundColor: colors.lightGreen,
                           textAlign: "right",

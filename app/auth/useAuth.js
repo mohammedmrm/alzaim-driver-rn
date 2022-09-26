@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import AuthContext from "./context";
 import authStorage from "./storage";
-
+var useAuth = {};
 export default useAuth = () => {
   const { user, setUser } = useContext(AuthContext);
 
@@ -11,7 +11,7 @@ export default useAuth = () => {
     const user = authToken;
     setUser(user);
     authStorage.storeToken(authToken);
-   };
+  };
 
   const logOut = () => {
     setUser(null);
