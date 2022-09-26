@@ -125,8 +125,10 @@ function Dashboard() {
                   }}
                 >
                   <Text style={{ paddingHorizontal: 10 }}> عدد الطلبيات:</Text>
-                  <Text style={{ paddingHorizontal: 10 }}> {total.orders}</Text>
-                </View>{" "}
+                  <Text style={{ paddingHorizontal: 10 }}>
+                    {total.orders && total.orders}
+                  </Text>
+                </View>
                 <View
                   style={{
                     flexDirection: "row-reverse",
@@ -134,8 +136,10 @@ function Dashboard() {
                   }}
                 >
                   <Text style={{ paddingHorizontal: 10 }}> المبلغ الكلي:</Text>
-                  <Text style={{ paddingHorizontal: 10 }}> {total.income}</Text>
-                </View>{" "}
+                  <Text style={{ paddingHorizontal: 10 }}>
+                    {total.income && total.income}
+                  </Text>
+                </View>
                 <View
                   style={{
                     flexDirection: "row-reverse",
@@ -146,8 +150,7 @@ function Dashboard() {
                     اجره المندوب المتوقعه:
                   </Text>
                   <Text style={{ paddingHorizontal: 10 }}>
-                    {" "}
-                    {total.driver_price}
+                    {total.driver_price && total.driver_price}
                   </Text>
                 </View>
               </>
