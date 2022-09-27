@@ -410,7 +410,7 @@ const OrderDetails = () => {
                           height: 40,
                           borderColor: "gray",
                           borderBottomWidth: 1,
-                          width: "80%",
+                          width: "70%",
                           marginBottom: 10,
                           backgroundColor: colors.lightGreen,
                           textAlign: "right",
@@ -571,7 +571,7 @@ const OrderDetails = () => {
                           height: 40,
                           borderColor: "gray",
                           borderBottomWidth: 1,
-                          width: "80%",
+                          width: "70%",
                           marginBottom: 10,
                           backgroundColor: colors.lightGreen,
                           textAlign: "right",
@@ -595,7 +595,7 @@ const OrderDetails = () => {
                           height: 40,
                           borderColor: "gray",
                           borderBottomWidth: 1,
-                          width: "80%",
+                          width: "70%",
                           marginBottom: 10,
                           backgroundColor: colors.lightGreen,
                           textAlign: "right",
@@ -604,7 +604,6 @@ const OrderDetails = () => {
                         value={note}
                       />
                       <Text style={{ textAlign: "right", width: "30%" }}>
-                        {" "}
                         ملاحظة:
                       </Text>
                     </View>
@@ -704,7 +703,7 @@ const OrderDetails = () => {
                           height: 40,
                           borderColor: "gray",
                           borderBottomWidth: 1,
-                          width: "80%",
+                          width: "70%",
                           marginBottom: 10,
                           backgroundColor: colors.lightGreen,
                           textAlign: "right",
@@ -920,13 +919,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primery,
     flex: 1,
     justifyContent: "center",
+    width: "100%",
     alignItems: "center",
   },
   modalView: {
-    margin: 20,
+    margin: 10,
     backgroundColor: "white",
     borderRadius: 5,
-    padding: 35,
+    padding: 10,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
