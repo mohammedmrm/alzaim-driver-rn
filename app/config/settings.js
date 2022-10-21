@@ -1,15 +1,15 @@
 import Constants from "expo-constants";
 const settings = {
   dev: {
-    apiUrl: "http://squretehad.com/driver/api",
+    apiUrl: "https://squretehad.com/driver/api",
     logo: require("../assets/logo/logo.png"),
   },
   staging: {
-    apiUrl: "http://squretehad.com/driver/api",
+    apiUrl: "https://squretehad.com/driver/api",
     logo: require("../assets/logo/logo.png"),
   },
   prod: {
-    apiUrl: "http://squretehad.com/driver/api",
+    apiUrl: "https://squretehad.com/driver/api",
     logo: require("../assets/logo/logo.png"),
   },
 };
