@@ -1,15 +1,15 @@
 import Constants from "expo-constants";
 const settings = {
   dev: {
-    apiUrl: "http://alzaimexpress.com/driver/api",
+    apiUrl: "https://alsahamexpress.com/driver/api",
     logo: require("../assets/logo/logo.png"),
   },
   staging: {
-    apiUrl: "http://alzaimexpress.com/driver/api",
+    apiUrl: "https://alsahamexpress.com/driver/api",
     logo: require("../assets/logo/logo.png"),
   },
   prod: {
-    apiUrl: "http://alzaimexpress.com/driver/api",
+    apiUrl: "https://alsahamexpress.com/driver/api",
     logo: require("../assets/logo/logo.png"),
   },
 };

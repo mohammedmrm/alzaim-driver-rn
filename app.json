@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "الزعيم - المندوب",
-    "slug": "alzaim-driver",
-    "version": "1.0.1",
+    "name": "السهم الدقيق - المندوب",
+    "slug": "alsaham-driver",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -19,8 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alzaim.driver",
-      "buildNumber": "1.0.1"
+      "bundleIdentifier": "com.alsaham.driver",
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -28,8 +27,8 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.alzaim.driver",
-      "versionCode": 2
+      "package": "com.alsaham.driver",
+      "versionCode": 4
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"
@@ -39,6 +38,11 @@
       "color": "#FFFFFF",
       "iosDisplayInForeground": true,
       "androidMode": "default"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1e3db830-54ea-4358-b559-4b96106ed182"
+      }
     }
   }
 }

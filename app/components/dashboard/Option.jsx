@@ -10,25 +10,21 @@ const OptionsList = ({ path, data }) => {
   const handelData = (key) => {
     switch (key) {
       case "disclosures":
-        return ""; //`(${numberWithCommas(data.client_price)})`;
+        return `(${numberWithCommas(data.total ? data.total : 0)})`;
       case "returned":
         return `(${data.inprocess})`;
       case "instorage":
-        return `(${
-          parseInt(data.instorageReturnd) +
+        return `(${parseInt(data.instorageReturnd) +
           parseInt(data.instoragereplace) +
-          parseInt(data.instoragepartiallyReturnd)
-        })`;
+          parseInt(data.instoragepartiallyReturnd)})`;
       case "onway":
         return `(${data.onway})`;
       case "posponded":
         return `(${data.posponded})`;
       case "recived":
-        return `(${
-          parseInt(data.replace) +
+        return `(${parseInt(data.replace) +
           parseInt(data.recieved) +
-          parseInt(data.partiallyReturnd)
-        })`;
+          parseInt(data.partiallyReturnd)})`;
       default:
         return "(0)";
     }

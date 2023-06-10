@@ -5,9 +5,6 @@ import settings from "../config/settings";
 import { Platform } from "react-native";
 const PdfViewerScreen = () => {
   const route = useRoute();
-  console.log(
-    `https://docs.google.com/gview?embedded=true&url=${settings.apiUrl}/../../dash/invoice/${route?.params.item.path}`
-  );
   return (
     <WebView
       bounces={true}

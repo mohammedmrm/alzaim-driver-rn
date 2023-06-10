@@ -22,8 +22,15 @@ import ActivityIndecator from "../components/ActivtyIndectors/ActivityIndecatorL
 import settings from "../config/settings";
 
 const validationSchema = Yup.object().shape({
-  phone: Yup.string().required().min(11).max(11).label("رقم الهاتف"),
-  password: Yup.string().required().min(4).label("كلمةالمرور"),
+  phone: Yup.string()
+    .required()
+    .min(11)
+    .max(11)
+    .label("رقم الهاتف"),
+  password: Yup.string()
+    .required()
+    .min(4)
+    .label("كلمةالمرور"),
 });
 export default function LoginPage() {
   const auth = useAuth();

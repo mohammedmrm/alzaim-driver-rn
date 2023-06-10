@@ -53,7 +53,7 @@ function OrderCard({ item, onPress, renderRightActions }) {
             styles.container,
             {
               backgroundColor:
-                item.money_status === "1" ? colors.lightGreen : colors.white,
+                item.driver_invoice >= 0 ? colors.lightGreen : colors.white,
             },
           ]}
         >
