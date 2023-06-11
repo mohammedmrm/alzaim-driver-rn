@@ -1,13 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  ScrollView,
-  View,
-  Pressable,
-  Animated,
-  Image,
-  RefreshControl,
-  SafeAreaView,
-} from "react-native";
+import { ScrollView, View, Pressable, Animated, Image, RefreshControl, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
 import SummaryBoxes from "../components/dashboard/SummaryBoxes";
@@ -18,6 +10,7 @@ import useAuth from "../auth/useAuth";
 import getStatistic from "../api/getSummayBoxed";
 import colors from "../config/colors";
 import Routes from "../Routes";
+import settings from "../config/settings";
 const Dashboard = () => {
   const navigator = useNavigation();
   const [adsText, setText] = useState({ d_ad2: "" });
@@ -75,20 +68,18 @@ const Dashboard = () => {
             color: colors.black,
           }}
         >
-          السهم الدقيق
+          {settings.name}
         </Headline>
         <View
           style={{
-            justifyContent: "space-between", 
+            justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
           }}
         >
           <Pressable
             style={{ marginLeft: 10 }}
-            onPress={() =>
-              navigator.navigate(Routes.AdsCompany, { text: adsText.d_ad2 })
-            }
+            onPress={() => navigator.navigate(Routes.AdsCompany, { text: adsText.d_ad2 })}
           >
             <Animated.View
               style={{
@@ -111,11 +102,7 @@ const Dashboard = () => {
           </Pressable>
         </View>
       </View>
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
+      <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
         <SummaryBoxes oneDay={oneDay} isLoading={isLoading} />
         <OptionsList data={data} />
       </ScrollView>

@@ -1,20 +1,10 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  TextInput,
-  View,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { StyleSheet, TextInput, View, TouchableWithoutFeedback } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "./AppText";
 import defultStyle from "../config/styles";
 
-export default function AppTextinput({
-  rightIcon,
-  leftIcon,
-  caption,
-  ...otherProps
-}) {
+export default function AppTextinput({ rightIcon, leftIcon, caption, inputStyle = {}, ...otherProps }) {
   const [secureTextEntry, setSecureTextEntry] = React.useState(true);
 
   const toggleSecureEntry = () => {
@@ -27,17 +17,12 @@ export default function AppTextinput({
 
       <View style={styles.inputContainer}>
         {rightIcon && (
-          <MaterialCommunityIcons
-            style={styles.icon}
-            size={20}
-            colors={defultStyle.colors.medium}
-            name={rightIcon}
-          />
+          <MaterialCommunityIcons style={styles.icon} size={20} colors={defultStyle.colors.medium} name={rightIcon} />
         )}
-        <View style={{ width: "85%" }}>
+        <View style={styles.inputView}>
           {leftIcon ? (
             <TextInput
-              style={defultStyle.text}
+              style={{ ...defultStyle.text, ...inputStyle }}
               secureTextEntry={secureTextEntry}
               {...otherProps}
             />
@@ -49,6 +34,7 @@ export default function AppTextinput({
           <TouchableWithoutFeedback onPress={toggleSecureEntry}>
             <MaterialCommunityIcons
               size={20}
+              style={styles.icon}
               colors={defultStyle.colors.medium}
               name={secureTextEntry ? "eye-off" : "eye"}
             />
@@ -62,21 +48,27 @@ export default function AppTextinput({
 const styles = StyleSheet.create({
   contaioner: {
     paddingHorizontal: 10,
+    width: "100%",
     backgroundColor: defultStyle.colors.white,
+  },
+  inputView: {
+    flexGrow: 1,
   },
   inputContainer: {
     backgroundColor: defultStyle.colors.light,
     borderRadius: 5,
     width: "100%",
     height: 50,
-    padding: 10,
+    paddingLeft: 10,
+    paddingRight: 15,
+    alignItems: "center",
     alignSelf: "center",
     marginHorizontal: 5,
     flexDirection: "row-reverse",
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderColor: defultStyle.colors.black,
   },
   icon: {
-    marginLeft: 10,
+    width: 20,
   },
 });

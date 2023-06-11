@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "السهم الدقيق - المندوب",
-    "slug": "alsaham-driver",
-    "version": "1.0.5",
+    "name": " افاق بغداد - المندوب",
+    "slug": "afaqbaghdad-driver",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alsaham.driver"
+      "bundleIdentifier": "com.afaqbaghdad.driver"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -27,8 +27,8 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.alsaham.driver",
-      "versionCode": 5
+      "package": "com.afaqbaghdad.driver",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"
@@ -41,7 +41,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "1e3db830-54ea-4358-b559-4b96106ed182"
+        "projectId": "150a4b24-10ae-446d-8ed3-930eae9c61f5"
       }
     }
   }

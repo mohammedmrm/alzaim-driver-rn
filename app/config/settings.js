@@ -1,16 +1,19 @@
 import Constants from "expo-constants";
 const settings = {
   dev: {
-    apiUrl: "https://alsahamexpress.com/driver/api",
+    apiUrl: "https://afaqbaghdad.com/driver/api",
     logo: require("../assets/logo/logo.png"),
+    name: "افاق بغداد",
   },
   staging: {
-    apiUrl: "https://alsahamexpress.com/driver/api",
+    apiUrl: "https://afaqbaghdad.com/driver/api",
     logo: require("../assets/logo/logo.png"),
+    name: "افاق بغداد",
   },
   prod: {
-    apiUrl: "https://alsahamexpress.com/driver/api",
+    apiUrl: "https://afaqbaghdad.com/driver/api",
     logo: require("../assets/logo/logo.png"),
+    name: "افاق بغداد",
   },
 };
 

@@ -29,7 +29,7 @@ function OrderCard({ item, onPress, renderRightActions }) {
       case "9":
         return colors.returned;
       case "13":
-        return colors.gray;
+        return colors.unseen;
       default:
         return colors.medium;
     }
@@ -52,17 +52,14 @@ function OrderCard({ item, onPress, renderRightActions }) {
           style={[
             styles.container,
             {
-              backgroundColor:
-                item.driver_invoice >= 0 ? colors.lightGreen : colors.white,
+              backgroundColor: item.driver_invoice >= 0 ? colors.lightGreen : colors.white,
             },
           ]}
         >
           <TouchableHighlight
             style={{ width: "87%", height: "100%" }}
             underlayColor={colors.light}
-            onPress={() =>
-              navigation.navigate(Routes.ORDER_DETAILS, { id: item.id })
-            }
+            onPress={() => navigation.navigate(Routes.ORDER_DETAILS, { id: item.id })}
           >
             <View
               style={{
@@ -82,13 +79,7 @@ function OrderCard({ item, onPress, renderRightActions }) {
                 )}
                 {item?.date && (
                   <Text style={styles.subTitle} numberOfLines={1}>
-                    <Moment
-                      style={{ color: "#111", fontSize: 10 }}
-                      element={Text}
-                      locale="ar"
-                      interval={30000}
-                      fromNow
-                    >
+                    <Moment style={{ color: "#111", fontSize: 10 }} element={Text} locale="ar" interval={30000} fromNow>
                       {item?.date}
                     </Moment>
                   </Text>
@@ -115,16 +106,8 @@ function OrderCard({ item, onPress, renderRightActions }) {
               </View>
             </View>
           </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.icon}
-            onPress={() => Linking.openURL(`tel:${item.client_phone}`)}
-          >
-            <Icon
-              iconColor={handelColor(item.order_status_id)}
-              shadow={false}
-              name="phone-outline"
-              size={70}
-            />
+          <TouchableHighlight style={styles.icon} onPress={() => Linking.openURL(`tel:${item.client_phone}`)}>
+            <Icon iconColor={handelColor(item.order_status_id)} shadow={false} name="phone-outline" size={70} />
           </TouchableHighlight>
         </View>
       </View>

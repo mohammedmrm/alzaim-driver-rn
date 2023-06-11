@@ -27,7 +27,6 @@ export default function LoginPage() {
   const handleSubmit = async ({ phone, password }) => {
     setIsLoading(true);
     const results = await authApi.login(phone, password);
-    console.log(results.data, phone, password);
     if (!results.ok) {
       setIsLoading(false);
       return setLoginFailed(true);
@@ -46,7 +45,7 @@ export default function LoginPage() {
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={settings.logo} />
       </View>
-      <View style={{ flex: 1, paddingLeft: 20, alignContent: "center" }}>
+      <View style={{ flex: 1, padding: 5, alignContent: "center", width: "95%" }}>
         <ScrollView contentContainerStyle={{ flexGrow: 1, alignContent: "center" }}>
           <AppForm
             initialValues={{ phone: "", password: "" }}
@@ -66,6 +65,7 @@ export default function LoginPage() {
               />
               <AppFormField
                 rightIcon="lock"
+                inputStyle={{ height: "100%" }}
                 leftIcon="eye"
                 caption="كلمة المرور"
                 name="password"
@@ -113,11 +113,11 @@ const styles = StyleSheet.create({
   },
 
   formContainer: {
-    top: 20,
-    paddingHorizontal: 5,
+    top: 10,
     backgroundColor: colors.white,
     width: "95%",
-    borderRadius: 15,
-    elevation: 4,
+    borderRadius: 10,
+    paddingBottom: 10,
+    elevation: 5,
   },
 });
