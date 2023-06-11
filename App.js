@@ -27,10 +27,10 @@ export default function App() {
 
   const [loaded] = useFonts({
     app_el: Cairo_200ExtraLight,
-    app_l: Cairo_300Light,
-    app_r: Cairo_400Regular,
+    app_l:  Cairo_300Light,
+    app_r:  Cairo_400Regular,
     app_sb: Cairo_600SemiBold,
-    app_b: Cairo_700Bold,
+    app_b:  Cairo_700Bold,
     app_bb: Cairo_900Black,
   });
   const restoreUser = async () => {
@@ -56,7 +56,7 @@ export default function App() {
       <AuthContext.Provider value={{ user, setUser }}>
         <OfflineNotice />
         <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-          {user ? user.token ? <AppNavigator /> : <AuthNavigator /> : <AuthNavigator />}
+          {user?.token ? <AppNavigator /> : <AuthNavigator />}
         </NavigationContainer>
       </AuthContext.Provider>
     </RootSiblingParent>
