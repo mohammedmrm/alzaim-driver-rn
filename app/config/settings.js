@@ -3,14 +3,17 @@ const settings = {
   dev: {
     apiUrl: "https://alsahamexpress.com/driver/api",
     logo: require("../assets/logo/logo.png"),
+    name: "السهم الدقيق",
   },
   staging: {
     apiUrl: "https://alsahamexpress.com/driver/api",
     logo: require("../assets/logo/logo.png"),
+    name: "السهم الدقيق",
   },
   prod: {
     apiUrl: "https://alsahamexpress.com/driver/api",
     logo: require("../assets/logo/logo.png"),
+    name: "السهم الدقيق",
   },
 };
 
