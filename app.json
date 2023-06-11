@@ -2,7 +2,7 @@
   "expo": {
     "name": "السهم الدقيق - المندوب",
     "slug": "alsaham-driver",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alsaham.driver",
+      "bundleIdentifier": "com.alsaham.driver"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -28,7 +28,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.alsaham.driver",
-      "versionCode": 4
+      "versionCode": 5
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"

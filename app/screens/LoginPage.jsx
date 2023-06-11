@@ -1,20 +1,8 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  ScrollView,
-  View,
-  Image,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, Text, ScrollView, View, Image, ImageBackground } from "react-native";
 import * as Yup from "yup";
 
-import {
-  ErrorMessage,
-  AppFormField,
-  AppForm,
-  SubmitButton,
-} from "../components/forms";
+import { ErrorMessage, AppFormField, AppForm, SubmitButton } from "../components/forms";
 import authApi from "../api/auth";
 import useAuth from "../auth/useAuth";
 import colors from "../config/colors";
@@ -39,6 +27,7 @@ export default function LoginPage() {
   const handleSubmit = async ({ phone, password }) => {
     setIsLoading(true);
     const results = await authApi.login(phone, password);
+    console.log(results.data, phone, password);
     if (!results.ok) {
       setIsLoading(false);
       return setLoginFailed(true);
@@ -52,19 +41,13 @@ export default function LoginPage() {
     auth.logIn(results.data);
   };
   return (
-    <ImageBackground
-      blurRadius={2}
-      style={styles.background}
-      source={require("../assets/background/welcomePage.png")}
-    >
+    <ImageBackground blurRadius={2} style={styles.background} source={require("../assets/background/welcomePage.png")}>
       {isLoading && <ActivityIndecator visible={isLoading} />}
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={settings.logo} />
       </View>
       <View style={{ flex: 1, paddingLeft: 20, alignContent: "center" }}>
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1, alignContent: "center" }}
-        >
+        <ScrollView contentContainerStyle={{ flexGrow: 1, alignContent: "center" }}>
           <AppForm
             initialValues={{ phone: "", password: "" }}
             onSubmit={handleSubmit}
@@ -72,10 +55,7 @@ export default function LoginPage() {
           >
             <View style={styles.formContainer}>
               <Text style={styles.text}>أهلا وسهلا بك</Text>
-              <ErrorMessage
-                error="رقم الهاتف او كلمة المرور خطاْ"
-                visible={loginFailed}
-              />
+              <ErrorMessage error="رقم الهاتف او كلمة المرور خطاْ" visible={loginFailed} />
               <AppFormField
                 rightIcon="cellphone"
                 name="phone"

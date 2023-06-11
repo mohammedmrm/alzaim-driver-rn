@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
-// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React, { useEffect, useRef } from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialIcons, Ionicons, FontAwesome } from "@expo/vector-icons";
 
@@ -42,10 +41,7 @@ const AppNavigator = (ref) => {
   useEffect(() => {
     if (lastNotificationResponse) {
       var id = lastNotificationResponse.notification.request.content.data.id;
-      console.log(
-        "Noti ORDER ID",
-        lastNotificationResponse.notification.request.content.data.id
-      );
+      console.log("Noti ORDER ID", lastNotificationResponse.notification.request.content.data.id);
       id &&
         navitation.navigate(Routes.ORDER_DETAILS, {
           id: id,
@@ -56,8 +52,7 @@ const AppNavigator = (ref) => {
 
   const registerForPushNotificationsAsync = async () => {
     try {
-      const { status: existingStatus } =
-        await Notifications.getPermissionsAsync();
+      const { status: existingStatus } = await Notifications.getPermissionsAsync();
       let finalStatus = existingStatus;
       if (existingStatus !== "granted") {
         const { status } = await Notifications.requestPermissionsAsync();
@@ -95,9 +90,7 @@ const AppNavigator = (ref) => {
         component={SearchResults}
         options={{
           tabBarLabel: "بحث",
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="search" color={color} size={22} />
-          ),
+          tabBarIcon: ({ color, size }) => <FontAwesome name="search" color={color} size={22} />,
         }}
       />
       <Tab.Screen
@@ -105,9 +98,7 @@ const AppNavigator = (ref) => {
         component={NotificationsNavigator}
         options={{
           tabBarLabel: "اشعاراتي",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="md-notifications" color={color} size={22} />
-          ),
+          tabBarIcon: ({ color, size }) => <Ionicons name="md-notifications" color={color} size={22} />,
         }}
       />
       <Tab.Screen
@@ -115,9 +106,7 @@ const AppNavigator = (ref) => {
         component={DashboardNavigator}
         options={({ navigation }) => ({
           tabBarLabel: "لوحة التحكم",
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="home" color={color} size={22} />
-          ),
+          tabBarIcon: ({ color, size }) => <FontAwesome name="home" color={color} size={22} />,
           // tabBarButton: () => (
           //   <DashboardButton
           //     onPress={() => navigation.navigate(Routes.DASHBOARD)}
@@ -131,9 +120,7 @@ const AppNavigator = (ref) => {
         component={ChatNavigator}
         options={{
           tabBarLabel: "محادثتي",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ios-chatbubbles" color={color} size={22} />
-          ),
+          tabBarIcon: ({ color, size }) => <Ionicons name="ios-chatbubbles" color={color} size={22} />,
         }}
       />
       <Tab.Screen
@@ -141,9 +128,7 @@ const AppNavigator = (ref) => {
         component={Profile}
         options={{
           tabBarLabel: "حسابي",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="account-circle" color={color} size={22} />
-          ),
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="account-circle" color={color} size={22} />,
         }}
       />
     </Tab.Navigator>
