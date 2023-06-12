@@ -40,10 +40,10 @@ const AppNavigator = ref => {
 			var id = lastNotificationResponse.notification.request.content.data.id;
 			console.log('Noti ORDER ID', lastNotificationResponse.notification.request.content.data.id);
 			id &&
-                navitation.navigate(Routes.ORDER_DETAILS, {
-                	id: id,
-                	notify_id: '',
-                });
+				navitation.navigate(Routes.ORDER_DETAILS, {
+					id: id,
+					notify_id: '',
+				});
 		}
 	}, [lastNotificationResponse]);
 	useEffect(() => {

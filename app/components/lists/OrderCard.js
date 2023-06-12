@@ -97,7 +97,7 @@ function OrderCard({ item, onPress, renderRightActions }) {
 								)}
 								{item.order_status_id !== '9' ? (
 									<Text style={styles.subTitle2} numberOfLines={1}>
-                                        المبلغ: {numberWithCommas(item?.new_price)}
+										المبلغ: {numberWithCommas(item?.new_price)}
 									</Text>
 								) : (
 									<Text style={styles.subTitle} numberOfLines={1}>

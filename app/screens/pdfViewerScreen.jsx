@@ -15,9 +15,9 @@ const PdfViewerScreen = () => {
 			style={{ flex: 1 }}
 			source={{
 				uri:
-                    Platform.OS == 'ios'
-                    	? `${settings.apiUrl}/../../dash/driver_invoice/${route?.params.item.path}`
-                    	: `https://docs.google.com/gview?embedded=true&url=${settings.apiUrl}/../../dash/driver_invoice/${route?.params.item.path}`,
+					Platform.OS == 'ios'
+						? `${settings.apiUrl}/../../dash/driver_invoice/${route?.params.item.path}`
+						: `https://docs.google.com/gview?embedded=true&url=${settings.apiUrl}/../../dash/driver_invoice/${route?.params.item.path}`,
 			}}
 		/>
 	);

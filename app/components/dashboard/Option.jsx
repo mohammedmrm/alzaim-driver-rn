@@ -17,8 +17,8 @@ const OptionsList = ({ path, data }) => {
 		case 'instorage':
 			return `(${
 				parseInt(data.instorageReturnd) +
-                    parseInt(data.instoragereplace) +
-                    parseInt(data.instoragepartiallyReturnd)
+					parseInt(data.instoragereplace) +
+					parseInt(data.instoragepartiallyReturnd)
 			})`;
 		case 'onway':
 			return `(${data.onway})`;

@@ -348,7 +348,7 @@ const OrderDetails = () => {
 											/>
 
 											<Text style={{ textAlign: 'right', width: '30%' }}>
-                                                المبلغ المستلم :
+												المبلغ المستلم :
 											</Text>
 										</View>
 										<View
@@ -405,7 +405,7 @@ const OrderDetails = () => {
 													});
 												}}>
 												<Text style={{ color: colors.black, alignSelf: 'center' }}>
-                                                    ألغاء
+													ألغاء
 												</Text>
 											</TouchableHighlight>
 										</View>
@@ -476,7 +476,7 @@ const OrderDetails = () => {
 													});
 												}}>
 												<Text style={{ color: colors.black, alignSelf: 'center' }}>
-                                                    ألغاء
+													ألغاء
 												</Text>
 											</TouchableHighlight>
 										</View>
@@ -517,7 +517,7 @@ const OrderDetails = () => {
 												value={amount}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}>
-                                                المبلغ المستلم :
+												المبلغ المستلم :
 											</Text>
 										</View>
 										<View
@@ -561,7 +561,7 @@ const OrderDetails = () => {
 												value={returnNo}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}>
-                                                عدد الرواجع:
+												عدد الرواجع:
 											</Text>
 										</View>
 										<View
@@ -597,7 +597,7 @@ const OrderDetails = () => {
 													});
 												}}>
 												<Text style={{ color: colors.black, alignSelf: 'center' }}>
-                                                    ألغاء
+													ألغاء
 												</Text>
 											</TouchableHighlight>
 										</View>
@@ -644,7 +644,7 @@ const OrderDetails = () => {
 												value={amount}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}>
-                                                المبلغ المستلم :
+												المبلغ المستلم :
 											</Text>
 										</View>
 										<View
@@ -688,7 +688,7 @@ const OrderDetails = () => {
 												value={returnNo}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}>
-                                                عدد القطع:
+												عدد القطع:
 											</Text>
 										</View>
 										<View
@@ -724,7 +724,7 @@ const OrderDetails = () => {
 													});
 												}}>
 												<Text style={{ color: colors.black, alignSelf: 'center' }}>
-                                                    ألغاء
+													ألغاء
 												</Text>
 											</TouchableHighlight>
 										</View>
@@ -771,7 +771,7 @@ const OrderDetails = () => {
 												/>
 												<Text style={{ textAlign: 'right', width: '30%' }}>
 													{' '}
-                                                    ملاحظة:
+													ملاحظة:
 												</Text>
 											</View>
 										</View>
@@ -808,7 +808,7 @@ const OrderDetails = () => {
 													});
 												}}>
 												<Text style={{ color: colors.black, alignSelf: 'center' }}>
-                                                    ألغاء
+													ألغاء
 												</Text>
 											</TouchableHighlight>
 										</View>
