@@ -41,7 +41,7 @@ const ListItemOrderDetail = ({ caption, details, order, onPress = false }) => {
 									color: colors.success,
 									textDecorationLine: 'none',
 								}}>
-                                واتساب
+								واتساب
 							</Text>
 						</Text>
 					</>
