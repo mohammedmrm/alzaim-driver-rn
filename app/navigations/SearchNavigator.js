@@ -16,18 +16,14 @@ const DashboardNavigator = () => {
         options={{ headerShown: false, title: "صفحة البحث" }}
       />
 
-      <Stack.Screen
-        name={Routes.ORDER_DETAILS}
-        component={OrderDetails}
-        options={{ title: "طلبية" }}
-      />
-      <Stack.Screen
-        name={Routes.CHAT_MODEL}
-        component={ChatModel}
-        options={{ title: "محادثة فورية" }}
-      />
-    </Stack.Navigator>
-  );
+			<Stack.Screen name={Routes.ORDER_DETAILS} component={OrderDetails} options={{ title: 'طلبية' }} />
+			<Stack.Screen
+				name={Routes.CHAT_MODEL}
+				component={ChatModel}
+				options={{ title: 'محادثة فورية' }}
+			/>
+		</Stack.Navigator>
+	);
 };
 
 export default DashboardNavigator;

@@ -13,106 +13,113 @@ function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 function OrderCard({ item, onPress, renderRightActions }) {
-  const navigation = useNavigation();
-  const handelColor = (id) => {
-    switch (id) {
-      case "4":
-        return colors.success;
-      case "5":
-        return colors.secondery;
-      case "6":
-        return colors.primery;
-      case "7":
-        return colors.pause;
-      case "8":
-        return colors.returned;
-      case "9":
-        return colors.returned;
-      case "13":
-        return colors.unseen;
-      default:
-        return colors.medium;
-    }
-  };
-  return (
-    <Swipeable
-      key={item.id || Date.now()}
-      renderRightActions={renderRightActions}
-      renderLeftActions={renderRightActions}
-    >
-      <View
-        style={{
-          alignSelf: "center",
-          width: "90%",
-          height: 75,
-          paddingTop: 5,
-        }}
-      >
-        <View
-          style={[
-            styles.container,
-            {
-              backgroundColor: item.driver_invoice >= 0 ? colors.lightGreen : colors.white,
-            },
-          ]}
-        >
-          <TouchableHighlight
-            style={{ width: "87%", height: "100%" }}
-            underlayColor={colors.light}
-            onPress={() => navigation.navigate(Routes.ORDER_DETAILS, { id: item.id })}
-          >
-            <View
-              style={{
-                width: "100%",
-                height: "100%",
-                flexDirection: "row-reverse",
-              }}
-            >
-              <View style={styles.detailsContainer}>
-                <Text style={styles.title} numberOfLines={1}>
-                  {item.order_no}
-                </Text>
-                {item.city && (
-                  <Text style={styles.subTitle} numberOfLines={1}>
-                    {item.city} - {item.town}
-                  </Text>
-                )}
-                {item?.date && (
-                  <Text style={styles.subTitle} numberOfLines={1}>
-                    <Moment style={{ color: "#111", fontSize: 10 }} element={Text} locale="ar" interval={30000} fromNow>
-                      {item?.date}
-                    </Moment>
-                  </Text>
-                )}
-              </View>
-              <View style={styles.detailsContainer}>
-                <Text style={styles.title} numberOfLines={1}>
-                  {item.store_name}
-                </Text>
-                {item.city && (
-                  <Text style={styles.subTitle} numberOfLines={1}>
-                    {item.status_name}
-                  </Text>
-                )}
-                {item.order_status_id !== "9" ? (
-                  <Text style={styles.subTitle2} numberOfLines={1}>
-                    المبلغ: {numberWithCommas(item?.new_price)}
-                  </Text>
-                ) : (
-                  <Text style={styles.subTitle} numberOfLines={1}>
-                    {item?.t_note ? item?.t_note : ""}
-                  </Text>
-                )}
-              </View>
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.icon} onPress={() => Linking.openURL(`tel:${item.client_phone}`)}>
-            <Icon iconColor={handelColor(item.order_status_id)} shadow={false} name="phone-outline" size={70} />
-          </TouchableHighlight>
-        </View>
-      </View>
-    </Swipeable>
-  );
+	const navigation = useNavigation();
+	const handelColor = id => {
+		switch (id) {
+		case '4':
+			return colors.success;
+		case '5':
+			return colors.secondery;
+		case '6':
+			return colors.primery;
+		case '7':
+			return colors.pause;
+		case '8':
+			return colors.returned;
+		case '9':
+			return colors.returned;
+		case '13':
+			return colors.unseen;
+		default:
+			return colors.medium;
+		}
+	};
+	return (
+		<Swipeable
+			key={item.id || Date.now()}
+			renderRightActions={renderRightActions}
+			renderLeftActions={renderRightActions}>
+			<View
+				style={{
+					alignSelf: 'center',
+					width: '90%',
+					height: 75,
+					paddingTop: 5,
+				}}>
+				<View
+					style={[
+						styles.container,
+						{
+							backgroundColor: item.driver_invoice >= 0 ? colors.lightGreen : colors.white,
+						},
+					]}>
+					<TouchableHighlight
+						style={{ width: '87%', height: '100%' }}
+						underlayColor={colors.light}
+						onPress={() => navigation.navigate(Routes.ORDER_DETAILS, { id: item.id })}>
+						<View
+							style={{
+								width: '100%',
+								height: '100%',
+								flexDirection: 'row-reverse',
+							}}>
+							<View style={styles.detailsContainer}>
+								<Text style={styles.title} numberOfLines={1}>
+									{item.order_no}
+								</Text>
+								{item.city && (
+									<Text style={styles.subTitle} numberOfLines={1}>
+										{item.city} - {item.town}
+									</Text>
+								)}
+								{item?.date && (
+									<Text style={styles.subTitle} numberOfLines={1}>
+										<Moment
+											style={{ color: '#111', fontSize: 10 }}
+											element={Text}
+											locale="ar"
+											interval={30000}
+											fromNow>
+											{item?.date}
+										</Moment>
+									</Text>
+								)}
+							</View>
+							<View style={styles.detailsContainer}>
+								<Text style={styles.title} numberOfLines={1}>
+									{item.store_name}
+								</Text>
+								{item.city && (
+									<Text style={styles.subTitle} numberOfLines={1}>
+										{item.status_name}
+									</Text>
+								)}
+								{item.order_status_id !== '9' ? (
+									<Text style={styles.subTitle2} numberOfLines={1}>
+                                        المبلغ: {numberWithCommas(item?.new_price)}
+									</Text>
+								) : (
+									<Text style={styles.subTitle} numberOfLines={1}>
+										{item?.t_note ? item?.t_note : ''}
+									</Text>
+								)}
+							</View>
+						</View>
+					</TouchableHighlight>
+					<TouchableHighlight
+						style={styles.icon}
+						onPress={() => Linking.openURL(`tel:${item.client_phone}`)}>
+						<Icon
+							iconColor={handelColor(item.order_status_id)}
+							shadow={false}
+							name="phone-outline"
+							size={70}
+						/>
+					</TouchableHighlight>
+				</View>
+			</View>
+		</Swipeable>
+	);
 }
 
 const styles = StyleSheet.create({

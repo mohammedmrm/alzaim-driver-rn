@@ -20,40 +20,28 @@ const DashboardNavigator = () => {
         options={{ headerShown: false, title: "لوحة التحكم" }}
       />
 
-      <Stack.Screen
-        name={Routes.DISCLOSURES}
-        component={Disclosures}
-        options={{ title: "كشوفات" }}
-      />
-      <Stack.Screen
-        name={Routes.AdsCompany}
-        component={AdsCompany}
-        options={{
-          title: <Text style={{ fontFamily: "app_b" }}>اعلان</Text>,
-        }}
-      />
-      <Stack.Screen
-        name={Routes.ORDER_DETAILS}
-        component={OrderDetails}
-        options={{ title: "طلبية" }}
-      />
-      <Stack.Screen
-        name={Routes.CHAT_MODEL}
-        component={ChatModel}
-        options={{ title: "محادثة فورية" }}
-      />
-      <Stack.Screen
-        name={Routes.PDF_VIEW}
-        component={pdfViewerScreen}
-        options={{ title: "كشف" }}
-      />
-      <Stack.Screen
-        name={Routes.DASHBOARD_LIST}
-        component={DashboardList}
-        options={({ route }) => ({ title: route.params.name })}
-      />
-    </Stack.Navigator>
-  );
+			<Stack.Screen name={Routes.DISCLOSURES} component={Disclosures} options={{ title: 'كشوفات' }} />
+			<Stack.Screen
+				name={Routes.AdsCompany}
+				component={AdsCompany}
+				options={{
+					title: <Text style={{ fontFamily: 'app_b' }}>اعلان</Text>,
+				}}
+			/>
+			<Stack.Screen name={Routes.ORDER_DETAILS} component={OrderDetails} options={{ title: 'طلبية' }} />
+			<Stack.Screen
+				name={Routes.CHAT_MODEL}
+				component={ChatModel}
+				options={{ title: 'محادثة فورية' }}
+			/>
+			<Stack.Screen name={Routes.PDF_VIEW} component={pdfViewerScreen} options={{ title: 'كشف' }} />
+			<Stack.Screen
+				name={Routes.DASHBOARD_LIST}
+				component={DashboardList}
+				options={({ route }) => ({ title: route.params.name })}
+			/>
+		</Stack.Navigator>
+	);
 };
 
 export default DashboardNavigator;

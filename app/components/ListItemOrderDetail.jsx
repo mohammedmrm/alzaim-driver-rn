@@ -5,54 +5,52 @@ import { Linking } from "react-native";
 import colors from "../config/colors";
 import settings from "../config/settings";
 const ListItemOrderDetail = ({ caption, details, order, onPress = false }) => {
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-  return (
-    <View style={styles.containertextContainer}>
-      <View style={styles.textView}>
-        <Text style={styles.titleText}>{caption}</Text>
-      </View>
-      <View style={styles.textView2}>
-        {onPress ? (
-          <>
-            <Text>
-              <Text
-                onPress={() => {
-                  Linking.openURL(`tel:${details}`);
-                }}
-                style={{
-                  ...styles.text,
-                  color: colors.secondery,
-                  textDecorationLine: "none",
-                }}
-              >
-                {details + "   "}
-              </Text>
-              <Text
-                onPress={() => {
-                  Linking.openURL(
-                    `https://wa.me/+964${parseInt(details)}?text=مندوب شركة ${settings.name}\nرقم الطلب : ${
-                      order?.order_no
-                    }\n`
-                  );
-                }}
-                style={{
-                  ...styles.text,
-                  color: colors.success,
-                  textDecorationLine: "none",
-                }}
-              >
-                واتساب
-              </Text>
-            </Text>
-          </>
-        ) : (
-          <Text style={styles.text}>{details && numberWithCommas(details)}</Text>
-        )}
-      </View>
-    </View>
-  );
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}
+	return (
+		<View style={styles.containertextContainer}>
+			<View style={styles.textView}>
+				<Text style={styles.titleText}>{caption}</Text>
+			</View>
+			<View style={styles.textView2}>
+				{onPress ? (
+					<>
+						<Text>
+							<Text
+								onPress={() => {
+									Linking.openURL(`tel:${details}`);
+								}}
+								style={{
+									...styles.text,
+									color: colors.secondery,
+									textDecorationLine: 'none',
+								}}>
+								{details + '   '}
+							</Text>
+							<Text
+								onPress={() => {
+									Linking.openURL(
+										`https://wa.me/+964${parseInt(details)}?text=مندوب شركة ${
+											settings.name
+										}\nرقم الطلب : ${order?.order_no}\n`
+									);
+								}}
+								style={{
+									...styles.text,
+									color: colors.success,
+									textDecorationLine: 'none',
+								}}>
+                                واتساب
+							</Text>
+						</Text>
+					</>
+				) : (
+					<Text style={styles.text}>{details && numberWithCommas(details)}</Text>
+				)}
+			</View>
+		</View>
+	);
 };
 
 export default ListItemOrderDetail;

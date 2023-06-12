@@ -13,24 +13,44 @@ export default function AppTextinput({ rightIcon, leftIcon, caption, ...otherPro
     };
 
 
-    return (
-        <View style={styles.contaioner}>
-            {caption && <AppText style={{ fontSize: 16, fontWeight: "bold", paddingTop: 20 }}>{caption}</AppText>}
+	return (
+		<View style={styles.contaioner}>
+			{caption && (
+				<AppText style={{ fontSize: 16, fontWeight: 'bold', paddingTop: 20 }}>{caption}</AppText>
+			)}
 
-            <View style={styles.inputContainer}>
-                {rightIcon && <MaterialCommunityIcons style={styles.icon} size={20} colors={defultStyle.colors.medium} name={rightIcon} />}
-                <View style={{ width: '85%' }}>
-                    {leftIcon ? <TextInput style={defultStyle.text}
-                        secureTextEntry={secureTextEntry}  {...otherProps} />
-                        : <TextInput style={defultStyle.text} {...otherProps} />}
-                </View>
-                {leftIcon &&
-                    <TouchableWithoutFeedback onPress={toggleSecureEntry}>
-                        <MaterialCommunityIcons size={20} colors={defultStyle.colors.medium} name={secureTextEntry ? 'eye-off' : 'eye'} />
-                    </TouchableWithoutFeedback>}
-            </View>
-        </View>
-    )
+			<View style={styles.inputContainer}>
+				{rightIcon && (
+					<MaterialCommunityIcons
+						style={styles.icon}
+						size={20}
+						colors={defultStyle.colors.medium}
+						name={rightIcon}
+					/>
+				)}
+				<View style={{ width: '85%' }}>
+					{leftIcon ? (
+						<TextInput
+							style={defultStyle.text}
+							secureTextEntry={secureTextEntry}
+							{...otherProps}
+						/>
+					) : (
+						<TextInput style={defultStyle.text} {...otherProps} />
+					)}
+				</View>
+				{leftIcon && (
+					<TouchableWithoutFeedback onPress={toggleSecureEntry}>
+						<MaterialCommunityIcons
+							size={20}
+							colors={defultStyle.colors.medium}
+							name={secureTextEntry ? 'eye-off' : 'eye'}
+						/>
+					</TouchableWithoutFeedback>
+				)}
+			</View>
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({

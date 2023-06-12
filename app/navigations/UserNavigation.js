@@ -8,25 +8,21 @@ import Routes from "../Routes";
 
 const Stack = createStackNavigator();
 const UserNavigator = () => {
-  return (
-    <Stack.Navigator initialRouteName={Routes.Profile}>
-      <Stack.Screen
-        name={Routes.Profile + "1"}
-        component={Profile}
-        options={{}}
-      />
-      <Stack.Screen
-        name={Routes.EDIT_PROFILE}
-        component={EditProfile}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={Routes.CHANGE_PASSWORD}
-        component={ChangePassword}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  );
+	return (
+		<Stack.Navigator initialRouteName={Routes.Profile}>
+			<Stack.Screen name={Routes.Profile + '1'} component={Profile} options={{}} />
+			<Stack.Screen
+				name={Routes.EDIT_PROFILE}
+				component={EditProfile}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name={Routes.CHANGE_PASSWORD}
+				component={ChangePassword}
+				options={{ headerShown: false }}
+			/>
+		</Stack.Navigator>
+	);
 };
 
 export default UserNavigator;

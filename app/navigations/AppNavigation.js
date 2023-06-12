@@ -23,33 +23,33 @@ Notifications.setNotificationHandler({
     shouldSetBadge: false,
   }),
 });
-const AppNavigator = (ref) => {
-  const { user } = useAuth();
-  const navitation = useNavigation();
-  Notifications.setNotificationHandler({
-    handleNotification: async () => ({
-      shouldShowAlert: true,
-      shouldPlaySound: true,
-      shouldSetBadge: false,
-    }),
-  });
-  const lastNotificationResponse = Notifications.useLastNotificationResponse();
-  useEffect(() => {
-    if (lastNotificationResponse) {
-      var id = lastNotificationResponse.notification.request.content.data.id;
-      console.log("Noti ORDER ID", lastNotificationResponse.notification.request.content.data.id);
-      id &&
-        navitation.navigate(Routes.ORDER_DETAILS, {
-          id: id,
-          notify_id: "",
-        });
-    }
-  }, [lastNotificationResponse]);
-  useEffect(() => {
-    registerForPushNotificationsAsync().then((token) => expoPushTokenApi.register(user.token, token));
-  }, []);
-  async function registerForPushNotificationsAsync() {
-    let token;
+const AppNavigator = ref => {
+	const { user } = useAuth();
+	const navitation = useNavigation();
+	Notifications.setNotificationHandler({
+		handleNotification: async () => ({
+			shouldShowAlert: true,
+			shouldPlaySound: true,
+			shouldSetBadge: false,
+		}),
+	});
+	const lastNotificationResponse = Notifications.useLastNotificationResponse();
+	useEffect(() => {
+		if (lastNotificationResponse) {
+			var id = lastNotificationResponse.notification.request.content.data.id;
+			console.log('Noti ORDER ID', lastNotificationResponse.notification.request.content.data.id);
+			id &&
+                navitation.navigate(Routes.ORDER_DETAILS, {
+                	id: id,
+                	notify_id: '',
+                });
+		}
+	}, [lastNotificationResponse]);
+	useEffect(() => {
+		registerForPushNotificationsAsync().then(token => expoPushTokenApi.register(user.token, token));
+	}, []);
+	async function registerForPushNotificationsAsync() {
+		let token;
 
     if (Platform.OS === "android") {
       await Notifications.setNotificationChannelAsync("default", {
@@ -76,6 +76,7 @@ const AppNavigator = (ref) => {
       alert("Must use physical device for Push Notifications");
     }
 
+<<<<<<< HEAD
     return token;
   }
   return (
@@ -133,5 +134,69 @@ const AppNavigator = (ref) => {
       />
     </Tab.Navigator>
   );
+=======
+		return token;
+	}
+	return (
+		<Tab.Navigator
+			initialRouteName={Routes.DASHBOARD}
+			activeColor={colors.primery}
+			inactiveColor={colors.secondery}
+			barStyle={{ backgroundColor: colors.light }}>
+			<Tab.Screen
+				name={Routes.SEARCH_RESULTS}
+				component={SearchResults}
+				options={{
+					tabBarLabel: 'بحث',
+					tabBarIcon: ({ color, size }) => <FontAwesome name="search" color={color} size={22} />,
+				}}
+			/>
+			<Tab.Screen
+				name={Routes.NOTIFICATION}
+				component={NotificationsNavigator}
+				options={{
+					tabBarLabel: 'اشعاراتي',
+					tabBarIcon: ({ color, size }) => (
+						<Ionicons name="md-notifications" color={color} size={22} />
+					),
+				}}
+			/>
+			<Tab.Screen
+				name={Routes.DASHBOARD}
+				component={DashboardNavigator}
+				options={({ navigation }) => ({
+					tabBarLabel: 'لوحة التحكم',
+					tabBarIcon: ({ color, size }) => <FontAwesome name="home" color={color} size={22} />,
+					// tabBarButton: () => (
+					//   <DashboardButton
+					//     onPress={() => navigation.navigate(Routes.DASHBOARD)}
+					//   />
+					// ),
+				})}
+			/>
+
+			<Tab.Screen
+				name={Routes.CHAT}
+				component={ChatNavigator}
+				options={{
+					tabBarLabel: 'محادثتي',
+					tabBarIcon: ({ color, size }) => (
+						<Ionicons name="ios-chatbubbles" color={color} size={22} />
+					),
+				}}
+			/>
+			<Tab.Screen
+				name={Routes.PROFILE}
+				component={Profile}
+				options={{
+					tabBarLabel: 'حسابي',
+					tabBarIcon: ({ color, size }) => (
+						<MaterialIcons name="account-circle" color={color} size={22} />
+					),
+				}}
+			/>
+		</Tab.Navigator>
+	);
+>>>>>>> bc41f80... fix
 };
 export default AppNavigator;
