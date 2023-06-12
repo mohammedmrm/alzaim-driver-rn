@@ -1,3 +1,4 @@
+import Toast from "react-native-root-toast";
 import settings from "../config/settings";
 import { Share, Clipboard } from "react-native";
 
@@ -26,17 +27,13 @@ export const onShare = async (item) => {
 export const handleCopy = (item = null, msg = "تم نسخ معلومات الطلب") => {
   if (item) {
     Clipboard.setString(
-      `رقم الوصل: (${item.order_no}) \nالاسم: ${
-        item.name ? item.name : ""
-      } - (${item.client_phone})\n العنوان (${item.city} - ${
-        item.town
-      })\nالصفحة: (${item.store_name})\n حالة الطلب: (${item.status_name})\n${
+      `رقم الوصل: (${item.order_no}) \nالاسم: ${item.name ? item.name : ""} - (${item.client_phone})\n العنوان (${
+        item.city
+      } - ${item.town})\nالصفحة: (${item.store_name})\n حالة الطلب: (${item.status_name})\n${
         item.t_note ? item.t_note : ""
-      }المبلغ: (${item.price})\n المندوب (${
-        item.driver_phone ? item.driver_phone : ""
-      })`
+      }المبلغ: (${item.price})\n المندوب (${item.driver_phone ? item.driver_phone : ""})`
     );
   }
-  this.toastify.show(msg, 750);
+  Toast.show(msg);
 };
 //================================================

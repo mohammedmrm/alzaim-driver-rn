@@ -6,6 +6,7 @@ import SearchResults from "./../navigations/SearchNavigator";
 import colors from "../config/colors";
 import Routes from "../Routes";
 import DashboardNavigator from "./DashboardNavigator";
+import { Constants } from "expo-constants";
 import ChatNavigator from "./ChatNavigator";
 import NotificationsNavigator from "./NotificationsNavigator";
 import expoPushTokenApi from "../api/expoPushTokens";

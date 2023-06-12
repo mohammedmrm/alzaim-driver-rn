@@ -3,7 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { Linking } from "react-native";
 
 import colors from "../config/colors";
-const ListItemOrderDetail = ({ caption, details, onPress = false }) => {
+import settings from "../config/settings";
+const ListItemOrderDetail = ({ caption, details, order, onPress = false }) => {
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -30,7 +31,11 @@ const ListItemOrderDetail = ({ caption, details, onPress = false }) => {
               </Text>
               <Text
                 onPress={() => {
-                  Linking.openURL(`https://wa.me/+964${parseInt(details)}`);
+                  Linking.openURL(
+                    `https://wa.me/+964${parseInt(details)}?text=مندوب شركة ${settings.name}\nرقم الطلب : ${
+                      order?.order_no
+                    }\n`
+                  );
                 }}
                 style={{
                   ...styles.text,
@@ -43,9 +48,7 @@ const ListItemOrderDetail = ({ caption, details, onPress = false }) => {
             </Text>
           </>
         ) : (
-          <Text style={styles.text}>
-            {details && numberWithCommas(details)}
-          </Text>
+          <Text style={styles.text}>{details && numberWithCommas(details)}</Text>
         )}
       </View>
     </View>
