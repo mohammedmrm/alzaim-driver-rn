@@ -1,9 +1,9 @@
-import { DefaultTheme } from "@react-navigation/native";
+import { DefaultTheme } from '@react-navigation/native';
 export default {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: "tomato",
-    accent: "yellow",
-  },
+	...DefaultTheme,
+	colors: {
+		...DefaultTheme.colors,
+		primary: 'tomato',
+		accent: 'yellow',
+	},
 };

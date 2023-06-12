@@ -8,9 +8,10 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "pretty": "prettier --config .prettierrc '**/*.{json,js,jsx,ts,tsx,css,scss,md}' --write",
+    "pretty": "prettier --config .prettierrc --write ./app/**/*.{js,jsx,ts,tsx,css,scss,md} ",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.json",
-    "lint:all": "npm run pretty && eslint . --ext .ts,.tsx,.js,.jsx,.json --fix"
+    "lint:all": "npm run pretty && eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix"
   },
   "dependencies": {
     "@eva-design/eva": "^2.1.1",
