@@ -17,7 +17,11 @@ const DashboardNavigator = () => {
 			/>
 
 			<Stack.Screen name={Routes.ORDER_DETAILS} component={OrderDetails} options={{ title: 'طلبية' }} />
-			<Stack.Screen name={Routes.CHAT_MODEL} component={ChatModel} options={{ title: 'محادثة مع الشركة' }} />
+			<Stack.Screen
+				name={Routes.CHAT_MODEL}
+				component={ChatModel}
+				options={{ title: 'محادثة مع الشركة' }}
+			/>
 		</Stack.Navigator>
 	);
 };

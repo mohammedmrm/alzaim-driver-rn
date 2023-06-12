@@ -40,10 +40,10 @@ const AppNavigator = ref => {
 			var id = lastNotificationResponse.notification.request.content.data.id;
 			console.log('Noti ORDER ID', lastNotificationResponse.notification.request.content.data.id);
 			id &&
-        navitation.navigate(Routes.ORDER_DETAILS, {
-        	id: id,
-        	notify_id: '',
-        });
+                navitation.navigate(Routes.ORDER_DETAILS, {
+                	id: id,
+                	notify_id: '',
+                });
 		}
 	}, [lastNotificationResponse]);
 	useEffect(() => {
@@ -98,7 +98,9 @@ const AppNavigator = ref => {
 				component={NotificationsNavigator}
 				options={{
 					tabBarLabel: 'اشعاراتي',
-					tabBarIcon: ({ color, size }) => <Ionicons name="md-notifications" color={color} size={22} />,
+					tabBarIcon: ({ color, size }) => (
+						<Ionicons name="md-notifications" color={color} size={22} />
+					),
 				}}
 			/>
 			<Tab.Screen
@@ -120,7 +122,9 @@ const AppNavigator = ref => {
 				component={ChatNavigator}
 				options={{
 					tabBarLabel: 'محادثتي',
-					tabBarIcon: ({ color, size }) => <Ionicons name="ios-chatbubbles" color={color} size={22} />,
+					tabBarIcon: ({ color, size }) => (
+						<Ionicons name="ios-chatbubbles" color={color} size={22} />
+					),
 				}}
 			/>
 			<Tab.Screen
@@ -128,7 +132,9 @@ const AppNavigator = ref => {
 				component={Profile}
 				options={{
 					tabBarLabel: 'حسابي',
-					tabBarIcon: ({ color, size }) => <MaterialIcons name="account-circle" color={color} size={22} />,
+					tabBarIcon: ({ color, size }) => (
+						<MaterialIcons name="account-circle" color={color} size={22} />
+					),
 				}}
 			/>
 		</Tab.Navigator>

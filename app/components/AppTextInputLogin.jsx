@@ -15,7 +15,9 @@ export default function AppTextinput({ rightIcon, leftIcon, caption, ...otherPro
 
 	return (
 		<View style={styles.contaioner}>
-			{caption && <AppText style={{ fontSize: 16, fontWeight: 'bold', paddingTop: 20 }}>{caption}</AppText>}
+			{caption && (
+				<AppText style={{ fontSize: 16, fontWeight: 'bold', paddingTop: 20 }}>{caption}</AppText>
+			)}
 
 			<View style={styles.inputContainer}>
 				{rightIcon && (
@@ -28,7 +30,11 @@ export default function AppTextinput({ rightIcon, leftIcon, caption, ...otherPro
 				)}
 				<View style={{ width: '85%' }}>
 					{leftIcon ? (
-						<TextInput style={defultStyle.text} secureTextEntry={secureTextEntry} {...otherProps} />
+						<TextInput
+							style={defultStyle.text}
+							secureTextEntry={secureTextEntry}
+							{...otherProps}
+						/>
 					) : (
 						<TextInput style={defultStyle.text} {...otherProps} />
 					)}

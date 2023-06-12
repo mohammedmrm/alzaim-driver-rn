@@ -33,7 +33,11 @@ export default function AppPicker({
 					)}
 					<AppText style={styles.text}>{selectedTime ? selectedTime : placeholder}</AppText>
 					{icon && (
-						<MaterialCommunityIcons size={15} colors={defultStyle.colors.medium} name="chevron-down" />
+						<MaterialCommunityIcons
+							size={15}
+							colors={defultStyle.colors.medium}
+							name="chevron-down"
+						/>
 					)}
 				</View>
 			</TouchableWithoutFeedback>

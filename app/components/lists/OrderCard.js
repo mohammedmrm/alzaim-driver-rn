@@ -97,7 +97,7 @@ function OrderCard({ item, onPress, renderRightActions }) {
 								)}
 								{item.order_status_id !== '9' ? (
 									<Text style={styles.subTitle2} numberOfLines={1}>
-                    المبلغ: {numberWithCommas(item?.new_price)}
+                                        المبلغ: {numberWithCommas(item?.new_price)}
 									</Text>
 								) : (
 									<Text style={styles.subTitle} numberOfLines={1}>
@@ -107,7 +107,9 @@ function OrderCard({ item, onPress, renderRightActions }) {
 							</View>
 						</View>
 					</TouchableHighlight>
-					<TouchableHighlight style={styles.icon} onPress={() => Linking.openURL(`tel:${item.client_phone}`)}>
+					<TouchableHighlight
+						style={styles.icon}
+						onPress={() => Linking.openURL(`tel:${item.client_phone}`)}>
 						<Icon
 							iconColor={handelColor(item.order_status_id)}
 							shadow={false}

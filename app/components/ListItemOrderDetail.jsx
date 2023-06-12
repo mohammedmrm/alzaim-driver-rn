@@ -31,9 +31,9 @@ const ListItemOrderDetail = ({ caption, details, order, onPress = false }) => {
 							<Text
 								onPress={() => {
 									Linking.openURL(
-										`https://wa.me/+964${parseInt(details)}?text=مندوب شركة ${settings.name}\nرقم الطلب : ${
-											order?.order_no
-										}\n`
+										`https://wa.me/+964${parseInt(details)}?text=مندوب شركة ${
+											settings.name
+										}\nرقم الطلب : ${order?.order_no}\n`
 									);
 								}}
 								style={{
@@ -41,7 +41,7 @@ const ListItemOrderDetail = ({ caption, details, order, onPress = false }) => {
 									color: colors.success,
 									textDecorationLine: 'none',
 								}}>
-                واتساب
+                                واتساب
 							</Text>
 						</Text>
 					</>

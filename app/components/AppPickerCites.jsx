@@ -22,7 +22,11 @@ export default function AppPicker({
 	return (
 		<>
 			<TouchableWithoutFeedback onPress={() => setModalVisable(!modalVisable)}>
-				<View style={[styles.container, { width: width, backgroundColor: backgroundColor, color: color }]}>
+				<View
+					style={[
+						styles.container,
+						{ width: width, backgroundColor: backgroundColor, color: color },
+					]}>
 					{icon && (
 						<MaterialCommunityIcons
 							style={styles.icon}
@@ -32,7 +36,13 @@ export default function AppPicker({
 						/>
 					)}
 					<AppText style={styles.text}>{selectedItem ? selectedItem.name : placeholder}</AppText>
-					{icon && <MaterialCommunityIcons size={15} colors={defultStyle.colors.white} name="chevron-down" />}
+					{icon && (
+						<MaterialCommunityIcons
+							size={15}
+							colors={defultStyle.colors.white}
+							name="chevron-down"
+						/>
+					)}
 				</View>
 			</TouchableWithoutFeedback>
 			<Modal

@@ -26,7 +26,11 @@ function Dashboard() {
 
 	const loadPdfs = async () => {
 		setIsLoading(true);
-		const results = await getPdfs.getPdfs(user.token, startDate ? startDate : null, endDate ? endDate : null);
+		const results = await getPdfs.getPdfs(
+			user.token,
+			startDate ? startDate : null,
+			endDate ? endDate : null
+		);
 		if (!results.ok || results.data.success === '0') {
 			return setIsLoading(false);
 		}
@@ -109,7 +113,9 @@ function Dashboard() {
 										alignItems: 'flex-end',
 									}}>
 									<Text style={{ paddingHorizontal: 10 }}> عدد الطلبيات:</Text>
-									<Text style={{ paddingHorizontal: 10 }}>{total.orders && total.orders}</Text>
+									<Text style={{ paddingHorizontal: 10 }}>
+										{total.orders && total.orders}
+									</Text>
 								</View>
 								<View
 									style={{
@@ -117,7 +123,9 @@ function Dashboard() {
 										alignItems: 'flex-end',
 									}}>
 									<Text style={{ paddingHorizontal: 10 }}> المبلغ الكلي:</Text>
-									<Text style={{ paddingHorizontal: 10 }}>{total.income && total.income}</Text>
+									<Text style={{ paddingHorizontal: 10 }}>
+										{total.income && total.income}
+									</Text>
 								</View>
 								<View
 									style={{
@@ -125,7 +133,9 @@ function Dashboard() {
 										alignItems: 'flex-end',
 									}}>
 									<Text style={{ paddingHorizontal: 10 }}>اجره المندوب المتوقعه:</Text>
-									<Text style={{ paddingHorizontal: 10 }}>{total.driver_price && total.driver_price}</Text>
+									<Text style={{ paddingHorizontal: 10 }}>
+										{total.driver_price && total.driver_price}
+									</Text>
 								</View>
 							</>
 						)}

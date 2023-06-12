@@ -181,14 +181,21 @@ const OrderDetails = () => {
 									</View>
 									<TouchableWithoutFeedback onPress={() => startChating(order)}>
 										<View style={styles.chatShadow}>
-											<Image style={styles.chatIcon} source={require('./../assets/icons/chatIcon.png')} />
+											<Image
+												style={styles.chatIcon}
+												source={require('./../assets/icons/chatIcon.png')}
+											/>
 										</View>
 									</TouchableWithoutFeedback>
 									<Text style={styles.titleOrderId}>{order.order_no}</Text>
 								</View>
 							</View>
 							<View style={styles.textContainer}>
-								<ListItemOrderDetail caption="أسم المحل" details={order.store_name} order={order} />
+								<ListItemOrderDetail
+									caption="أسم المحل"
+									details={order.store_name}
+									order={order}
+								/>
 								<ListItemOrderDetail caption="أسم الزبون" details={order.customer_name} />
 								<ListItemOrderDetail
 									onPress={true}
@@ -202,13 +209,23 @@ const OrderDetails = () => {
 										details={`${order.city} - ${order.town} - ${order.address}`}
 									/>
 								) : (
-									<ListItemOrderDetail caption="عنوان الزبون" details={`${order.city} - ${order.town}`} />
+									<ListItemOrderDetail
+										caption="عنوان الزبون"
+										details={`${order.city} - ${order.town}`}
+									/>
 								)}
-								{order.dev_price && <ListItemOrderDetail caption="سعر التوصيل" details={order.dev_price} />}
+								{order.dev_price && (
+									<ListItemOrderDetail caption="سعر التوصيل" details={order.dev_price} />
+								)}
 								{order.client_price && (
-									<ListItemOrderDetail caption="السعر الصافي" details={order.client_price} />
+									<ListItemOrderDetail
+										caption="السعر الصافي"
+										details={order.client_price}
+									/>
 								)}
-								{order.price && <ListItemOrderDetail caption="مبلغ الوصل" details={order.price} />}
+								{order.price && (
+									<ListItemOrderDetail caption="مبلغ الوصل" details={order.price} />
+								)}
 								{order.new_price && (
 									<ListItemOrderDetail caption="المبلغ المستلم" details={order.new_price} />
 								)}
@@ -298,7 +315,9 @@ const OrderDetails = () => {
 								onRequestClose={() => {
 									Alert.alert('Modal has been closed.');
 								}}>
-								<View style={styles.centeredView} onPress={() => console.log('model pressed cencel')}>
+								<View
+									style={styles.centeredView}
+									onPress={() => console.log('model pressed cencel')}>
 									<View style={styles.modalView}>
 										<Text style={styles.modalText}>تأكيد التوصيل:</Text>
 										<View
@@ -328,7 +347,9 @@ const OrderDetails = () => {
 												value={amount}
 											/>
 
-											<Text style={{ textAlign: 'right', width: '30%' }}>المبلغ المستلم :</Text>
+											<Text style={{ textAlign: 'right', width: '30%' }}>
+                                                المبلغ المستلم :
+											</Text>
 										</View>
 										<View
 											style={{
@@ -383,7 +404,9 @@ const OrderDetails = () => {
 														arrive: !modalVisible.arrive,
 													});
 												}}>
-												<Text style={{ color: colors.black, alignSelf: 'center' }}>ألغاء</Text>
+												<Text style={{ color: colors.black, alignSelf: 'center' }}>
+                                                    ألغاء
+												</Text>
 											</TouchableHighlight>
 										</View>
 									</View>
@@ -397,7 +420,9 @@ const OrderDetails = () => {
 								onRequestClose={() => {
 									Alert.alert('Modal has been closed.');
 								}}>
-								<View style={styles.centeredView} onPress={() => console.log('model pressed cencel')}>
+								<View
+									style={styles.centeredView}
+									onPress={() => console.log('model pressed cencel')}>
 									<View style={styles.modalView}>
 										<Text style={styles.modalText}>راجع كلي:</Text>
 										<View
@@ -450,7 +475,9 @@ const OrderDetails = () => {
 														return: !modalVisible.return,
 													});
 												}}>
-												<Text style={{ color: colors.black, alignSelf: 'center' }}>ألغاء</Text>
+												<Text style={{ color: colors.black, alignSelf: 'center' }}>
+                                                    ألغاء
+												</Text>
 											</TouchableHighlight>
 										</View>
 									</View>
@@ -458,7 +485,9 @@ const OrderDetails = () => {
 							</Modal>
 							{/* -----partreturn-------- */}
 							<Modal animationType="slide" transparent={true} visible={modalVisible.partReturn}>
-								<View style={styles.centeredView} onPress={() => console.log('model pressed cencel')}>
+								<View
+									style={styles.centeredView}
+									onPress={() => console.log('model pressed cencel')}>
 									<View style={styles.modalView}>
 										<Text style={styles.modalText}>راجع جزئي</Text>
 										<View
@@ -487,7 +516,9 @@ const OrderDetails = () => {
 												onChangeText={text => onChangeAmount(text)}
 												value={amount}
 											/>
-											<Text style={{ textAlign: 'right', width: '30%' }}>المبلغ المستلم :</Text>
+											<Text style={{ textAlign: 'right', width: '30%' }}>
+                                                المبلغ المستلم :
+											</Text>
 										</View>
 										<View
 											style={{
@@ -529,7 +560,9 @@ const OrderDetails = () => {
 												onChangeText={text => onChangeReturnNo(text)}
 												value={returnNo}
 											/>
-											<Text style={{ textAlign: 'right', width: '30%' }}>عدد الرواجع:</Text>
+											<Text style={{ textAlign: 'right', width: '30%' }}>
+                                                عدد الرواجع:
+											</Text>
 										</View>
 										<View
 											style={{
@@ -563,7 +596,9 @@ const OrderDetails = () => {
 														partReturn: !modalVisible.partReturn,
 													});
 												}}>
-												<Text style={{ color: colors.black, alignSelf: 'center' }}>ألغاء</Text>
+												<Text style={{ color: colors.black, alignSelf: 'center' }}>
+                                                    ألغاء
+												</Text>
 											</TouchableHighlight>
 										</View>
 									</View>
@@ -577,7 +612,9 @@ const OrderDetails = () => {
 								onRequestClose={() => {
 									Alert.alert('Modal has been closed.');
 								}}>
-								<View style={styles.centeredView} onPress={() => console.log('model pressed cencel')}>
+								<View
+									style={styles.centeredView}
+									onPress={() => console.log('model pressed cencel')}>
 									<View style={styles.modalView}>
 										<Text style={styles.modalText}>أستبدال</Text>
 										<View
@@ -606,7 +643,9 @@ const OrderDetails = () => {
 												onChangeText={text => onChangeAmount(text)}
 												value={amount}
 											/>
-											<Text style={{ textAlign: 'right', width: '30%' }}>المبلغ المستلم :</Text>
+											<Text style={{ textAlign: 'right', width: '30%' }}>
+                                                المبلغ المستلم :
+											</Text>
 										</View>
 										<View
 											style={{
@@ -648,7 +687,9 @@ const OrderDetails = () => {
 												onChangeText={text => onChangeReturnNo(text)}
 												value={returnNo}
 											/>
-											<Text style={{ textAlign: 'right', width: '30%' }}>عدد القطع:</Text>
+											<Text style={{ textAlign: 'right', width: '30%' }}>
+                                                عدد القطع:
+											</Text>
 										</View>
 										<View
 											style={{
@@ -682,7 +723,9 @@ const OrderDetails = () => {
 														exchange: !modalVisible.exchange,
 													});
 												}}>
-												<Text style={{ color: colors.black, alignSelf: 'center' }}>ألغاء</Text>
+												<Text style={{ color: colors.black, alignSelf: 'center' }}>
+                                                    ألغاء
+												</Text>
 											</TouchableHighlight>
 										</View>
 									</View>
@@ -696,7 +739,9 @@ const OrderDetails = () => {
 								onRequestClose={() => {
 									Alert.alert('Modal has been closed.');
 								}}>
-								<View style={styles.centeredView} onPress={() => console.log('model pressed cencel')}>
+								<View
+									style={styles.centeredView}
+									onPress={() => console.log('model pressed cencel')}>
 									<View style={styles.modalView}>
 										<Text style={styles.modalText}> تأجيل:</Text>
 										<View
@@ -724,7 +769,10 @@ const OrderDetails = () => {
 													onChangeText={text => onChangeNote(text)}
 													value={note}
 												/>
-												<Text style={{ textAlign: 'right', width: '30%' }}> ملاحظة:</Text>
+												<Text style={{ textAlign: 'right', width: '30%' }}>
+													{' '}
+                                                    ملاحظة:
+												</Text>
 											</View>
 										</View>
 										<View
@@ -759,7 +807,9 @@ const OrderDetails = () => {
 														postpone: !modalVisible.postpone,
 													});
 												}}>
-												<Text style={{ color: colors.black, alignSelf: 'center' }}>ألغاء</Text>
+												<Text style={{ color: colors.black, alignSelf: 'center' }}>
+                                                    ألغاء
+												</Text>
 											</TouchableHighlight>
 										</View>
 									</View>

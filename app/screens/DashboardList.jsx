@@ -24,7 +24,12 @@ function Dashboard() {
 	const [page, setPage] = useState('1');
 	//================================================
 	const loadOrders = async nextPage => {
-		const results = await getOrders.get(user.token, route.params.action, search ? search : null, nextPage);
+		const results = await getOrders.get(
+			user.token,
+			route.params.action,
+			search ? search : null,
+			nextPage
+		);
 		if (!results.ok || results.data.success === '0') {
 			return setIsLoading(false);
 		}

@@ -50,7 +50,9 @@ export default class ReportCard extends PureComponent {
 									</Text>
 									{this.props.item.driver_price && (
 										<Text style={styles.subTitle} numberOfLines={1}>
-											{this.numberWithCommas(this.props.item.total - this.props.item.driver_price)}
+											{this.numberWithCommas(
+												this.props.item.total - this.props.item.driver_price
+											)}
 										</Text>
 									)}
 									<Text style={styles.title} numberOfLines={1}>

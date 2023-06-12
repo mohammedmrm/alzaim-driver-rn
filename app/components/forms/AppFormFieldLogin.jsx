@@ -8,7 +8,11 @@ export default function AppFormField({ name, ...otherProps }) {
 
 	return (
 		<>
-			<AppTextInput onBlur={() => setFieldTouched(name)} onChangeText={handleChange(name)} {...otherProps} />
+			<AppTextInput
+				onBlur={() => setFieldTouched(name)}
+				onChangeText={handleChange(name)}
+				{...otherProps}
+			/>
 			<ErrorMessage visible={touched[name]} error={errors[name] ? 'تأكد من المعلومات' : ''} />
 		</>
 	);

@@ -14,7 +14,11 @@ const DashboardNavigator = () => {
 				component={Chat}
 				options={{ headerShown: false, title: 'صفحة المحادثات' }}
 			/>
-			<Stack.Screen name={Routes.CHAT_MODEL} component={ChatModel} options={{ title: 'محادثة مع الشركة' }} />
+			<Stack.Screen
+				name={Routes.CHAT_MODEL}
+				component={ChatModel}
+				options={{ title: 'محادثة مع الشركة' }}
+			/>
 		</Stack.Navigator>
 	);
 };
