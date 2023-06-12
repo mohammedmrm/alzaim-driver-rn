@@ -3,7 +3,6 @@ import "./warnings";
 import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
 import { RootSiblingParent } from "react-native-root-siblings";
-import AppLoading from "expo-app-loading";
 import {
   useFonts,
   Cairo_200ExtraLight,
@@ -21,16 +20,18 @@ import authStorage from "./app/auth/storage";
 import OfflineNotice from "./app/components/OfflineNotice";
 import { navigationRef } from "./app/navigations/rootNavigation";
 import { StatusBar } from "expo-status-bar";
+import * as SplashScreen from "expo-splash-screen";
+
 export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
   const [loaded] = useFonts({
     app_el: Cairo_200ExtraLight,
-    app_l:  Cairo_300Light,
-    app_r:  Cairo_400Regular,
+    app_l: Cairo_300Light,
+    app_r: Cairo_400Regular,
     app_sb: Cairo_600SemiBold,
-    app_b:  Cairo_700Bold,
+    app_b: Cairo_700Bold,
     app_bb: Cairo_900Black,
   });
   const restoreUser = async () => {

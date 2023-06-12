@@ -7,7 +7,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "pretty": "prettier --config .prettierrc '**/*.{json,js,jsx,ts,tsx,css,scss,md}' --write",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.json",
+    "lint:all": "npm run pretty && eslint . --ext .ts,.tsx,.js,.jsx,.json --fix"
   },
   "dependencies": {
     "@eva-design/eva": "^2.1.1",
@@ -32,7 +35,7 @@
     "expo-notifications": "^0.18.1",
     "expo-permissions": "^14.1.1",
     "expo-secure-store": "~12.1.1",
-    "expo-splash-screen": "~0.18.2",
+    "expo-splash-screen": "^0.18.2",
     "expo-status-bar": "~1.4.4",
     "expo-updates": "~0.16.4",
     "formik": "^2.2.9",
@@ -62,11 +65,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@typescript-eslint/eslint-plugin": "^5.40.0",
-    "@typescript-eslint/parser": "^5.40.0",
-    "eslint": "^8.25.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "eslint": "^8.42.0",
     "eslint-plugin-react": "^7.31.10",
-    "lint": "^0.7.0"
+    "lint": "^0.7.0",
+    "prettier": "^2.8.8"
   },
   "private": true
 }
