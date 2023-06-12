@@ -3,7 +3,7 @@ import settings from '../config/settings';
 import { Share, Clipboard } from 'react-native';
 
 //================================================
-export const onShare = async (item) => {
+export const onShare = async item => {
 	//item.path
 	try {
 		const result = await Share.share({

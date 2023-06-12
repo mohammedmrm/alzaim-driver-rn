@@ -41,7 +41,7 @@ function NotificationScreen(props) {
 			{isLoading && <ActivityIndecator visable={isLoading} />}
 			<FlatList
 				data={messages}
-				keyExtractor={(item) => item.id.toString() + Date.now() + Math.random()}
+				keyExtractor={item => item.id.toString() + Date.now() + Math.random()}
 				renderItem={({ item }) => (
 					<ListItem
 						title={item.order_no}

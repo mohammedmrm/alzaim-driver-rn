@@ -26,7 +26,7 @@ function NotificationScreen(props) {
 		directionalOffsetThreshold: 80,
 	};
 
-	const loadNotification = async (nextPage) => {
+	const loadNotification = async nextPage => {
 		setIsLoading(true);
 		const results = await getNotifications.get(user.token, nextPage);
 		if (!results.ok || results.data.success == '0') {
@@ -73,7 +73,7 @@ function NotificationScreen(props) {
 			<AppText style={styles.header}>جميع الاشعارات: {totalNotificaiton}</AppText>
 			<FlatList
 				data={messages}
-				keyExtractor={(item) => `${item.id}-${Math.random()}-${Date.now()}`.toString()}
+				keyExtractor={item => `${item.id}-${Math.random()}-${Date.now()}`.toString()}
 				renderItem={({ item }) => (
 					<ListItem
 						title={`${item.title} - ${item.order_no}`}

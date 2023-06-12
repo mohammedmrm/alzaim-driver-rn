@@ -7,7 +7,7 @@ var useAuth = {};
 export default useAuth = () => {
 	const { user, setUser } = useContext(AuthContext);
 
-	const logIn = (authToken) => {
+	const logIn = authToken => {
 		const user = authToken;
 		setUser(user);
 		authStorage.storeToken(authToken);

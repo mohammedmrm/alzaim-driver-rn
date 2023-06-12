@@ -8,7 +8,7 @@ import colors from '../../config/colors';
 import Moment from 'react-moment';
 import 'moment/locale/ar';
 export default class ReportCard extends PureComponent {
-	numberWithCommas = (x) => {
+	numberWithCommas = x => {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	};
 	render() {

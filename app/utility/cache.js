@@ -16,13 +16,13 @@ const store = async (key, value) => {
 	}
 };
 
-const isExpired = (item) => {
+const isExpired = item => {
 	const now = dayjs();
 	const storedTime = dayjs(item.timestamp);
 	return now.diff(storedTime, 'minute') > expiryInMinutes;
 };
 
-const get = async (key) => {
+const get = async key => {
 	try {
 		const value = await AsyncStorage.getItem(prefix + key);
 		const item = JSON.parse(value);

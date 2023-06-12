@@ -23,7 +23,7 @@ function Dashboard() {
 	const [noOrders, setNoOrders] = useState('0');
 	const [page, setPage] = useState('1');
 	//================================================
-	const loadOrders = async (nextPage) => {
+	const loadOrders = async nextPage => {
 		const results = await getOrders.get(user.token, route.params.action, search ? search : null, nextPage);
 		if (!results.ok || results.data.success === '0') {
 			return setIsLoading(false);
@@ -77,7 +77,7 @@ function Dashboard() {
 				rightIcon="table-search"
 				autoCapitalize="none"
 				autoCorrect={true}
-				onChangeText={(x) => setSearch(x)}
+				onChangeText={x => setSearch(x)}
 				placeholder="بحث رقم الوصل او رقم الهاتف..."
 			/>
 
@@ -100,7 +100,7 @@ function Dashboard() {
 			<FlatList
 				style={{ flex: 1, width: '100%' }}
 				data={orders}
-				keyExtractor={(item) => `${item.id}-${item.date}`.toString()}
+				keyExtractor={item => `${item.id}-${item.date}`.toString()}
 				renderItem={({ item }) => (
 					<OrderCard
 						item={item}

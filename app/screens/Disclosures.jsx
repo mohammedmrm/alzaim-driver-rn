@@ -36,10 +36,10 @@ function Dashboard() {
 	useEffect(() => {
 		loadPdfs();
 	}, []);
-	const updateStartTime = (value) => {
+	const updateStartTime = value => {
 		setStartDate(value);
 	};
-	const updateEndTime = (value) => {
+	const updateEndTime = value => {
 		setEndDate(value);
 	};
 	const refreshingMethod = () => {
@@ -134,7 +134,7 @@ function Dashboard() {
 			<FlatList
 				style={{ flex: 1, width: '100%' }}
 				data={pdfs}
-				keyExtractor={(item) => `${item.id}-${prefix}`.toString()}
+				keyExtractor={item => `${item.id}-${prefix}`.toString()}
 				renderItem={({ item }) => (
 					<ReportCard
 						item={item}

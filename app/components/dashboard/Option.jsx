@@ -7,7 +7,7 @@ const OptionsList = ({ path, data }) => {
 	function numberWithCommas(x) {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
-	const handelData = (key) => {
+	const handelData = key => {
 		switch (key) {
 		case 'disclosures':
 			return `(${numberWithCommas(data.total ? data.total : 0)})`;

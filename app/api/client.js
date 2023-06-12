@@ -6,7 +6,7 @@ const api = create({
 	baseURL: settings.apiUrl,
 });
 
-api.addRequestTransform((request) => {
+api.addRequestTransform(request => {
 	const { instance } = request.axiosInstance || {};
 	if (instance) {
 		instance.defaults.httpsAgent = new axios.defaults.https.Agent({

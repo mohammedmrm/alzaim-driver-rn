@@ -135,7 +135,7 @@ const OrderDetails = () => {
 	useEffect(() => {
 		loadDetails(user.token, route.params.id, route.params.notify_id);
 	}, []);
-	const handelColor = (id) => {
+	const handelColor = id => {
 		switch (id) {
 		case '4':
 			return colors.success;
@@ -155,7 +155,7 @@ const OrderDetails = () => {
 			return colors.medium;
 		}
 	};
-	const startChating = (item) => {
+	const startChating = item => {
 		navigation.navigate(Routes.CHAT_MODEL, { item: item });
 	};
 	const onRefresh = () => {
@@ -282,7 +282,7 @@ const OrderDetails = () => {
 							</View>
 						)}
 						<ScrollView>
-							{order.tracking.map((item) => (
+							{order.tracking.map(item => (
 								<TrackingBox
 									key={`${item.order_status_id}${Date.now() + Math.random()}`}
 									bgColor={handelColor(item.order_status_id)}
@@ -323,7 +323,7 @@ const OrderDetails = () => {
 													backgroundColor: colors.lightGreen,
 													textAlign: 'right',
 												}}
-												onChangeText={(text) => onChangeAmount(text)}
+												onChangeText={text => onChangeAmount(text)}
 												value={amount}
 											/>
 
@@ -345,7 +345,7 @@ const OrderDetails = () => {
 													backgroundColor: colors.lightGreen,
 													textAlign: 'right',
 												}}
-												onChangeText={(text) => onChangeNote(text)}
+												onChangeText={text => onChangeNote(text)}
 												value={note}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}>ملاحظة:</Text>
@@ -411,7 +411,7 @@ const OrderDetails = () => {
 												}}>
 												<AppPickerReasons
 													items={returnCases}
-													onSelectItem={(item) => onChangeNote(item)}
+													onSelectItem={item => onChangeNote(item)}
 													selectedItem={note}
 													backgroundColor={colors.white}
 													icon="crosshairs-gps"
@@ -483,7 +483,7 @@ const OrderDetails = () => {
 													backgroundColor: colors.lightGreen,
 													textAlign: 'right',
 												}}
-												onChangeText={(text) => onChangeAmount(text)}
+												onChangeText={text => onChangeAmount(text)}
 												value={amount}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}>المبلغ المستلم :</Text>
@@ -504,7 +504,7 @@ const OrderDetails = () => {
 													backgroundColor: colors.lightGreen,
 													textAlign: 'right',
 												}}
-												onChangeText={(text) => onChangeNote(text)}
+												onChangeText={text => onChangeNote(text)}
 												value={note}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}> ملاحظة:</Text>
@@ -525,7 +525,7 @@ const OrderDetails = () => {
 													backgroundColor: colors.lightGreen,
 													textAlign: 'right',
 												}}
-												onChangeText={(text) => onChangeReturnNo(text)}
+												onChangeText={text => onChangeReturnNo(text)}
 												value={returnNo}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}>عدد الرواجع:</Text>
@@ -602,7 +602,7 @@ const OrderDetails = () => {
 													backgroundColor: colors.lightGreen,
 													textAlign: 'right',
 												}}
-												onChangeText={(text) => onChangeAmount(text)}
+												onChangeText={text => onChangeAmount(text)}
 												value={amount}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}>المبلغ المستلم :</Text>
@@ -623,7 +623,7 @@ const OrderDetails = () => {
 													backgroundColor: colors.lightGreen,
 													textAlign: 'right',
 												}}
-												onChangeText={(text) => onChangeNote(text)}
+												onChangeText={text => onChangeNote(text)}
 												value={note}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}> ملاحظة:</Text>
@@ -644,7 +644,7 @@ const OrderDetails = () => {
 													backgroundColor: colors.lightGreen,
 													textAlign: 'right',
 												}}
-												onChangeText={(text) => onChangeReturnNo(text)}
+												onChangeText={text => onChangeReturnNo(text)}
 												value={returnNo}
 											/>
 											<Text style={{ textAlign: 'right', width: '30%' }}>عدد القطع:</Text>
@@ -720,7 +720,7 @@ const OrderDetails = () => {
 														backgroundColor: colors.lightGreen,
 														textAlign: 'right',
 													}}
-													onChangeText={(text) => onChangeNote(text)}
+													onChangeText={text => onChangeNote(text)}
 													value={note}
 												/>
 												<Text style={{ textAlign: 'right', width: '30%' }}> ملاحظة:</Text>

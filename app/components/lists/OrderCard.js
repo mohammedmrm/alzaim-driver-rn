@@ -14,7 +14,7 @@ function numberWithCommas(x) {
 }
 function OrderCard({ item, onPress, renderRightActions }) {
 	const navigation = useNavigation();
-	const handelColor = (id) => {
+	const handelColor = id => {
 		switch (id) {
 		case '4':
 			return colors.success;

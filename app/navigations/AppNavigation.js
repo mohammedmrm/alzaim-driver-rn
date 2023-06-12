@@ -23,7 +23,7 @@ Notifications.setNotificationHandler({
 		shouldSetBadge: false,
 	}),
 });
-const AppNavigator = (ref) => {
+const AppNavigator = ref => {
 	const { user } = useAuth();
 	const navitation = useNavigation();
 	Notifications.setNotificationHandler({
@@ -46,7 +46,7 @@ const AppNavigator = (ref) => {
 		}
 	}, [lastNotificationResponse]);
 	useEffect(() => {
-		registerForPushNotificationsAsync().then((token) => expoPushTokenApi.register(user.token, token));
+		registerForPushNotificationsAsync().then(token => expoPushTokenApi.register(user.token, token));
 	}, []);
 	async function registerForPushNotificationsAsync() {
 		let token;

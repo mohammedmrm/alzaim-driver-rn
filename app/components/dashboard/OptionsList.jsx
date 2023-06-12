@@ -61,7 +61,7 @@ const options = [
 const OptionsList = ({ data }) => {
 	return (
 		<View>
-			{options.map((item) => {
+			{options.map(item => {
 				return <OptionsTwo data={data} key={Math.random()} options={item} />;
 			})}
 		</View>

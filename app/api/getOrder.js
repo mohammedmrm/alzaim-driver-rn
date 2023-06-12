@@ -6,7 +6,7 @@ const getOrder = (token, id, nofiy_id) => {
 	return client.get(url);
 };
 const config = {
-	onUploadProgress: (progressEvent) => console.log(progressEvent),
+	onUploadProgress: progressEvent => console.log(progressEvent),
 };
 const arrive = (token, id, price, note) => {
 	let url = `/recived.php?token=${token}&orderid=${id}`;

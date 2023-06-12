@@ -31,7 +31,7 @@ function Dashboard() {
 
 	const prefix = 'SearchResults';
 
-	const loadOrders = async (nextPage) => {
+	const loadOrders = async nextPage => {
 		const results = await getOrders.getOrders(
 			user.token,
 			status ? status.id : null,
@@ -124,7 +124,7 @@ function Dashboard() {
 				rightIcon="table-search"
 				autoCapitalize="none"
 				autoCorrect={true}
-				onChangeText={(x) => setSearch(x)}
+				onChangeText={x => setSearch(x)}
 				placeholder="بحث رقم الوصل او رقم الهاتف..."
 			/>
 			<View
@@ -140,7 +140,7 @@ function Dashboard() {
 						items={cities}
 						placeholder={city ? city : 'المحافظة'}
 						name="city"
-						onSelectItem={(item) => setCity(item)}
+						onSelectItem={item => setCity(item)}
 						selectedItem={city}
 						icon="city"
 						backgroundColor={colors.white}
@@ -152,7 +152,7 @@ function Dashboard() {
 						placeholder="الحالة"
 						name="town"
 						items={statues}
-						onSelectItem={(item) => setStatus(item)}
+						onSelectItem={item => setStatus(item)}
 						selectedItem={status}
 						backgroundColor={colors.white}
 						icon="crosshairs-gps"
@@ -181,7 +181,7 @@ function Dashboard() {
 			<FlatList
 				style={{ flex: 1, width: '100%' }}
 				data={orders}
-				keyExtractor={(item) => `${item.id}-${prefix}`.toString()}
+				keyExtractor={item => `${item.id}-${prefix}`.toString()}
 				renderItem={({ item }) => (
 					<OrderCard
 						item={item}

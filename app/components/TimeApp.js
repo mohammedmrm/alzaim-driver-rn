@@ -8,7 +8,7 @@ const TimeApp = ({ onSlectedTime }) => {
 		selectedStartDate: null,
 	});
 
-	const onDateChange = (date) => {
+	const onDateChange = date => {
 		setState({
 			selectedStartDate: date.format('YYYY-MM-DD'),
 		});

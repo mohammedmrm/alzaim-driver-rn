@@ -14,7 +14,7 @@ export default function AppPicker({
 	PickerItemComponent = TimeApp,
 }) {
 	const [modalVisable, setModalVisable] = useState(false);
-	const handerSelectedDate = (dateS) => {
+	const handerSelectedDate = dateS => {
 		// console.log(dateS);
 		setModalVisable(!modalVisable);
 		return updateTime(dateS);

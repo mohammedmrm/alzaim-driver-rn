@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 const key = 'authToken';
 
-const storeToken = async (authToken) => {
+const storeToken = async authToken => {
 	try {
 		if (Platform.OS !== 'web') {
 			await SecureStore.setItemAsync(key, JSON.stringify(authToken));

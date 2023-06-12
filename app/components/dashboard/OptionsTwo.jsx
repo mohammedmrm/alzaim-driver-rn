@@ -6,7 +6,7 @@ const OptionsList = ({ options, data }) => {
 	return (
 		<View>
 			<View style={styles.container}>
-				{options.options.map((item) => {
+				{options.options.map(item => {
 					return <Option data={data} key={Math.random()} path={item} />;
 				})}
 			</View>

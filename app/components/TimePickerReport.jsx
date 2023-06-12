@@ -13,7 +13,7 @@ const TimePickerReport = () => {
 		setDate(currentDate);
 	};
 
-	const showMode = (currentMode) => {
+	const showMode = currentMode => {
 		setShow(!show);
 		setMode(currentMode);
 	};

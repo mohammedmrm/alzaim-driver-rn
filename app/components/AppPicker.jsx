@@ -41,7 +41,7 @@ export default function AppPicker({
 					<Button title="أغلاق" onPress={() => setModalVisable(!modalVisable)} />
 					<FlatList
 						data={items}
-						keyExtractor={(item) => item.value.toString()}
+						keyExtractor={item => item.value.toString()}
 						renderItem={({ item }) => (
 							<PickerItemComponent
 								label={item.label}

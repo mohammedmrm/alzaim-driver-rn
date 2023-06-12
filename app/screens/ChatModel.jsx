@@ -47,7 +47,7 @@ const ChatModel = () => {
 					<InputTextMessage
 						autoCapitalize="none"
 						autoCorrect={false}
-						onChangeText={(message) => onChangeText(message)}
+						onChangeText={message => onChangeText(message)}
 						value={value}
 						multiline
 						onPress={() => sendMessages(user.token, route.params.id, value)}
@@ -66,7 +66,7 @@ const ChatModel = () => {
 						<FlatList
 							style={{ flex: 1 }}
 							data={messages}
-							keyExtractor={(item) => `${item.id}_${item.message}`.toString()}
+							keyExtractor={item => `${item.id}_${item.message}`.toString()}
 							renderItem={({ item }) =>
 								item.is_client === '1' ? <Sender item={item} /> : <Reciever item={item} />
 							}
