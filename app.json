@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "السهم الدقيق - المندوب",
-    "slug": "alsaham-driver",
-    "version": "1.0.5",
+    "name": " سهم النابل - المندوب",
+    "slug": "sahamAlnabel-driver",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -28,7 +28,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.alsaham.driver",
-      "versionCode": 5
+      "versionCode": 1
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"
@@ -41,7 +41,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "1e3db830-54ea-4358-b559-4b96106ed182"
+        "projectId": "a6257f07-50c4-4222-a643-a8a95f9b3dbf"
       }
     }
   }

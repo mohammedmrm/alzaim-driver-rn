@@ -73,6 +73,7 @@ const AppNavigator = ref => {
 				return;
 			}
 			token = (await Notifications.getExpoPushTokenAsync()).data;
+			console.log('token', token);
 		} else {
 			alert('Must use physical device for Push Notifications');
 		}
