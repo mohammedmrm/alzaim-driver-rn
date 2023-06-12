@@ -1,6 +1,7 @@
-import React from 'react';
 import LottieView from 'lottie-react-native';
+import React from 'react';
 import { Platform } from 'react-native';
+
 import Loading from '../../config/loadings';
 
 const ActivityIndecator = (visable = false, style) => {

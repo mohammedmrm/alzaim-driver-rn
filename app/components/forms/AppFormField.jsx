@@ -1,9 +1,9 @@
-import React from 'react';
 import { useFormikContext } from 'formik';
+import React from 'react';
+import { View } from 'react-native-animatable';
 
 import AppTextInput from '../AppTextInput';
 import ErrorMessage from './ErrorMessage';
-import { View } from 'react-native-animatable';
 export default function AppFormField({ name, ...otherProps }) {
 	const { handleChange, errors, setFieldTouched, touched } = useFormikContext();
 

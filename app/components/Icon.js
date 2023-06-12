@@ -1,6 +1,7 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import colors from '../config/colors';
 
 function Icon({ name, size = 40, backgroundColor = '#00000000', iconColor = '#fff', shadow = true }) {

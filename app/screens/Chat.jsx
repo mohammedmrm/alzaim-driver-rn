@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { ListItem, ListItemSeparator } from '../components/lists';
+import Constants from 'expo-constants';
+import React, { useEffect, useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 import getChatListAPI from '../api/getChatList';
 import useAuth from '../auth/useAuth';
-import Routes from '../Routes';
-import colors from '../config/colors';
-import AppText from '../components/AppText';
 import ActivityIndecator from '../components/ActivtyIndectors/ActivityIndecatorSimpleLine';
-import Constants from 'expo-constants';
+import AppText from '../components/AppText';
+import { ListItem, ListItemSeparator } from '../components/lists';
+import colors from '../config/colors';
+import Routes from '../Routes';
 
 function NotificationScreen(props) {
 	const [messages, setMessages] = useState([]);

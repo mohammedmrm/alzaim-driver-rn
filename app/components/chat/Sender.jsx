@@ -1,7 +1,8 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
 import colors from '../../config/colors';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const sender = ({ item }) => {
 	return (

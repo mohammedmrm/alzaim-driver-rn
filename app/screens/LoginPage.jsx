@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, ScrollView, View, Image, ImageBackground } from 'react-native';
+import { Image, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native';
 import * as Yup from 'yup';
 
-import { ErrorMessage, AppFormField, AppForm, SubmitButton } from '../components/forms';
 import authApi from '../api/auth';
 import useAuth from '../auth/useAuth';
-import colors from '../config/colors';
 import ActivityIndecator from '../components/ActivtyIndectors/ActivityIndecatorLoading';
+import { AppForm, AppFormField, ErrorMessage, SubmitButton } from '../components/forms';
+import colors from '../config/colors';
 import settings from '../config/settings';
 
 const validationSchema = Yup.object().shape({

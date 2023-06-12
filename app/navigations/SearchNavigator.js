@@ -1,10 +1,10 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 
+import Routes from '../Routes';
+import ChatModel from '../screens/ChatModel';
 import OrderDetails from '../screens/OrderDetails';
 import SearchResults from '../screens/SearchResults';
-import ChatModel from '../screens/ChatModel';
-import Routes from '../Routes';
 
 const Stack = createStackNavigator();
 const DashboardNavigator = () => {

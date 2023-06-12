@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import Routes from '../../Routes';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
+import Routes from '../../Routes';
 import OptionsTwo from './OptionsTwo';
 
 const options = [

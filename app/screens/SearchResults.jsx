@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
-import ActivityIndecatorLoadingList from './../components/ActivtyIndectors/ActivityIndecatorLoadingList';
-import { OrderCard, ListItemSeparator, ListOrderCopyAction } from '../components/lists';
-import AppFormField from '../components/AppTextInput';
-import AppPickerCity from './../components/AppPickerCites';
-import Button from './../components/AppButton';
-import useAuth from '../auth/useAuth';
+import Constants from 'expo-constants';
+import React, { useEffect, useState } from 'react';
+import { FlatList, View } from 'react-native';
+
 import getCities from '../api/getCities';
-import getStores from '../api/getStores';
-import getStatues from '../api/getStatues';
 import getOrders from '../api/getOrders';
+import getStatues from '../api/getStatues';
+import getStores from '../api/getStores';
+import useAuth from '../auth/useAuth';
+import AppFormField from '../components/AppTextInput';
+import { ListItemSeparator, ListOrderCopyAction, OrderCard } from '../components/lists';
 import colors from '../config/colors';
 import { handleCopy } from '../utility/helper';
-import Constants from 'expo-constants';
+import ActivityIndecatorLoadingList from './../components/ActivtyIndectors/ActivityIndecatorLoadingList';
+import Button from './../components/AppButton';
+import AppPickerCity from './../components/AppPickerCites';
 //-------------------------------------------------------------------------
 function Dashboard() {
 	let { user } = useAuth();

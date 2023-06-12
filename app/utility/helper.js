@@ -1,6 +1,7 @@
+import { Clipboard, Share } from 'react-native';
 import Toast from 'react-native-root-toast';
+
 import settings from '../config/settings';
-import { Share, Clipboard } from 'react-native';
 
 //================================================
 export const onShare = async item => {

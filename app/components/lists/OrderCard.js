@@ -1,14 +1,15 @@
-import React from 'react';
-import { View, StyleSheet, Linking, TouchableHighlight } from 'react-native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { useNavigation } from '@react-navigation/native';
-import Moment from 'react-moment';
 import 'moment/locale/ar';
 
-import Icon from './../Icon';
-import Text from '../AppText';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import Moment from 'react-moment';
+import { Linking, StyleSheet, TouchableHighlight, View } from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+
 import colors from '../../config/colors';
 import Routes from '../../Routes';
+import Text from '../AppText';
+import Icon from './../Icon';
 function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }

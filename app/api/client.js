@@ -1,7 +1,8 @@
 import { create } from 'apisauce';
-import cache from '../utility/cache';
-import settings from '../config/settings';
 import axios from 'axios';
+
+import settings from '../config/settings';
+import cache from '../utility/cache';
 const api = create({
 	baseURL: settings.apiUrl,
 });

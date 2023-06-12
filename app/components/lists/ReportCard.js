@@ -1,12 +1,13 @@
+import 'moment/locale/ar';
+
 import React, { PureComponent } from 'react';
-import { View, StyleSheet, TouchableWithoutFeedback, TouchableHighlight } from 'react-native';
+import Moment from 'react-moment';
+import { StyleSheet, TouchableHighlight, TouchableWithoutFeedback, View } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-import Icon from '../Icon';
-import Text from '../AppText';
 import colors from '../../config/colors';
-import Moment from 'react-moment';
-import 'moment/locale/ar';
+import Text from '../AppText';
+import Icon from '../Icon';
 export default class ReportCard extends PureComponent {
 	numberWithCommas = x => {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

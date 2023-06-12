@@ -1,27 +1,30 @@
-import React, { useState } from 'react';
 import './warnings';
-import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
-import { RootSiblingParent } from 'react-native-root-siblings';
+
 import {
-	useFonts,
 	Cairo_200ExtraLight,
 	Cairo_300Light,
 	Cairo_400Regular,
 	Cairo_600SemiBold,
 	Cairo_700Bold,
 	Cairo_900Black,
+	useFonts,
 } from '@expo-google-fonts/cairo';
-import navigationTheme from './app/navigations/NavigationTheme';
-import AppNavigator from './app/navigations/AppNavigation';
-import AuthNavigator from './app/navigations/AuthNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
+import { RootSiblingParent } from 'react-native-root-siblings';
+
 import AuthContext from './app/auth/context';
 import authStorage from './app/auth/storage';
 import OfflineNotice from './app/components/OfflineNotice';
+import AppNavigator from './app/navigations/AppNavigation';
+import AuthNavigator from './app/navigations/AuthNavigator';
+import navigationTheme from './app/navigations/NavigationTheme';
 import { navigationRef } from './app/navigations/rootNavigation';
-import { StatusBar } from 'expo-status-bar';
-import * as SplashScreen from 'expo-splash-screen';
 
+SplashScreen.preventAutoHideAsync();
 export default function App() {
 	const [user, setUser] = useState();
 	const [isReady, setIsReady] = useState(false);
@@ -38,16 +41,39 @@ export default function App() {
 		const user = await authStorage.getUser();
 		if (user.code != '300') setUser(user);
 	};
-	if (!isReady)
-		return (
-			<AppLoading
-				startAsync={restoreUser}
-				onFinish={async () => {
-					setIsReady(true);
-				}}
-				onError={(e) => console.log(e)}
-			/>
-		);
+	useEffect(() => {
+		async function prepare() {
+			try {
+				// Pre-load fonts, make any API calls you need to do here
+				await Font.loadAsync(Entypo.font);
+				// Artificially delay for two seconds to simulate a slow loading
+				// experience. Please remove this if you copy and paste the code!
+				await new Promise(resolve => setTimeout(resolve, 2000));
+			} catch (e) {
+				console.warn(e);
+			} finally {
+				// Tell the application to render
+				setAppIsReady(true);
+			}
+		}
+
+		prepare();
+	}, []);
+
+	const onLayoutRootView = useCallback(async () => {
+		if (appIsReady) {
+			// This tells the splash screen to hide immediately! If we call this after
+			// `setAppIsReady`, then we may see a blank screen while the app is
+			// loading its initial state and rendering its first pixels. So instead,
+			// we hide the splash screen once we know the root view has already
+			// performed layout.
+			await SplashScreen.hideAsync();
+		}
+	}, [appIsReady]);
+
+	if (!appIsReady) {
+		return null;
+	}
 	if (!loaded) {
 		return null;
 	}

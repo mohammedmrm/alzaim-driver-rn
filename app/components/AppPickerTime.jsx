@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { StyleSheet, Button, TouchableWithoutFeedback, View, Modal } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import TimeApp from '../components/TimeApp';
+import React, { useState } from 'react';
+import { Button, Modal, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 
-import AppText from './AppText';
+import TimeApp from '../components/TimeApp';
 import defultStyle from '../config/styles';
+import AppText from './AppText';
 export default function AppPicker({
 	icon,
 	width = '100%',

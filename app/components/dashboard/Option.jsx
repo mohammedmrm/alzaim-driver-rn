@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
+
 import colors from '../../config/colors';
 const OptionsList = ({ path, data }) => {
 	const navigator = useNavigation();

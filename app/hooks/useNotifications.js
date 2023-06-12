@@ -1,8 +1,9 @@
+import * as Notifications from 'expo-notifications';
 import { useEffect, useState } from 'react';
+import { Platform } from 'react-native';
+
 import expoPushTokenApi from '../api/expoPushTokens';
 import useAuth from '../auth/useAuth';
-import * as Notifications from 'expo-notifications';
-import { Platform } from 'react-native';
 
 export default useNotifications = () => {
 	const [expoPushToken, setExpoPushToken] = useState('');

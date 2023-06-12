@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
-import ActivityIndecatorLoadingList from './../components/ActivtyIndectors/ActivityIndecatorLoadingList';
-import { ListItem, ListItemSeparator } from '../components/lists';
+import { StatusBar } from 'expo-status-bar';
+import React, { useEffect, useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+
 import getNotifications from '../api/getNofification';
-import AppText from '../components/AppText';
 import useAuth from '../auth/useAuth';
+import AppText from '../components/AppText';
+import { ListItem, ListItemSeparator } from '../components/lists';
 import colors from '../config/colors';
 import Routes from '../Routes';
-import { StatusBar } from 'expo-status-bar';
+import ActivityIndecatorLoadingList from './../components/ActivtyIndectors/ActivityIndecatorLoadingList';
 
 function NotificationScreen(props) {
 	const [messages, setMessages] = useState([]);

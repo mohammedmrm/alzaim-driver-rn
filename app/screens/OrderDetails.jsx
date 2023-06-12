@@ -1,29 +1,30 @@
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
-	Modal,
 	Image,
-	TextInput,
+	Modal,
+	RefreshControl,
 	ScrollView,
 	StyleSheet,
 	Text,
-	TouchableWithoutFeedback,
-	TouchableHighlight,
+	TextInput,
 	ToastAndroid,
-	RefreshControl,
+	TouchableHighlight,
+	TouchableWithoutFeedback,
 	View,
 } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
 import { TextInputMask } from 'react-native-masked-text';
-import ActivityIndicator from '../components/ActivtyIndectors/ActivityIndecatorOrderDetails';
-import ListItemOrderDetail from '../components/ListItemOrderDetail';
-import AppPickerReasons from './../components/AppPickerReasons';
-import StatusBottm from '../components/StatusBottom';
-import TrackingBox from '../components/TrackingBox';
 import Toast from 'react-native-root-toast';
+
 import getOrder from '../api/getOrder';
 import useAuth from '../auth/useAuth';
+import ActivityIndicator from '../components/ActivtyIndectors/ActivityIndecatorOrderDetails';
+import ListItemOrderDetail from '../components/ListItemOrderDetail';
+import StatusBottm from '../components/StatusBottom';
+import TrackingBox from '../components/TrackingBox';
 import colors from '../config/colors';
 import Routes from '../Routes';
+import AppPickerReasons from './../components/AppPickerReasons';
 function successToast() {
 	Toast.show('تم تحديث الحالة', {
 		duration: 3000,

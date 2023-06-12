@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, FlatList, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { Text } from 'react-native-animatable';
 
+import useAuth from '../auth/useAuth';
 import ActivityIndecator from '../components/ActivtyIndectors/ActivityIndecatorChatLoading';
 import InputTextMessage from '../components/chat/InputTextMessage';
 import Reciever from '../components/chat/Receiver';
 import Sender from '../components/chat/Sender';
+import colors from '../config/colors';
 import getMessages from './../api/getMessages';
 import Screen from './../components/Screen';
-import useAuth from '../auth/useAuth';
-import colors from '../config/colors';
-import { Text } from 'react-native-animatable';
 
 const ChatModel = () => {
 	const [value, onChangeText] = React.useState('');

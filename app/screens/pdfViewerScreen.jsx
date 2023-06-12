@@ -1,8 +1,9 @@
 import { useRoute } from '@react-navigation/native';
 import React from 'react';
-import WebView from 'react-native-webview';
-import settings from '../config/settings';
 import { Platform } from 'react-native';
+import WebView from 'react-native-webview';
+
+import settings from '../config/settings';
 const PdfViewerScreen = () => {
 	const route = useRoute();
 	return (

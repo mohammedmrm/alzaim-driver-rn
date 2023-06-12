@@ -1,10 +1,10 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 
-import Profile from '../screens/Profile';
-import EditProfile from '../screens/EditProfile';
-import ChangePassword from '../screens/ChangePassword';
 import Routes from '../Routes';
+import ChangePassword from '../screens/ChangePassword';
+import EditProfile from '../screens/EditProfile';
+import Profile from '../screens/Profile';
 
 const Stack = createStackNavigator();
 const UserNavigator = () => {

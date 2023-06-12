@@ -10,7 +10,7 @@ module.exports = {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	plugins: ['react', '@typescript-eslint'],
+	plugins: ['react', '@typescript-eslint', 'simple-import-sort'],
 	settings: {
 		react: {
 			createClass: 'createReactClass',
@@ -27,6 +27,8 @@ module.exports = {
 		semi: ['error', 'always'],
 		'react/prop-types': 'off',
 		'no-mixed-spaces-and-tabs': 'off',
+		'simple-import-sort/imports': 'error',
+		'simple-import-sort/exports': 'error',
 	},
 	globals: {
 		__DEV__: true,

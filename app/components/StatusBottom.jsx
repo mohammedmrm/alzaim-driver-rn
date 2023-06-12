@@ -1,5 +1,6 @@
 import React, { Children } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+
 import colors from '../config/colors';
 
 const AppButton = ({ title, onPress, color = 'primery', isLoading = false, Children }) => {

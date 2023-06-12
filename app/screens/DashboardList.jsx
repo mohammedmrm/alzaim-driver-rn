@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, View } from 'react-native';
 
-import ActivityIndecatorLoadingList from '../components/ActivtyIndectors/ActivityIndecatorLoadingList';
-import { OrderCard, ListItemSeparator, ListOrderCopyAction } from '../components/lists';
-import AppFormField from '../components/AppTextInput';
-import Button from '../components/AppButton';
-import { handleCopy } from '../utility/helper';
 import getOrders from '../api/categoryOrders';
 import useAuth from '../auth/useAuth';
+import ActivityIndecatorLoadingList from '../components/ActivtyIndectors/ActivityIndecatorLoadingList';
+import Button from '../components/AppButton';
+import AppFormField from '../components/AppTextInput';
+import { ListItemSeparator, ListOrderCopyAction, OrderCard } from '../components/lists';
 import colors from '../config/colors';
-import { useRoute } from '@react-navigation/native';
+import { handleCopy } from '../utility/helper';
 
 //================================================
 

@@ -1,5 +1,5 @@
-import client from './client';
 import settings from '../config/settings';
+import client from './client';
 const getOrders = (token, status, city, store, search, page = 1, limit = 10) => {
 	let url = `${settings.apiUrl}/search.php?token=${token}`;
 	if (status) url += `&status=${status}`;
