@@ -24,19 +24,6 @@ export const onShare = async item => {
 };
 
 //================================================
-<<<<<<< HEAD
-export const handleCopy = (item = null, msg = "تم نسخ معلومات الطلب") => {
-  if (item) {
-    Clipboard.setString(
-      `رقم الوصل: (${item.order_no}) \nالاسم: ${item.name ? item.name : ""} - (${item.client_phone})\n العنوان (${
-        item.city
-      } - ${item.town})\nالصفحة: (${item.store_name})\n حالة الطلب: (${item.status_name})\n${
-        item.t_note ? item.t_note : ""
-      }المبلغ: (${item.price})\n المندوب (${item.driver_phone ? item.driver_phone : ""})`
-    );
-  }
-  Toast.show(msg);
-=======
 export const handleCopy = (item = null, msg = 'تم نسخ معلومات الطلب') => {
 	if (item) {
 		Clipboard.setString(
@@ -50,6 +37,5 @@ export const handleCopy = (item = null, msg = 'تم نسخ معلومات الط
 		);
 	}
 	Toast.show(msg);
->>>>>>> 0ae42871909f10f94b46d47c2eeda9e24a9f7443
 };
 //================================================
