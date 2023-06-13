@@ -24,34 +24,6 @@ Notifications.setNotificationHandler({
     }),
 });
 const AppNavigator = ref => {
-<<<<<<< HEAD
-    const { user } = useAuth();
-    const navitation = useNavigation();
-    Notifications.setNotificationHandler({
-        handleNotification: async () => ({
-            shouldShowAlert: true,
-            shouldPlaySound: true,
-            shouldSetBadge: false,
-        }),
-    });
-    const lastNotificationResponse = Notifications.useLastNotificationResponse();
-    useEffect(() => {
-        if (lastNotificationResponse) {
-            var id = lastNotificationResponse.notification.request.content.data.id;
-            console.log('Noti ORDER ID', lastNotificationResponse.notification.request.content.data.id);
-            id &&
-                navitation.navigate(Routes.ORDER_DETAILS, {
-                    id: id,
-                    notify_id: '',
-                });
-        }
-    }, [lastNotificationResponse]);
-    useEffect(() => {
-        registerForPushNotificationsAsync().then(token => expoPushTokenApi.register(user.token, token));
-    }, []);
-    async function registerForPushNotificationsAsync() {
-        let token;
-=======
 	const { user } = useAuth();
 	const navitation = useNavigation();
 	Notifications.setNotificationHandler({
@@ -78,7 +50,6 @@ const AppNavigator = ref => {
 	}, []);
 	async function registerForPushNotificationsAsync() {
 		let token;
->>>>>>> 0ae4287... fixes
 
         if (Platform.OS === 'android') {
             await Notifications.setNotificationChannelAsync('default', {
