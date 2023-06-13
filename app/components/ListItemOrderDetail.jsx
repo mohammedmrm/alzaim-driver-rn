@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Linking } from "react-native";
-
 import colors from "../config/colors";
 import settings from "../config/settings";
 const ListItemOrderDetail = ({ caption, details, order, onPress = false }) => {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Button, TouchableWithoutFeedback, View, Modal, FlatList } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import defultStyle from '../config/styles';
 
 import AppText from './AppText';
 import ListItemSeparator from './lists/ListItemSeparator';
@@ -70,21 +71,20 @@ export default function AppPicker({
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: defultStyle.colors.light,
-        borderRadius: 5,
-        padding: 10,
-        marginVertical: 8,
-        flexDirection: 'row-reverse',
-        borderWidth: 1,
-        borderColor: colors.black
-    },
-    icon: {
-        marginLeft: 10,
-    },
-    text: {
-        flex: 1,
-        fontSize: 12,
-    }
-
-})
+	container: {
+		backgroundColor: defultStyle.colors.light,
+		borderRadius: 5,
+		padding: 10,
+		marginVertical: 8,
+		flexDirection: 'row-reverse',
+		borderWidth: 1,
+		borderColor: colors.black,
+	},
+	icon: {
+		marginLeft: 10,
+	},
+	text: {
+		flex: 1,
+		fontSize: 12,
+	},
+});

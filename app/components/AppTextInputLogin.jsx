@@ -1,17 +1,16 @@
-import React from 'react'
-import { StyleSheet, TextInput, View, TouchableWithoutFeedback } from 'react-native'
+import React from 'react';
+import { StyleSheet, TextInput, View, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import AppText from './AppText'
-import defultStyle from '../config/styles'
+import AppText from './AppText';
+import defultStyle from '../config/styles';
 import colors from '../config/colors';
 
 export default function AppTextinput({ rightIcon, leftIcon, caption, ...otherProps }) {
-    const [secureTextEntry, setSecureTextEntry] = React.useState(true);
+	const [secureTextEntry, setSecureTextEntry] = React.useState(true);
 
-    const toggleSecureEntry = () => {
-        setSecureTextEntry(!secureTextEntry);
-    };
-
+	const toggleSecureEntry = () => {
+		setSecureTextEntry(!secureTextEntry);
+	};
 
 	return (
 		<View style={styles.contaioner}>
@@ -54,27 +53,23 @@ export default function AppTextinput({ rightIcon, leftIcon, caption, ...otherPro
 }
 
 const styles = StyleSheet.create({
-    contaioner: {
-        paddingHorizontal: 25,
-        borderColor: colors.black,
-        backgroundColor: defultStyle.colors.white,
-
-    },
-    inputContainer: {
-        backgroundColor: defultStyle.colors.light,
-        borderRadius: 5,
-        width: '100%',
-        padding: 15,
-        alignSelf: 'center',
-        marginHorizontal: 15,
-        flexDirection: 'row-reverse',
-        borderWidth: 1,
-        borderColor: defultStyle.colors.black,
-
-
-    },
-    icon: {
-        marginLeft: 10,
-    }
-
-})
+	contaioner: {
+		paddingHorizontal: 25,
+		borderColor: colors.black,
+		backgroundColor: defultStyle.colors.white,
+	},
+	inputContainer: {
+		backgroundColor: defultStyle.colors.light,
+		borderRadius: 5,
+		width: '100%',
+		padding: 15,
+		alignSelf: 'center',
+		marginHorizontal: 15,
+		flexDirection: 'row-reverse',
+		borderWidth: 1,
+		borderColor: defultStyle.colors.black,
+	},
+	icon: {
+		marginLeft: 10,
+	},
+});

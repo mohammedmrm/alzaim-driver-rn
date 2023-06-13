@@ -5,9 +5,7 @@ import { ListItem, ListItemSeparator } from "../components/lists";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import routes from "../Routes";
-import Screen from "../components/Screen";
 import useAuth from "../auth/useAuth";
-import Routes from "../Routes";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
 

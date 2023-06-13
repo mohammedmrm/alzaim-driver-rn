@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Button, TouchableWithoutFeedback, View, Modal } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import TimeApp from '../components/TimeApp'
-
+import TimeApp from '../components/TimeApp';
+import defultStyle from '../config/styles';
 import AppText from './AppText';
 export default function AppPicker({
 	icon,
@@ -54,22 +54,21 @@ export default function AppPicker({
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: defultStyle.colors.light,
-        borderRadius: 5,
-        padding: 9,
+	container: {
+		backgroundColor: defultStyle.colors.light,
+		borderRadius: 5,
+		padding: 9,
 
-        marginVertical: 10,
-        flexDirection: 'row-reverse',
-        borderWidth: 1,
-        borderColor: 'gray'
-    },
-    icon: {
-        marginLeft: 10,
-    },
-    text: {
-        flex: 1,
-        fontSize: 12
-    }
-
-})
+		marginVertical: 10,
+		flexDirection: 'row-reverse',
+		borderWidth: 1,
+		borderColor: 'gray',
+	},
+	icon: {
+		marginLeft: 10,
+	},
+	text: {
+		flex: 1,
+		fontSize: 12,
+	},
+});

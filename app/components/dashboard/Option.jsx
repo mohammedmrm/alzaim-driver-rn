@@ -1,7 +1,7 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import colors from "../../config/colors";
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import colors from '../../config/colors';
 const OptionsList = ({ path, data }) => {
 	const navigator = useNavigation();
 	function numberWithCommas(x) {
@@ -9,26 +9,26 @@ const OptionsList = ({ path, data }) => {
 	}
 	const handelData = key => {
 		switch (key) {
-		case 'disclosures':
-			return `(${numberWithCommas(data.total ? data.total : 0)})`;
-		case 'returned':
-			return `(${data.inprocess})`;
-		case 'instorage':
-			return `(${
-				parseInt(data.instorageReturnd) +
+			case 'disclosures':
+				return `(${numberWithCommas(data.total ? data.total : 0)})`;
+			case 'returned':
+				return `(${data.inprocess})`;
+			case 'instorage':
+				return `(${
+					parseInt(data.instorageReturnd) +
 					parseInt(data.instoragereplace) +
 					parseInt(data.instoragepartiallyReturnd)
-			})`;
-		case 'onway':
-			return `(${data.onway})`;
-		case 'posponded':
-			return `(${data.posponded})`;
-		case 'recived':
-			return `(${
-				parseInt(data.replace) + parseInt(data.recieved) + parseInt(data.partiallyReturnd)
-			})`;
-		default:
-			return '(0)';
+				})`;
+			case 'onway':
+				return `(${data.onway})`;
+			case 'posponded':
+				return `(${data.posponded})`;
+			case 'recived':
+				return `(${
+					parseInt(data.replace) + parseInt(data.recieved) + parseInt(data.partiallyReturnd)
+				})`;
+			default:
+				return '(0)';
 		}
 	};
 	return (
@@ -51,29 +51,29 @@ const OptionsList = ({ path, data }) => {
 };
 export default OptionsList;
 const styles = StyleSheet.create({
-  box: {
-    width: "45%",
-    height: 120,
-    backgroundColor: "white",
-    margin: 10,
-    elevation: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-    borderColor: colors.primery,
-    borderTopWidth: 3,
-  },
+	box: {
+		width: '45%',
+		height: 120,
+		backgroundColor: 'white',
+		margin: 10,
+		elevation: 10,
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderBottomLeftRadius: 5,
+		borderBottomRightRadius: 5,
+		borderColor: colors.primery,
+		borderTopWidth: 3,
+	},
 
-  adsAlart: {
-    width: 60,
-    height: 60,
-    padding: 5,
-  },
-  text: {
-    alignSelf: "center",
+	adsAlart: {
+		width: 60,
+		height: 60,
+		padding: 5,
+	},
+	text: {
+		alignSelf: 'center',
 
-    fontSize: 14,
-    fontFamily: "app_r",
-  },
+		fontSize: 14,
+		fontFamily: 'app_r',
+	},
 });

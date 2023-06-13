@@ -8,7 +8,6 @@ import {
   Text,
   TouchableWithoutFeedback,
   TouchableHighlight,
-  ToastAndroid,
   RefreshControl,
   View,
 } from "react-native";

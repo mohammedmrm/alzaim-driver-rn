@@ -1,37 +1,37 @@
-import React from "react";
-import { View, StyleSheet, Linking, TouchableHighlight } from "react-native";
-import Swipeable from "react-native-gesture-handler/Swipeable";
-import { useNavigation } from "@react-navigation/native";
-import Moment from "react-moment";
-import "moment/locale/ar";
+import React from 'react';
+import { View, StyleSheet, Linking, TouchableHighlight } from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { useNavigation } from '@react-navigation/native';
+import Moment from 'react-moment';
+import 'moment/locale/ar';
 
-import Icon from "./../Icon";
-import Text from "../AppText";
-import colors from "../../config/colors";
-import Routes from "../../Routes";
+import Icon from './../Icon';
+import Text from '../AppText';
+import colors from '../../config/colors';
+import Routes from '../../Routes';
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 function OrderCard({ item, onPress, renderRightActions }) {
 	const navigation = useNavigation();
 	const handelColor = id => {
 		switch (id) {
-		case '4':
-			return colors.success;
-		case '5':
-			return colors.secondery;
-		case '6':
-			return colors.primery;
-		case '7':
-			return colors.pause;
-		case '8':
-			return colors.returned;
-		case '9':
-			return colors.returned;
-		case '13':
-			return colors.unseen;
-		default:
-			return colors.medium;
+			case '4':
+				return colors.success;
+			case '5':
+				return colors.secondery;
+			case '6':
+				return colors.primery;
+			case '7':
+				return colors.pause;
+			case '8':
+				return colors.returned;
+			case '9':
+				return colors.returned;
+			case '13':
+				return colors.unseen;
+			default:
+				return colors.medium;
 		}
 	};
 	return (
@@ -123,44 +123,44 @@ function OrderCard({ item, onPress, renderRightActions }) {
 }
 
 const styles = StyleSheet.create({
-  text: {
-    paddingRight: 10,
-    paddingTop: 5,
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  container: {
-    alignItems: "center",
-    flexDirection: "row-reverse",
-    borderRadius: 5,
-    elevation: 5,
-    marginBottom: 5,
-    width: "100%",
-  },
-  detailsContainer: {
-    flex: 1,
-    marginRight: 10,
-    justifyContent: "center",
-    flex: 1,
-  },
-  subTitle: {
-    color: colors.medium,
-    fontSize: 13,
-    fontFamily: "app_r",
-  },
-  subTitle2: {
-    color: colors.medium,
-    fontFamily: "app_sb",
-    fontSize: 12,
-  },
-  title: {
-    fontFamily: "app_sb",
-    color: colors.primery,
-    fontSize: 12,
-  },
-  icon: {
-    right: 15,
-  },
+	text: {
+		paddingRight: 10,
+		paddingTop: 5,
+		fontSize: 14,
+		fontWeight: 'bold',
+	},
+	container: {
+		alignItems: 'center',
+		flexDirection: 'row-reverse',
+		borderRadius: 5,
+		elevation: 5,
+		marginBottom: 5,
+		width: '100%',
+	},
+	detailsContainer: {
+		flex: 1,
+		marginRight: 10,
+		justifyContent: 'center',
+		flex: 1,
+	},
+	subTitle: {
+		color: colors.medium,
+		fontSize: 13,
+		fontFamily: 'app_r',
+	},
+	subTitle2: {
+		color: colors.medium,
+		fontFamily: 'app_sb',
+		fontSize: 12,
+	},
+	title: {
+		fontFamily: 'app_sb',
+		color: colors.primery,
+		fontSize: 12,
+	},
+	icon: {
+		right: 15,
+	},
 });
 
 export default OrderCard;
