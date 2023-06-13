@@ -1,19 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { MaterialIcons, Ionicons, FontAwesome } from '@expo/vector-icons';
-import Profile from './../screens/Profile';
-import SearchResults from './../navigations/SearchNavigator';
-import colors from '../config/colors';
-import Routes from '../Routes';
-import DashboardNavigator from './DashboardNavigator';
-import ChatNavigator from './ChatNavigator';
-import NotificationsNavigator from './NotificationsNavigator';
-import expoPushTokenApi from '../api/expoPushTokens';
-import useAuth from '../auth/useAuth';
+import { useNavigation } from '@react-navigation/native';
+import { Constants } from 'expo-constants';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useRef } from 'react';
 import { Platform } from 'react-native';
+
+import expoPushTokenApi from '../api/expoPushTokens';
+import useAuth from '../auth/useAuth';
+import colors from '../config/colors';
+import Routes from '../Routes';
+import SearchResults from './../navigations/SearchNavigator';
+import Profile from './../screens/Profile';
+import ChatNavigator from './ChatNavigator';
+import DashboardNavigator from './DashboardNavigator';
+import NotificationsNavigator from './NotificationsNavigator';
 const Tab = createMaterialBottomTabNavigator();
 Notifications.setNotificationHandler({
 	handleNotification: async () => ({

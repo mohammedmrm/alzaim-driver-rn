@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+
 import colors from '../../config/colors';
 const AdsCompany = props => {
 	var text = props.route.params.text;

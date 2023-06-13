@@ -1,7 +1,7 @@
-import client from "./client";
+import client from './client';
 
-const get = (token) => client.get(`/chat.php?token=${token}`);
+const get = token => client.get(`/chat.php?token=${token}`);
 
 export default {
-  get,
+	get,
 };

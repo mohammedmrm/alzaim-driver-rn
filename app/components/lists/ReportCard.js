@@ -1,17 +1,13 @@
-import React, { PureComponent } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  TouchableHighlight,
-} from "react-native";
-import Swipeable from "react-native-gesture-handler/Swipeable";
+import 'moment/locale/ar';
 
-import Icon from "../Icon";
-import Text from "../AppText";
-import colors from "../../config/colors";
-import Moment from "react-moment";
-import "moment/locale/ar";
+import React, { PureComponent } from 'react';
+import Moment from 'react-moment';
+import { StyleSheet, TouchableHighlight, TouchableWithoutFeedback, View } from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+
+import colors from '../../config/colors';
+import Text from '../AppText';
+import Icon from '../Icon';
 export default class ReportCard extends PureComponent {
 	numberWithCommas = x => {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -73,53 +69,53 @@ export default class ReportCard extends PureComponent {
 							</View>
 						</TouchableHighlight>
 
-            <TouchableWithoutFeedback onPress={this.props.onPress}>
-              <Icon backgroundColor={colors.returned} name="file" size={60} />
-            </TouchableWithoutFeedback>
-          </View>
-        </View>
-      </Swipeable>
-    );
-  }
+						<TouchableWithoutFeedback onPress={this.props.onPress}>
+							<Icon backgroundColor={colors.returned} name="file" size={60} />
+						</TouchableWithoutFeedback>
+					</View>
+				</View>
+			</Swipeable>
+		);
+	}
 }
 
 const styles = StyleSheet.create({
-  text: {
-    paddingRight: 20,
-    paddingTop: 10,
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  container: {
-    alignItems: "center",
-    flexDirection: "row-reverse",
-    backgroundColor: colors.white,
-    borderRadius: 5,
-    borderTopLeftRadius: 35,
-    borderBottomLeftRadius: 35,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    marginBottom: 10,
-    width: "100%",
-  },
-  detailsContainer: {
-    flex: 1,
-    marginRight: 10,
-    justifyContent: "center",
-    flex: 1,
-  },
-  subTitle: {
-    color: colors.medium,
-    fontSize: 12,
-  },
-  title: {
-    fontWeight: "bold",
-    fontSize: 12,
-  },
+	text: {
+		paddingRight: 20,
+		paddingTop: 10,
+		fontSize: 14,
+		fontWeight: 'bold',
+	},
+	container: {
+		alignItems: 'center',
+		flexDirection: 'row-reverse',
+		backgroundColor: colors.white,
+		borderRadius: 5,
+		borderTopLeftRadius: 35,
+		borderBottomLeftRadius: 35,
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 3.84,
+		elevation: 5,
+		marginBottom: 10,
+		width: '100%',
+	},
+	detailsContainer: {
+		flex: 1,
+		marginRight: 10,
+		justifyContent: 'center',
+		flex: 1,
+	},
+	subTitle: {
+		color: colors.medium,
+		fontSize: 12,
+	},
+	title: {
+		fontWeight: 'bold',
+		fontSize: 12,
+	},
 });

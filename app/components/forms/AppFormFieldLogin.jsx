@@ -1,10 +1,10 @@
-import React from 'react'
-import { useFormikContext } from 'formik'
+import { useFormikContext } from 'formik';
+import React from 'react';
 
-import AppTextInput from '../AppTextInputLogin'
-import ErrorMessage from './ErrorMessage'
+import AppTextInput from '../AppTextInputLogin';
+import ErrorMessage from './ErrorMessage';
 export default function AppFormField({ name, ...otherProps }) {
-    const { handleChange, errors, setFieldTouched, touched } = useFormikContext();
+	const { handleChange, errors, setFieldTouched, touched } = useFormikContext();
 
 	return (
 		<>

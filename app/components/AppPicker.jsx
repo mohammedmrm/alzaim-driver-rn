@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { StyleSheet, Button, TouchableWithoutFeedback, View, Modal, FlatList } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { Button, FlatList, Modal, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+
+import defultStyle from '../config/styles';
 import AppText from './AppText';
 import PickerItem from './PickerItem';
-import defultStyle from '../config/styles';
-
 export default function AppPicker({
 	icon,
 	items,
@@ -63,21 +63,20 @@ export default function AppPicker({
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: defultStyle.colors.light,
-        borderRadius: 25,
-        padding: 10,
-        marginVertical: 5,
-        flexDirection: 'row-reverse',
-        borderWidth: 1,
-        borderColor: 'gray'
-    },
-    icon: {
-        marginLeft: 10,
-    },
-    text: {
-        flex: 1,
-        fontSize: 12
-    }
-
-})
+	container: {
+		backgroundColor: defultStyle.colors.light,
+		borderRadius: 25,
+		padding: 10,
+		marginVertical: 5,
+		flexDirection: 'row-reverse',
+		borderWidth: 1,
+		borderColor: 'gray',
+	},
+	icon: {
+		marginLeft: 10,
+	},
+	text: {
+		flex: 1,
+		fontSize: 12,
+	},
+});

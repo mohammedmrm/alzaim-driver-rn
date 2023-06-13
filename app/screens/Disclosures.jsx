@@ -1,31 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { View, FlatList, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import {
-  ReportCard,
-  ListItemSeparator,
-  ListOrderCopyAction,
-} from "../components/lists";
-import AppPickerTime from "./../components/AppPickerTime";
-import Button from "./../components/AppButton";
-import useAuth from "../auth/useAuth";
-import getPdfs from "../api/getPdfs";
-import colors from "../config/colors";
-import Routes from "../Routes";
-import ActivityIndicator from "../components/ActivtyIndectors/ActivityIndecatorSimpleLine";
-import ActivityIndecator from "../components/ActivtyIndectors/ActivityIndecatorMoneyTotal";
-import { onShare } from "../utility/helper";
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Text, View } from 'react-native';
+
+import getPdfs from '../api/getPdfs';
+import useAuth from '../auth/useAuth';
+import ActivityIndecator from '../components/ActivtyIndectors/ActivityIndecatorMoneyTotal';
+import ActivityIndicator from '../components/ActivtyIndectors/ActivityIndecatorSimpleLine';
+import { ListItemSeparator, ListOrderCopyAction, ReportCard } from '../components/lists';
+import colors from '../config/colors';
+import Routes from '../Routes';
+import { onShare } from '../utility/helper';
+import Button from './../components/AppButton';
+import AppPickerTime from './../components/AppPickerTime';
 
 function Dashboard() {
-  const navigator = useNavigation();
-  let { user } = useAuth();
-  const [pdfs, setPdfs] = useState(null);
-  const [total, setTotal] = useState({});
-  const [refreshing, setRefreshing] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const prefix = "Disclosures";
+	const navigator = useNavigation();
+	let { user } = useAuth();
+	const [pdfs, setPdfs] = useState(null);
+	const [total, setTotal] = useState({});
+	const [refreshing, setRefreshing] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [startDate, setStartDate] = useState(null);
+	const [endDate, setEndDate] = useState(null);
+	const prefix = 'Disclosures';
 
 	const loadPdfs = async () => {
 		setIsLoading(true);

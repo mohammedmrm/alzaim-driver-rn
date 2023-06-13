@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
+
 import colors from '../../config/colors';
 const OptionsList = ({ path, data }) => {
 	const navigator = useNavigation();
@@ -9,26 +10,26 @@ const OptionsList = ({ path, data }) => {
 	}
 	const handelData = key => {
 		switch (key) {
-			case 'disclosures':
-				return `(${numberWithCommas(data.total ? data.total : 0)})`;
-			case 'returned':
-				return `(${data.inprocess})`;
-			case 'instorage':
-				return `(${
-					parseInt(data.instorageReturnd) +
+		case 'disclosures':
+			return `(${numberWithCommas(data.total ? data.total : 0)})`;
+		case 'returned':
+			return `(${data.inprocess})`;
+		case 'instorage':
+			return `(${
+				parseInt(data.instorageReturnd) +
 					parseInt(data.instoragereplace) +
 					parseInt(data.instoragepartiallyReturnd)
-				})`;
-			case 'onway':
-				return `(${data.onway})`;
-			case 'posponded':
-				return `(${data.posponded})`;
-			case 'recived':
-				return `(${
-					parseInt(data.replace) + parseInt(data.recieved) + parseInt(data.partiallyReturnd)
-				})`;
-			default:
-				return '(0)';
+			})`;
+		case 'onway':
+			return `(${data.onway})`;
+		case 'posponded':
+			return `(${data.posponded})`;
+		case 'recived':
+			return `(${
+				parseInt(data.replace) + parseInt(data.recieved) + parseInt(data.partiallyReturnd)
+			})`;
+		default:
+			return '(0)';
 		}
 	};
 	return (

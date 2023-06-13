@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import AppTaxt from '../components/AppText';
-import colors from '../config/colors';
 import Icon from '../components/Icon';
+import colors from '../config/colors';
 const iconNames = [
 	'',
 	'car',

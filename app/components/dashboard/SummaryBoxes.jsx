@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+
 import colors from '../../config/colors';
 import ActivityIndecator from '../ActivtyIndectors/ActivityIndecatorSquers';
-import SummaryBox from './SummaryBox';
 import AppText from '../AppText';
+import SummaryBox from './SummaryBox';
 
 const SummaryBoxes = ({ oneDay, isLoading }) => {
 	return (

@@ -1,29 +1,30 @@
-import Toast from "react-native-root-toast";
-import settings from "../config/settings";
-import { Share, Clipboard } from "react-native";
+import { Clipboard, Share } from 'react-native';
+import Toast from 'react-native-root-toast';
+import settings from '../config/settings';
 
 //================================================
-export const onShare = async (item) => {
-  //item.path
-  try {
-    const result = await Share.share({
-      message: `${settings.apiUrl}/../../dash/invoice/${item.path}`,
-    });
-    if (result.action === Share.sharedAction) {
-      if (result.activityType) {
-        // shared with activity type of result.activityType
-      } else {
-        // shared
-      }
-    } else if (result.action === Share.dismissedAction) {
-      // dismissed
-    }
-  } catch (error) {
-    alert("تم الاغاء");
-  }
+export const onShare = async item => {
+	//item.path
+	try {
+		const result = await Share.share({
+			message: `${settings.apiUrl}/../../dash/invoice/${item.path}`,
+		});
+		if (result.action === Share.sharedAction) {
+			if (result.activityType) {
+				// shared with activity type of result.activityType
+			} else {
+				// shared
+			}
+		} else if (result.action === Share.dismissedAction) {
+			// dismissed
+		}
+	} catch (error) {
+		alert('تم الاغاء');
+	}
 };
 
 //================================================
+<<<<<<< HEAD
 export const handleCopy = (item = null, msg = "تم نسخ معلومات الطلب") => {
   if (item) {
     Clipboard.setString(
@@ -35,5 +36,20 @@ export const handleCopy = (item = null, msg = "تم نسخ معلومات الط
     );
   }
   Toast.show(msg);
+=======
+export const handleCopy = (item = null, msg = 'تم نسخ معلومات الطلب') => {
+	if (item) {
+		Clipboard.setString(
+			`رقم الوصل: (${item.order_no}) \nالاسم: ${item.name ? item.name : ''} - (${
+				item.client_phone
+			})\n العنوان (${item.city} - ${item.town})\nالصفحة: (${item.store_name})\n حالة الطلب: (${
+				item.status_name
+			})\n${item.t_note ? item.t_note : ''}المبلغ: (${item.price})\n المندوب (${
+				item.driver_phone ? item.driver_phone : ''
+			})`
+		);
+	}
+	Toast.show(msg);
+>>>>>>> 0ae42871909f10f94b46d47c2eeda9e24a9f7443
 };
 //================================================

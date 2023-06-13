@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { View, FlatList } from "react-native";
+import { useRoute } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, View } from 'react-native';
 
-import ActivityIndecatorLoadingList from "../components/ActivtyIndectors/ActivityIndecatorLoadingList";
-import {
-  OrderCard,
-  ListItemSeparator,
-  ListOrderCopyAction,
-} from "../components/lists";
-import AppFormField from "../components/AppTextInput";
-import Button from "../components/AppButton";
-import { handleCopy } from "../utility/helper";
-import getOrders from "../api/categoryOrders";
-import useAuth from "../auth/useAuth";
-import colors from "../config/colors";
-import { useRoute } from "@react-navigation/native";
+import getOrders from '../api/categoryOrders';
+import useAuth from '../auth/useAuth';
+import ActivityIndecatorLoadingList from '../components/ActivtyIndectors/ActivityIndecatorLoadingList';
+import Button from '../components/AppButton';
+import AppFormField from '../components/AppTextInput';
+import { ListItemSeparator, ListOrderCopyAction, OrderCard } from '../components/lists';
+import colors from '../config/colors';
+import { handleCopy } from '../utility/helper';
 
 //================================================
 
@@ -90,52 +86,45 @@ function Dashboard() {
 				placeholder="بحث رقم الوصل او رقم الهاتف..."
 			/>
 
-      <View
-        style={{
-          alignItems: "center",
-          width: "100%",
-          borderBottomColor: colors.black,
-          borderBottomWidth: 2,
-          marginVertical: 5,
-          backgroundColor: colors.white,
-        }}
-      >
-        <Button
-          color="primery"
-          width="95%"
-          onPress={() => loadOrders("1")}
-          title={`أبحث في (${noOrders}) طلبية`}
-        />
-      </View>
-      <FlatList
-        style={{ flex: 1, width: "100%" }}
-        data={orders}
-        keyExtractor={(item) => `${item.id}-${item.date}`.toString()}
-        renderItem={({ item }) => (
-          <OrderCard
-            item={item}
-            renderRightActions={() => (
-              <ListOrderCopyAction
-                icon="content-copy"
-                onPress={() => handleCopy(item)}
-              />
-            )}
-            renderLeftActions={() => (
-              <ListOrderCopyAction
-                icon="content-copy"
-                onPress={() => handleCopy(item)}
-              />
-            )}
-          />
-        )}
-        ItemSeparatorComponent={ListItemSeparator}
-        onEndReachedThreshold={0.25}
-        onEndReached={() => onEndReachedMohamed()}
-        refreshing={refreshing}
-        onRefresh={() => refreshingMethod()}
-        ListFooterComponent={footer}
-      />
-    </View>
-  );
+			<View
+				style={{
+					alignItems: 'center',
+					width: '100%',
+					borderBottomColor: colors.black,
+					borderBottomWidth: 2,
+					marginVertical: 5,
+					backgroundColor: colors.white,
+				}}>
+				<Button
+					color="primery"
+					width="95%"
+					onPress={() => loadOrders('1')}
+					title={`أبحث في (${noOrders}) طلبية`}
+				/>
+			</View>
+			<FlatList
+				style={{ flex: 1, width: '100%' }}
+				data={orders}
+				keyExtractor={item => `${item.id}-${item.date}`.toString()}
+				renderItem={({ item }) => (
+					<OrderCard
+						item={item}
+						renderRightActions={() => (
+							<ListOrderCopyAction icon="content-copy" onPress={() => handleCopy(item)} />
+						)}
+						renderLeftActions={() => (
+							<ListOrderCopyAction icon="content-copy" onPress={() => handleCopy(item)} />
+						)}
+					/>
+				)}
+				ItemSeparatorComponent={ListItemSeparator}
+				onEndReachedThreshold={0.25}
+				onEndReached={() => onEndReachedMohamed()}
+				refreshing={refreshing}
+				onRefresh={() => refreshingMethod()}
+				ListFooterComponent={footer}
+			/>
+		</View>
+	);
 }
 export default Dashboard;

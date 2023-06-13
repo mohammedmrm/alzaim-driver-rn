@@ -1,129 +1,131 @@
-import React, { useEffect, useState } from "react";
+import { useNavigation, useRoute } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import {
-  Modal,
-  Image,
-  TextInput,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  TouchableHighlight,
-  RefreshControl,
-  View,
-} from "react-native";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { TextInputMask } from "react-native-masked-text";
-import ActivityIndicator from "../components/ActivtyIndectors/ActivityIndecatorOrderDetails";
-import ListItemOrderDetail from "../components/ListItemOrderDetail";
-import AppPickerReasons from "./../components/AppPickerReasons";
-import StatusBottm from "../components/StatusBottom";
-import TrackingBox from "../components/TrackingBox";
-import Toast from "react-native-root-toast";
-import getOrder from "../api/getOrder";
-import useAuth from "../auth/useAuth";
-import colors from "../config/colors";
-import Routes from "../Routes";
+	Image,
+	Modal,
+	RefreshControl,
+	ScrollView,
+	StyleSheet,
+	Text,
+	TextInput,
+	ToastAndroid,
+	TouchableHighlight,
+	TouchableWithoutFeedback,
+	View,
+} from 'react-native';
+import { TextInputMask } from 'react-native-masked-text';
+import Toast from 'react-native-root-toast';
+
+import getOrder from '../api/getOrder';
+import useAuth from '../auth/useAuth';
+import ActivityIndicator from '../components/ActivtyIndectors/ActivityIndecatorOrderDetails';
+import ListItemOrderDetail from '../components/ListItemOrderDetail';
+import StatusBottm from '../components/StatusBottom';
+import TrackingBox from '../components/TrackingBox';
+import colors from '../config/colors';
+import Routes from '../Routes';
+import AppPickerReasons from './../components/AppPickerReasons';
 function successToast() {
-  Toast.show("تم تحديث الحالة", {
-    duration: 3000,
-    shadow: true,
-    animation: true,
-    hideOnPress: true,
-    backgroundColor: colors.success,
-    textColor: colors.white,
-  });
+	Toast.show('تم تحديث الحالة', {
+		duration: 3000,
+		shadow: true,
+		animation: true,
+		hideOnPress: true,
+		backgroundColor: colors.success,
+		textColor: colors.white,
+	});
 }
 function errorToast() {
-  Toast.show("خطأ!", {
-    duration: 3000,
-    shadow: true,
-    animation: true,
-    hideOnPress: true,
-    backgroundColor: colors.returned,
-    textColor: colors.white,
-  });
+	Toast.show('خطأ!', {
+		duration: 3000,
+		shadow: true,
+		animation: true,
+		hideOnPress: true,
+		backgroundColor: colors.returned,
+		textColor: colors.white,
+	});
 }
 const OrderDetails = () => {
-  const returnCases = [
-    { value: "لايرد", label: "لايرد" },
-    { value: "لايرد مع رسالة", label: "لايرد مع رسالة" },
-    { value: "تم اغلاق الهاتف", label: "تم اغلاق الهاتف" },
-    { value: "مكرر", label: "مكرر" },
-    { value: "كاذب", label: "كاذب" },
-    { value: "الرقم غير معرف", label: "الرقم غير معرف" },
-    { value: "رفض الطلب", label: "رفض الطلب" },
-    { value: "حظر المندوب", label: "حظر المندوب" },
-    { value: "لايرد بعد التاجيل", label: "لايرد بعد التاجيل" },
-    { value: "مسافر", label: "مسافر" },
-    { value: "تالف", label: "تالف" },
-    { value: "راجع بسبب الحظر", label: "راجع بسبب الحظر" },
-    { value: "لايمكن الاتصال به", label: "لايمكن الاتصال به" },
-    { value: "مغلق بعد الاتفاق", label: "مغلق بعد الاتفاق" },
-    { value: "لم يطلب", label: "لم يطلب" },
-    { value: "لايرد بعد سماع المكالمة", label: "لايرد بعد سماع المكالمة" },
-    { value: "غلق بعد سماع المكالمة", label: "غلق بعد سماع المكالمة" },
-    { value: "مغلق", label: "مغلق" },
-    { value: "تم الوصول والرفض", label: "تم الوصول والرفض" },
-    { value: "لايرد بعد الاتفاق", label: "لايرد بعد الاتفاق" },
-    { value: "غير داخل بالخدمة", label: "غير داخل بالخدمة" },
-    { value: "خطأ بالعنوان", label: "خطأ بالعنوان" },
-    { value: "مستلم سابقا", label: "مستلم سابقا" },
-    { value: "خطأ بالتجهيز", label: "خطأ بالتجهيز" },
-    { value: "نقص رقم", label: "نقص رقم" },
-    { value: "زيادة رقم", label: "زيادة رقم" },
-    { value: "وصل بدون طلبية", label: "وصل بدون طلبية" },
-    { value: "الغاء الحجز", label: "الغاء الحجز" },
-  ];
-  const route = useRoute();
-  let { user } = useAuth();
-  const [isLoading, setIsLoading] = useState(true);
-  const [order, setOrder] = useState(null);
-  const navigation = useNavigation();
-  const [amount, onChangeAmount] = useState("0");
-  const [note, onChangeNote] = useState("");
-  const [returnNo, onChangeReturnNo] = useState("");
-  const [refreshing, setRefreshing] = useState(false);
-  const [modalVisible, setModalVisible] = useState({
-    arrive: false,
-    return: false,
-    partReturn: false,
-    exchange: false,
-    postpone: false,
-  });
+	const returnCases = [
+		{ value: 'لايرد', label: 'لايرد' },
+		{ value: 'لايرد مع رسالة', label: 'لايرد مع رسالة' },
+		{ value: 'تم اغلاق الهاتف', label: 'تم اغلاق الهاتف' },
+		{ value: 'مكرر', label: 'مكرر' },
+		{ value: 'كاذب', label: 'كاذب' },
+		{ value: 'الرقم غير معرف', label: 'الرقم غير معرف' },
+		{ value: 'رفض الطلب', label: 'رفض الطلب' },
+		{ value: 'حظر المندوب', label: 'حظر المندوب' },
+		{ value: 'لايرد بعد التاجيل', label: 'لايرد بعد التاجيل' },
+		{ value: 'مسافر', label: 'مسافر' },
+		{ value: 'تالف', label: 'تالف' },
+		{ value: 'راجع بسبب الحظر', label: 'راجع بسبب الحظر' },
+		{ value: 'لايمكن الاتصال به', label: 'لايمكن الاتصال به' },
+		{ value: 'مغلق بعد الاتفاق', label: 'مغلق بعد الاتفاق' },
+		{ value: 'لم يطلب', label: 'لم يطلب' },
+		{ value: 'لايرد بعد سماع المكالمة', label: 'لايرد بعد سماع المكالمة' },
+		{ value: 'غلق بعد سماع المكالمة', label: 'غلق بعد سماع المكالمة' },
+		{ value: 'مغلق', label: 'مغلق' },
+		{ value: 'تم الوصول والرفض', label: 'تم الوصول والرفض' },
+		{ value: 'لايرد بعد الاتفاق', label: 'لايرد بعد الاتفاق' },
+		{ value: 'غير داخل بالخدمة', label: 'غير داخل بالخدمة' },
+		{ value: 'خطأ بالعنوان', label: 'خطأ بالعنوان' },
+		{ value: 'مستلم سابقا', label: 'مستلم سابقا' },
+		{ value: 'خطأ بالتجهيز', label: 'خطأ بالتجهيز' },
+		{ value: 'نقص رقم', label: 'نقص رقم' },
+		{ value: 'زيادة رقم', label: 'زيادة رقم' },
+		{ value: 'وصل بدون طلبية', label: 'وصل بدون طلبية' },
+		{ value: 'الغاء الحجز', label: 'الغاء الحجز' },
+	];
+	const route = useRoute();
+	let { user } = useAuth();
+	const [isLoading, setIsLoading] = useState(true);
+	const [order, setOrder] = useState(null);
+	const navigation = useNavigation();
+	const [amount, onChangeAmount] = useState('0');
+	const [note, onChangeNote] = useState('');
+	const [returnNo, onChangeReturnNo] = useState('');
+	const [refreshing, setRefreshing] = useState(false);
+	const [modalVisible, setModalVisible] = useState({
+		arrive: false,
+		return: false,
+		partReturn: false,
+		exchange: false,
+		postpone: false,
+	});
 
-  const loadDetails = async (token, id, notificatin_id = "0") => {
-    setIsLoading(true);
-    const results = await getOrder.getOrder(token, id, notificatin_id);
-    setOrder(results.data.data[0]);
-    onChangeAmount(results.data.data[0].price);
-    setIsLoading(false);
-  };
+	const loadDetails = async (token, id, notificatin_id = '0') => {
+		setIsLoading(true);
+		const results = await getOrder.getOrder(token, id, notificatin_id);
+		setOrder(results.data.data[0]);
+		onChangeAmount(results.data.data[0].price);
+		setIsLoading(false);
+	};
 
-  const arrive = async () => {
-    setIsLoading(true);
-    const results = await getOrder.arrive(user.token, route.params.id, amount, note);
-    results.data.success === 1 ? successToast() : errorToast();
-    loadDetails(user.token, route.params.id);
-  };
-  const returned = async () => {
-    setIsLoading(true);
-    const results = await getOrder.returned(user.token, route.params.id, note.label);
-    results.data.success === 1 ? successToast() : errorToast();
-    loadDetails(user.token, route.params.id);
-  };
-  const partReturn = async () => {
-    setIsLoading(true);
-    const results = await getOrder.partReturn(user.token, route.params.id, amount, note, returnNo);
-    results.data.success === 1 ? successToast() : errorToast();
-    loadDetails(user.token, route.params.id);
-  };
+	const arrive = async () => {
+		setIsLoading(true);
+		const results = await getOrder.arrive(user.token, route.params.id, amount, note);
+		results.data.success === 1 ? successToast() : errorToast();
+		loadDetails(user.token, route.params.id);
+	};
+	const returned = async () => {
+		setIsLoading(true);
+		const results = await getOrder.returned(user.token, route.params.id, note.label);
+		results.data.success === 1 ? successToast() : errorToast();
+		loadDetails(user.token, route.params.id);
+	};
+	const partReturn = async () => {
+		setIsLoading(true);
+		const results = await getOrder.partReturn(user.token, route.params.id, amount, note, returnNo);
+		results.data.success === 1 ? successToast() : errorToast();
+		loadDetails(user.token, route.params.id);
+	};
 
-  const exchange = async () => {
-    setIsLoading(true);
-    const results = await getOrder.exchange(user.token, route.params.id, amount, note, returnNo);
-    results.data.success === 1 ? successToast() : errorToast();
-    loadDetails(user.token, route.params.id);
-  };
+	const exchange = async () => {
+		setIsLoading(true);
+		const results = await getOrder.exchange(user.token, route.params.id, amount, note, returnNo);
+		results.data.success === 1 ? successToast() : errorToast();
+		loadDetails(user.token, route.params.id);
+	};
 
 	const postponed = async () => {
 		setIsLoading(true);
@@ -826,125 +828,125 @@ const OrderDetails = () => {
 export default OrderDetails;
 
 const styles = StyleSheet.create({
-  centeredView: {
-    backgroundColor: colors.primery,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 5,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  openButton: {
-    backgroundColor: "#F194FF",
-    borderRadius: 5,
-    padding: 10,
-    marginHorizontal: 10,
-    elevation: 2,
-    width: 70,
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-  headerDetails: {
-    width: "90%",
-    height: "100%",
-    alignItems: "center",
-    alignSelf: "center",
-    justifyContent: "space-between",
-    flexDirection: "row",
-    borderBottomColor: colors.primery,
-    borderBottomWidth: 2,
-    marginBottom: 5,
-  },
-  container: {
-    backgroundColor: colors.white,
-    width: "100%",
-    height: "100%",
-  },
-  orderDetailsContainer: {
-    backgroundColor: colors.white,
-    width: "100%",
-    height: 300,
-    marginBottom: 10,
-    paddingBottom: 5,
-    justifyContent: "flex-start",
-    alignItems: "flex-end",
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-    elevation: 5,
-  },
-  textContainer: {
-    width: "100%",
-    height: "60%",
-    marginRight: "10%",
-    marginBottom: "5%",
-    flexDirection: "column",
-  },
+	centeredView: {
+		backgroundColor: colors.primery,
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	modalView: {
+		margin: 20,
+		backgroundColor: 'white',
+		borderRadius: 5,
+		padding: 35,
+		alignItems: 'center',
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 3.84,
+		elevation: 5,
+	},
+	openButton: {
+		backgroundColor: '#F194FF',
+		borderRadius: 5,
+		padding: 10,
+		marginHorizontal: 10,
+		elevation: 2,
+		width: 70,
+	},
+	textStyle: {
+		color: 'white',
+		fontWeight: 'bold',
+		textAlign: 'center',
+	},
+	modalText: {
+		marginBottom: 15,
+		textAlign: 'center',
+	},
+	headerDetails: {
+		width: '90%',
+		height: '100%',
+		alignItems: 'center',
+		alignSelf: 'center',
+		justifyContent: 'space-between',
+		flexDirection: 'row',
+		borderBottomColor: colors.primery,
+		borderBottomWidth: 2,
+		marginBottom: 5,
+	},
+	container: {
+		backgroundColor: colors.white,
+		width: '100%',
+		height: '100%',
+	},
+	orderDetailsContainer: {
+		backgroundColor: colors.white,
+		width: '100%',
+		height: 300,
+		marginBottom: 10,
+		paddingBottom: 5,
+		justifyContent: 'flex-start',
+		alignItems: 'flex-end',
+		borderBottomLeftRadius: 5,
+		borderBottomRightRadius: 5,
+		elevation: 5,
+	},
+	textContainer: {
+		width: '100%',
+		height: '60%',
+		marginRight: '10%',
+		marginBottom: '5%',
+		flexDirection: 'column',
+	},
 
-  chatShadow: {
-    width: 70,
-    height: 70,
-    borderRadius: 10,
-    padding: 10,
-    margin: 5,
-  },
-  chatIcon: {
-    width: "90%",
-    height: "90%",
-    padding: 5,
-    borderRadius: 10,
-  },
-  titleStore: {
-    fontSize: 22,
-    paddingTop: 5,
-  },
-  titleOrderId: {
-    fontSize: 22,
-  },
-  titleOrderStatus: {
-    color: "white",
-    fontFamily: "app_b",
-  },
-  titleOrderStatusView: {
-    backgroundColor: colors.primery,
-    padding: 10,
-    borderRadius: 2,
-    margin: 5,
-  },
-  contanerBox: {
-    height: "100%",
-    width: "100%",
-    flexDirection: "row-reverse",
-    justifyContent: "space-around",
-    margin: 5,
-  },
-  trackingTitle: {
-    color: "#39C555",
-    fontWeight: "bold",
-    fontSize: 14,
-    paddingBottom: 10,
-  },
-  trackingNote: {
-    color: colors.medium,
-    fontSize: 12,
-  },
+	chatShadow: {
+		width: 70,
+		height: 70,
+		borderRadius: 10,
+		padding: 10,
+		margin: 5,
+	},
+	chatIcon: {
+		width: '90%',
+		height: '90%',
+		padding: 5,
+		borderRadius: 10,
+	},
+	titleStore: {
+		fontSize: 22,
+		paddingTop: 5,
+	},
+	titleOrderId: {
+		fontSize: 22,
+	},
+	titleOrderStatus: {
+		color: 'white',
+		fontFamily: 'app_b',
+	},
+	titleOrderStatusView: {
+		backgroundColor: colors.primery,
+		padding: 10,
+		borderRadius: 2,
+		margin: 5,
+	},
+	contanerBox: {
+		height: '100%',
+		width: '100%',
+		flexDirection: 'row-reverse',
+		justifyContent: 'space-around',
+		margin: 5,
+	},
+	trackingTitle: {
+		color: '#39C555',
+		fontWeight: 'bold',
+		fontSize: 14,
+		paddingBottom: 10,
+	},
+	trackingNote: {
+		color: colors.medium,
+		fontSize: 12,
+	},
 });

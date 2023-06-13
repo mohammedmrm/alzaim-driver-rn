@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, TouchableWithoutFeedback, View } from 'react-native';
+
 import defultStyle from '../../config/styles';
 
 export default function AppTextinput({ onPress, ...otherProps }) {

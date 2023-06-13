@@ -55,33 +55,33 @@ const ListItemOrderDetail = ({ caption, details, order, onPress = false }) => {
 export default ListItemOrderDetail;
 
 const styles = StyleSheet.create({
-  containertextContainer: {
-    width: "100%",
-    height: 20,
-    flexDirection: "row-reverse",
-    // backgroundColor: "gold"
-  },
-  textView: {
-    width: "20%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "flex-end",
-  },
-  textView2: {
-    width: "80%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "flex-end",
-    // backgroundColor: "gold"
-  },
-  text: {
-    fontFamily: "app_sb",
-    fontSize: 13,
-  },
-  titleText: {
-    fontWeight: "200",
-    fontFamily: "app_r",
-    fontSize: 12,
-    color: colors.medium,
-  },
+	containertextContainer: {
+		width: '100%',
+		height: 20,
+		flexDirection: 'row-reverse',
+		// backgroundColor: "gold"
+	},
+	textView: {
+		width: '20%',
+		height: '100%',
+		justifyContent: 'center',
+		alignItems: 'flex-end',
+	},
+	textView2: {
+		width: '80%',
+		height: '100%',
+		justifyContent: 'center',
+		alignItems: 'flex-end',
+		// backgroundColor: "gold"
+	},
+	text: {
+		fontFamily: 'app_sb',
+		fontSize: 13,
+	},
+	titleText: {
+		fontWeight: '200',
+		fontFamily: 'app_r',
+		fontSize: 12,
+		color: colors.medium,
+	},
 });

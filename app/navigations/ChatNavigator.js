@@ -1,9 +1,9 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 
-import Routes from "../Routes";
-import ChatModel from "../screens/ChatModel";
-import Chat from "../screens/Chat";
+import Routes from '../Routes';
+import Chat from '../screens/Chat';
+import ChatModel from '../screens/ChatModel';
 
 const Stack = createStackNavigator();
 const DashboardNavigator = () => {

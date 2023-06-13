@@ -1,9 +1,10 @@
-import React from 'react';
-import { StyleSheet, TextInput, View, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import AppText from './AppText';
-import defultStyle from '../config/styles';
+import React from 'react';
+import { StyleSheet, TextInput, TouchableWithoutFeedback, View } from 'react-native';
+
 import colors from '../config/colors';
+import defultStyle from '../config/styles';
+import AppText from './AppText';
 
 export default function AppTextinput({ rightIcon, leftIcon, caption, ...otherProps }) {
 	const [secureTextEntry, setSecureTextEntry] = React.useState(true);

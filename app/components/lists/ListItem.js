@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
-import { View, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { PureComponent } from 'react';
+import { Image, StyleSheet, TouchableHighlight, View } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-import Text from '../AppText';
 import colors from '../../config/colors';
+import Text from '../AppText';
 export default class ListItem extends PureComponent {
 	render() {
 		return (

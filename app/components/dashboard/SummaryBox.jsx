@@ -1,9 +1,9 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import AppText from '../AppText';
 import colors from '../../config/colors';
+import AppText from '../AppText';
 const SummaryBox = ({ background, boxes, amount, time, colorM }) => {
 	return (
 		<View

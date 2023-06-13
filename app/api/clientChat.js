@@ -1,8 +1,9 @@
-import { create } from "apisauce";
-import settings from "../config/settings";
+import { create } from 'apisauce';
+
+import settings from '../config/settings';
 
 const apiClient = create({
-  baseURL: settings.apiUrl,
+	baseURL: settings.apiUrl,
 });
 
 export default apiClient;
