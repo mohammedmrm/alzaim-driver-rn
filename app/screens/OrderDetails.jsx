@@ -8,7 +8,6 @@ import {
 	StyleSheet,
 	Text,
 	TextInput,
-	ToastAndroid,
 	TouchableHighlight,
 	TouchableWithoutFeedback,
 	View,
@@ -16,7 +15,7 @@ import {
 import { TextInputMask } from 'react-native-masked-text';
 import Toast from 'react-native-root-toast';
 
-import getOrder from '../api/getOrder';
+import orderService from '../api/getOrder';
 import useAuth from '../auth/useAuth';
 import ActivityIndicator from '../components/ActivtyIndectors/ActivityIndecatorOrderDetails';
 import ListItemOrderDetail from '../components/ListItemOrderDetail';
@@ -95,7 +94,7 @@ const OrderDetails = () => {
 
 	const loadDetails = async (token, id, notificatin_id = '0') => {
 		setIsLoading(true);
-		const results = await getOrder.getOrder(token, id, notificatin_id);
+		const results = await orderService.getOrder(token, id, notificatin_id);
 		setOrder(results.data.data[0]);
 		onChangeAmount(results.data.data[0].price);
 		setIsLoading(false);
@@ -103,57 +102,65 @@ const OrderDetails = () => {
 
 	const arrive = async () => {
 		setIsLoading(true);
-		const results = await getOrder.arrive(user.token, route.params.id, amount, note);
-		results.data.success === 1 ? successToast() : errorToast();
-		loadDetails(user.token, route.params.id);
+		try {
+			const results = await orderService.arrive(user.token, route.params.id, amount, note);
+			results.data.success === 1 ? successToast() : errorToast();
+			loadDetails(user.token, route.params.id);
+		} catch (e) {
+			errorToast();
+		}
 	};
 	const returned = async () => {
 		setIsLoading(true);
-		const results = await getOrder.returned(user.token, route.params.id, note.label);
+		const results = await orderService.returned(user.token, route.params.id, note.label);
 		results.data.success === 1 ? successToast() : errorToast();
 		loadDetails(user.token, route.params.id);
 	};
 	const partReturn = async () => {
 		setIsLoading(true);
-		const results = await getOrder.partReturn(user.token, route.params.id, amount, note, returnNo);
+		const results = await orderService.partReturn(user.token, route.params.id, amount, note, returnNo);
 		results.data.success === 1 ? successToast() : errorToast();
 		loadDetails(user.token, route.params.id);
 	};
 
 	const exchange = async () => {
 		setIsLoading(true);
-		const results = await getOrder.exchange(user.token, route.params.id, amount, note, returnNo);
+		const results = await orderService.exchange(user.token, route.params.id, amount, note, returnNo);
 		results.data.success === 1 ? successToast() : errorToast();
 		loadDetails(user.token, route.params.id);
 	};
 
 	const postponed = async () => {
 		setIsLoading(true);
-		const results = await getOrder.postponed(user.token, route.params.id, note);
-		results.data.success === 1 ? successToast() : errorToast();
-		loadDetails(user.token, route.params.id);
+		try {
+			const results = await orderService.postponed(user.token, route.params.id, note);
+			results.data.success === 1 ? successToast() : errorToast();
+			loadDetails(user.token, route.params.id);
+		} catch (e) {
+			errorToast();
+		}
 	};
 	useEffect(() => {
 		loadDetails(user.token, route.params.id, route.params.notify_id);
 	}, []);
 	const handelColor = id => {
 		switch (id) {
-		case '4':
-			return colors.success;
-		case '5':
-			return colors.secondery;
-		case '6':
-			return colors.primery;
-		case '7':
-			return colors.pause;
-		case '8':
-			return colors.returned;
-		case '9':
-			return colors.returned;
-		case '13':
-			return colors.unseen;
-		default:
-			return colors.medium;
+			case '4':
+				return colors.success;
+			case '5':
+				return colors.secondery;
+			case '6':
+				return colors.primery;
+			case '7':
+				return colors.pause;
+			case '8':
+				return colors.returned;
+			case '9':
+				return colors.returned;
+			case '13':
+				return colors.unseen;
+			default:
+				return colors.medium;
 		}
 	};
 	const startChating = item => {

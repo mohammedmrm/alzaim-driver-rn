@@ -69,10 +69,7 @@
     "@typescript-eslint/parser": "^5.59.11",
     "eslint": "^8.42.0",
     "eslint-plugin-react": "^7.31.10",
-<<<<<<< HEAD
-=======
     "eslint-plugin-simple-import-sort": "^10.0.0",
->>>>>>> 0ae42871909f10f94b46d47c2eeda9e24a9f7443
     "lint": "^0.7.0",
     "prettier": "^2.8.8"
   },
