@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alsaham.driver"
+      "bundleIdentifier": "com.sahamalnabel.driver"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -27,7 +27,7 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.alsaham.driver",
+      "package": "com.sahamalnabel.driver",
       "versionCode": 1
     },
     "web": {
