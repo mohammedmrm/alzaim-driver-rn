@@ -55,6 +55,7 @@ export default function LoginPage() {
 								name="phone"
 								caption="رقم الموبايل"
 								autoCapitalize="none"
+								placeholder="رقم الموبايل"
 								keyboardType="phone-pad"
 								autoCorrect={false}
 							/>
@@ -64,6 +65,7 @@ export default function LoginPage() {
 								leftIcon="eye"
 								caption="كلمة المرور"
 								name="password"
+								placeholder="كلمة المرور"
 								autoCapitalize="none"
 								autoCorrect={false}
 								textContentType="password"

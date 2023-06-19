@@ -51,7 +51,12 @@ const Dashboard = () => {
 	}, []);
 
 	return (
-		<View style={{ paddingTop: Constants.statusBarHeight }}>
+		<View
+			style={{
+				paddingTop: Constants.statusBarHeight + 10,
+				backgroundColor: colors.white,
+				height: '100%',
+			}}>
 			<View
 				style={{
 					justifyContent: 'space-between',
@@ -62,41 +67,31 @@ const Dashboard = () => {
 				<Headline
 					style={{
 						fontFamily: 'app_r',
-						alignSelf: 'flex-end',
 						paddingTop: 0,
 						paddingHorizontal: 10,
 						color: colors.black,
 					}}>
 					{settings.name}
 				</Headline>
-				<View
-					style={{
-						justifyContent: 'space-between',
-						alignItems: 'center',
-						flexDirection: 'row',
-					}}>
-					<Pressable
-						style={{ marginLeft: 10 }}
-						onPress={() => navigator.navigate(Routes.AdsCompany, { text: adsText.d_ad2 })}>
-						<Animated.View
+				<Pressable
+					style={{ marginLeft: 10 }}
+					onPress={() => navigator.navigate(Routes.AdsCompany, { text: adsText.d_ad2 })}>
+					<Animated.View
+						style={{
+							opacity: startValue,
+							width: 30,
+							height: 30,
+						}}>
+						<Image
 							style={{
-								opacity: startValue,
-								width: 30,
-								height: 30,
-							}}>
-							<Image
-								style={{
-									width: '90%',
-									height: '90%',
-									alignSelf: 'center',
-									top: 5,
-									borderRadius: 5,
-								}}
-								source={require('../assets/dashboard/advertisement.png')}
-							/>
-						</Animated.View>
-					</Pressable>
-				</View>
+								width: '90%',
+								height: '90%',
+								alignSelf: 'center',
+							}}
+							source={require('../assets/dashboard/advertisement.png')}
+						/>
+					</Animated.View>
+				</Pressable>
 			</View>
 			<ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
 				<SummaryBoxes oneDay={oneDay} isLoading={isLoading} />

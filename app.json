@@ -2,7 +2,7 @@
   "expo": {
     "name": "السهم الدقيق - المندوب",
     "slug": "alsaham-driver",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -28,7 +28,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.alsaham.driver",
-      "versionCode": 5
+      "versionCode": 6
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"

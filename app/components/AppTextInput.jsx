@@ -33,7 +33,7 @@ export default function AppTextinput({ rightIcon, leftIcon, caption, inputStyle 
 							{...otherProps}
 						/>
 					) : (
-						<TextInput style={defultStyle.text} {...otherProps} />
+						<TextInput style={{ ...defultStyle.text, ...inputStyle }} {...otherProps} />
 					)}
 				</View>
 				{leftIcon && (
