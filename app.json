@@ -2,7 +2,7 @@
   "expo": {
     "name": " سهم النابل - المندوب",
     "slug": "sahamAlnabel-driver",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -28,7 +28,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.sahamalnabel.driver",
-      "versionCode": 1
+      "versionCode": 2
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"

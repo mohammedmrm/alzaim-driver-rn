@@ -8,7 +8,6 @@ import {
 	StyleSheet,
 	Text,
 	TextInput,
-	ToastAndroid,
 	TouchableHighlight,
 	TouchableWithoutFeedback,
 	View,
@@ -102,58 +101,79 @@ const OrderDetails = () => {
 	};
 
 	const arrive = async () => {
-		setIsLoading(true);
-		const results = await getOrder.arrive(user.token, route.params.id, amount, note);
-		results.data.success === 1 ? successToast() : errorToast();
-		loadDetails(user.token, route.params.id);
+		try {
+			setIsLoading(true);
+			const results = await getOrder.arrive(user.token, route.params.id, amount, note);
+			console.log(results);
+			results.data.success === 1 ? successToast() : errorToast();
+			loadDetails(user.token, route.params.id);
+		} catch (e) {
+			errorToast();
+		}
 	};
 	const returned = async () => {
-		setIsLoading(true);
-		const results = await getOrder.returned(user.token, route.params.id, note.label);
-		results.data.success === 1 ? successToast() : errorToast();
-		loadDetails(user.token, route.params.id);
+		try {
+			setIsLoading(true);
+			const results = await getOrder.returned(user.token, route.params.id, note.label);
+			results.data.success === 1 ? successToast() : errorToast();
+			loadDetails(user.token, route.params.id);
+		} catch (e) {
+			errorToast();
+		}
 	};
 	const partReturn = async () => {
-		setIsLoading(true);
-		const results = await getOrder.partReturn(user.token, route.params.id, amount, note, returnNo);
-		results.data.success === 1 ? successToast() : errorToast();
-		loadDetails(user.token, route.params.id);
+		try {
+			setIsLoading(true);
+			const results = await getOrder.partReturn(user.token, route.params.id, amount, note, returnNo);
+			results.data.success === 1 ? successToast() : errorToast();
+			loadDetails(user.token, route.params.id);
+		} catch (e) {
+			errorToast();
+		}
 	};
 
 	const exchange = async () => {
-		setIsLoading(true);
-		const results = await getOrder.exchange(user.token, route.params.id, amount, note, returnNo);
-		results.data.success === 1 ? successToast() : errorToast();
-		loadDetails(user.token, route.params.id);
+		try {
+			setIsLoading(true);
+			const results = await getOrder.exchange(user.token, route.params.id, amount, note, returnNo);
+			results.data.success === 1 ? successToast() : errorToast();
+			loadDetails(user.token, route.params.id);
+		} catch (e) {
+			errorToast();
+		}
 	};
 
 	const postponed = async () => {
-		setIsLoading(true);
-		const results = await getOrder.postponed(user.token, route.params.id, note);
-		results.data.success === 1 ? successToast() : errorToast();
-		loadDetails(user.token, route.params.id);
+		try {
+			setIsLoading(true);
+			const results = await getOrder.postponed(user.token, route.params.id, note);
+			results.data.success === 1 ? successToast() : errorToast();
+			loadDetails(user.token, route.params.id);
+		} catch (e) {
+			errorToast();
+		}
 	};
 	useEffect(() => {
 		loadDetails(user.token, route.params.id, route.params.notify_id);
 	}, []);
 	const handelColor = id => {
 		switch (id) {
-		case '4':
-			return colors.success;
-		case '5':
-			return colors.secondery;
-		case '6':
-			return colors.primery;
-		case '7':
-			return colors.pause;
-		case '8':
-			return colors.returned;
-		case '9':
-			return colors.returned;
-		case '13':
-			return colors.unseen;
-		default:
-			return colors.medium;
+			case '4':
+				return colors.success;
+			case '5':
+				return colors.secondery;
+			case '6':
+				return colors.primery;
+			case '7':
+				return colors.pause;
+			case '8':
+				return colors.returned;
+			case '9':
+				return colors.returned;
+			case '13':
+				return colors.unseen;
+			default:
+				return colors.medium;
 		}
 	};
 	const startChating = item => {
