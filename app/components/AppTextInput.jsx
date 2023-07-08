@@ -29,12 +29,11 @@ export default function AppTextinput({ rightIcon, leftIcon, caption, inputStyle 
 					{leftIcon ? (
 						<TextInput
 							style={{ ...defultStyle.text, ...inputStyle }}
-							placeholder={caption}
 							secureTextEntry={secureTextEntry}
 							{...otherProps}
 						/>
 					) : (
-						<TextInput style={defultStyle.text} {...otherProps} placeholder={caption} />
+						<TextInput style={{ ...defultStyle.text, ...inputStyle }} {...otherProps} />
 					)}
 				</View>
 				{leftIcon && (

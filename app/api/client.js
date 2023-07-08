@@ -31,8 +31,9 @@ const post = async (url, params, axiosConfig) => {
 		cache.store(url, response.data);
 		return response;
 	}
-	const data = await cache.get(url);
+	const data = await cache.post(url);
 	return data ? { ok: true, data } : response;
 };
+
 const apiClient = { get, post };
 export default apiClient;
