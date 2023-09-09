@@ -2,7 +2,7 @@
   "expo": {
     "name": "الزعيم - المندوب",
     "slug": "alzaim-driver",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -20,7 +20,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.alzaim.driver",
-      "buildNumber": "1.0.1"
+      "buildNumber": "1.0.3"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -29,7 +29,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.alzaim.driver",
-      "versionCode": 2
+      "versionCode": 4
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"
@@ -39,6 +39,11 @@
       "color": "#FFFFFF",
       "iosDisplayInForeground": true,
       "androidMode": "default"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7bead864-2058-4e74-b538-c91225b8ac44"
+      }
     }
   }
 }

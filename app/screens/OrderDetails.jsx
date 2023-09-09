@@ -206,6 +206,14 @@ const OrderDetails = () => {
                       {order.order_status}
                     </Text>
                   </View>
+                  <TouchableWithoutFeedback onPress={() => startChating(order)}>
+                    <View style={styles.chatShadow}>
+                      <Image
+                        style={styles.chatIcon}
+                        source={require("./../assets/icons/chatIcon.png")}
+                      />
+                    </View>
+                  </TouchableWithoutFeedback>
                   <Text style={styles.titleOrderId}>{order.order_no}</Text>
                 </View>
               </View>
@@ -343,15 +351,6 @@ const OrderDetails = () => {
                 </View>
               </View>
             )}
-            {/* ----------------------- */}
-            <TouchableWithoutFeedback onPress={() => startChating(order)}>
-              <View style={styles.chatShadow}>
-                <Image
-                  style={styles.chatIcon}
-                  source={require("./../assets/icons/chatIcon.png")}
-                />
-              </View>
-            </TouchableWithoutFeedback>
             <ScrollView>
               {order.tracking.map((item) => (
                 <TrackingBox
@@ -1016,20 +1015,15 @@ const styles = StyleSheet.create({
   chatShadow: {
     width: 70,
     height: 70,
-    position: "absolute",
-    top: 100,
-    left: 30,
     borderRadius: 10,
     padding: 10,
-    margin: 5,
+    margin: 2,
   },
   chatIcon: {
     width: "90%",
     height: "90%",
     padding: 5,
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: colors.medium,
   },
   titleStore: {
     fontSize: 22,

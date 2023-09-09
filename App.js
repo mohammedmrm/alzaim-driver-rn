@@ -21,6 +21,7 @@ import authStorage from "./app/auth/storage";
 import OfflineNotice from "./app/components/OfflineNotice";
 import { navigationRef } from "./app/navigations/rootNavigation";
 import { StatusBar } from "expo-status-bar";
+
 export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);

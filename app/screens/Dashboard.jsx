@@ -6,21 +6,19 @@ import {
   Animated,
   Image,
   RefreshControl,
-  SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
 import SummaryBoxes from "../components/dashboard/SummaryBoxes";
 import OptionsList from "../components/dashboard/OptionsList";
 import { Headline } from "react-native-paper";
-import getAdsAPI from "../api/getAds";
 import useAuth from "../auth/useAuth";
 import getStatistic from "../api/getSummayBoxed";
 import colors from "../config/colors";
 import Routes from "../Routes";
 const Dashboard = () => {
   const navigator = useNavigation();
-  const [adsText, setText] = useState("");
+  const [adsText, setText] = useState({ d_ad2: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [oneDay, setOneDay] = useState(null);
   const [data, setData] = useState(null);
@@ -33,21 +31,20 @@ const Dashboard = () => {
     await loadStatic();
     setRefreshing(false);
   };
-  const loadAds = async () => {
-    const results = await getAdsAPI.get(user.token);
-    setText(results.data.config.d_ad2);
-  };
   const loadStatic = async () => {
     setIsLoading(true);
     const results = await getStatistic.get(user.token);
-    setOneDay(results.data.data[0]);
-    setData(results.data.static[0]);
+    try {
+      results && setOneDay(results.data.data[0]);
+      results && setData(results.data.static[0]);
+    } catch (e) {
+      console.log(e);
+    }
     setIsLoading(false);
   };
 
   useEffect(() => {
     loadStatic();
-    loadAds();
     Animated.loop(
       Animated.timing(startValue, {
         toValue: endValue,
@@ -88,7 +85,7 @@ const Dashboard = () => {
           <Pressable
             style={{ marginLeft: 10 }}
             onPress={() =>
-              navigator.navigate(Routes.AdsCompany, { text: adsText })
+              navigator.navigate(Routes.AdsCompany, { text: adsText.d_ad2 })
             }
           >
             <Animated.View

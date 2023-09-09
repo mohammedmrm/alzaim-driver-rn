@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialIcons, Ionicons, FontAwesome } from "@expo/vector-icons";
 
@@ -12,12 +11,15 @@ import ChatNavigator from "./ChatNavigator";
 import NotificationsNavigator from "./NotificationsNavigator";
 import expoPushTokenApi from "../api/expoPushTokens";
 import useAuth from "../auth/useAuth";
-import navitation from "../navigations/rootNavigation";
+
 import * as Notifications from "expo-notifications";
-import * as Permissions from "expo-permissions";
-import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 import { Platform } from "react-native";
+
+//-- for web notification
+import { initializeApp } from "firebase/app";
+import { getMessaging, getToken } from "firebase/messaging";
+
 const Tab = createMaterialBottomTabNavigator();
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -54,7 +56,7 @@ const AppNavigator = (ref) => {
     }
   }, [lastNotificationResponse]);
 
-  registerForPushNotificationsAsync = async () => {
+  const registerForPushNotificationsAsync = async () => {
     try {
       const { status: existingStatus } =
         await Notifications.getPermissionsAsync();
@@ -82,7 +84,50 @@ const AppNavigator = (ref) => {
       });
     }
   };
-  registerForPushNotificationsAsync();
+
+  if (Platform.OS !== "web") {
+    registerForPushNotificationsAsync();
+  } else {
+    const firebaseConfig = {
+      apiKey: "AIzaSyD1k03yPhZIcdgqSGyNDQIfUTpDuzZY1XI",
+      authDomain: "alzaim-e1552.firebaseapp.com",
+      projectId: "alzaim-e1552",
+      storageBucket: "alzaim-e1552.appspot.com",
+      messagingSenderId: "440282345355",
+      appId: "1:440282345355:web:4ab00b7f1f54c9cb6bc98e",
+      measurementId: "G-NV414ZGN3T",
+    };
+    const app = initializeApp(firebaseConfig);
+    const messaging = getMessaging(app);
+    console.log(messaging);
+    Notification.requestPermission().then(function (result) {
+      getToken({
+        vapidKey: "145gMuj7NTRYeI5pMwn_dNpgrKLx5nNLkMtAUmwjjL4",
+      })
+        .then((currentToken) => {
+          if (currentToken) {
+            console.log("Firebase Token", currentToken);
+          } else {
+            console.log(
+              "No registration token available. Request permission to generate one."
+            );
+          }
+        })
+        .catch((err) => {
+          console.log("An error occurred while retrieving token. ", err);
+        });
+    });
+  }
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("../../firebase-messaging-sw.js")
+      .then(function (registration) {
+        console.log("Registration successful, scope is:", registration.scope);
+      })
+      .catch(function (err) {
+        console.log("Service worker registration failed, error:", err);
+      });
+  }
   return (
     <Tab.Navigator
       initialRouteName={Routes.DASHBOARD}

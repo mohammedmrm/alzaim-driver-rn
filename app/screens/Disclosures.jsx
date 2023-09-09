@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
 import {
   ReportCard,
   ListItemSeparator,
   ListOrderCopyAction,
 } from "../components/lists";
-import AppPickerCity from "./../components/AppPickerCites";
 import AppPickerTime from "./../components/AppPickerTime";
 import Button from "./../components/AppButton";
 import useAuth from "../auth/useAuth";
-import getStores from "../api/getStores";
 import getPdfs from "../api/getPdfs";
 import colors from "../config/colors";
 import Routes from "../Routes";
@@ -24,8 +21,6 @@ function Dashboard() {
   let { user } = useAuth();
   const [pdfs, setPdfs] = useState(null);
   const [total, setTotal] = useState({});
-  const [stores, setStores] = useState([]);
-  const [store, setStore] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [startDate, setStartDate] = useState(null);
@@ -36,40 +31,20 @@ function Dashboard() {
     setIsLoading(true);
     const results = await getPdfs.getPdfs(
       user.token,
-      store,
       startDate ? startDate : null,
       endDate ? endDate : null
     );
+    console.log("API", results);
     if (!results.ok || results.data.success === "0") {
       return setIsLoading(false);
     }
-
     setPdfs(results.data.data);
-
     setTotal(results.data.total);
     setIsLoading(false);
   };
   useEffect(() => {
-    loadStores();
-  }, []);
-  useEffect(() => {
     loadPdfs();
-  }, [store]);
-
-  const loadStores = async () => {
-    const results = await getStores.getStores(user.token);
-    const array = [
-      {
-        name: "الكل",
-        id: "",
-      },
-    ];
-    setStores([...array, ...results.data.data]);
-  };
-
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
+  }, []);
   const updateStartTime = (value) => {
     setStartDate(value);
   };
@@ -132,7 +107,7 @@ function Dashboard() {
               borderWidth: 1,
               margin: 10,
               padding: 10,
-              width: "50%",
+              width: "80%",
             }}
           >
             {isLoading ? (
@@ -146,13 +121,32 @@ function Dashboard() {
                   }}
                 >
                   <Text style={{ paddingHorizontal: 10 }}> عدد الطلبيات:</Text>
-                  <Text style={{ paddingHorizontal: 10 }}> {total.orders}</Text>
-                </View>
-                <View style={{ flexDirection: "row-reverse" }}>
-                  <Text style={{ paddingHorizontal: 10 }}>صافي للمندوب:</Text>
                   <Text style={{ paddingHorizontal: 10 }}>
-                    {" "}
-                    {total.dev && numberWithCommas(total.dev)}
+                    {total.orders && total.orders}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row-reverse",
+                    alignItems: "flex-end",
+                  }}
+                >
+                  <Text style={{ paddingHorizontal: 10 }}> المبلغ الكلي:</Text>
+                  <Text style={{ paddingHorizontal: 10 }}>
+                    {total.income && total.income}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row-reverse",
+                    alignItems: "flex-end",
+                  }}
+                >
+                  <Text style={{ paddingHorizontal: 10 }}>
+                    اجره المندوب المتوقعه:
+                  </Text>
+                  <Text style={{ paddingHorizontal: 10 }}>
+                    {total.driver_price && total.driver_price}
                   </Text>
                 </View>
               </>
