@@ -9,7 +9,7 @@ export default class ListItem extends PureComponent {
   render() {
     return (
       <Swipeable
-        key={this.props.itemKey.id || Date.now()}
+        key={Date.now() + Math.random()}
         renderRightActions={this.props.renderRightActions}
       >
         <TouchableHighlight

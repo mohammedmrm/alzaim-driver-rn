@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "الزعيم - المندوب",
-    "slug": "alzaim-driver",
-    "version": "1.0.1",
+    "name": "الخيال - المندوب",
+    "slug": "alkhayal-driver",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -19,8 +19,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alzaim.driver",
-      "buildNumber": "1.0.1"
+      "bundleIdentifier": "com.alkhayal.driver",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -28,8 +28,8 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.alzaim.driver",
-      "versionCode": 2
+      "package": "com.alkhayal.driver",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"
