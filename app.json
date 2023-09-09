@@ -2,7 +2,7 @@
   "expo": {
     "name": "الخيال - المندوب",
     "slug": "alkhayal-driver",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
     "userInterfaceStyle": "light",
@@ -20,7 +20,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.alkhayal.driver",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.1"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -29,7 +29,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.alkhayal.driver",
-      "versionCode": 1
+      "versionCode": 2
     },
     "web": {
       "favicon": "./app/assets/logo/logo.png"
@@ -39,6 +39,11 @@
       "color": "#FFFFFF",
       "iosDisplayInForeground": true,
       "androidMode": "default"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "febe4ee7-9b54-4c40-b45b-e0e3de142768"
+      }
     }
   }
 }
