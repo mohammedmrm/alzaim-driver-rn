@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": " افاق بغداد - المندوب",
-    "slug": "afaqbaghdad-driver",
+    "name": "شركة سرعه - المندوب",
+    "slug": "speedcom-driver",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.afaqbaghdad.driver"
+      "bundleIdentifier": "com.speedcom.driver"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -27,7 +27,7 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.afaqbaghdad.driver",
+      "package": "com.speedcom.driver",
       "versionCode": 1
     },
     "web": {
@@ -41,7 +41,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "150a4b24-10ae-446d-8ed3-930eae9c61f5"
+        "projectId": "219e5679-53f3-426d-b6c0-67d9c7412e93"
       }
     }
   }

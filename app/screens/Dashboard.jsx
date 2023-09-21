@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Image, Pressable, RefreshControl, SafeAreaView, ScrollView, View } from 'react-native';
+import { Animated, Image, Pressable, RefreshControl, ScrollView, View } from 'react-native';
 import { Headline } from 'react-native-paper';
+
 import getStatistic from '../api/getSummayBoxed';
 import useAuth from '../auth/useAuth';
 import OptionsList from '../components/dashboard/OptionsList';
