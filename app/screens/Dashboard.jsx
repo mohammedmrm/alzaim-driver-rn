@@ -1,13 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  ScrollView,
-  View,
-  Pressable,
-  Animated,
-  Image,
-  RefreshControl,
-  SafeAreaView,
-} from "react-native";
+import { ScrollView, View, Pressable, Animated, Image, RefreshControl, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
 import SummaryBoxes from "../components/dashboard/SummaryBoxes";
@@ -36,8 +28,12 @@ const Dashboard = () => {
   const loadStatic = async () => {
     setIsLoading(true);
     const results = await getStatistic.get(user.token);
-    setOneDay(results.data.data[0]);
-    setData(results.data.static[0]);
+    try {
+      results && setOneDay(results.data.data[0]);
+      results && setData(results.data.static[0]);
+    } catch (e) {
+      console.log(e);
+    }
     setIsLoading(false);
   };
 
@@ -71,7 +67,7 @@ const Dashboard = () => {
             color: colors.black,
           }}
         >
-          الزعيم
+          جوهرة الشمال
         </Headline>
         <View
           style={{
@@ -82,9 +78,7 @@ const Dashboard = () => {
         >
           <Pressable
             style={{ marginLeft: 10 }}
-            onPress={() =>
-              navigator.navigate(Routes.AdsCompany, { text: adsText.d_ad2 })
-            }
+            onPress={() => navigator.navigate(Routes.AdsCompany, { text: adsText.d_ad2 })}
           >
             <Animated.View
               style={{
@@ -107,11 +101,7 @@ const Dashboard = () => {
           </Pressable>
         </View>
       </View>
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
+      <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
         <SummaryBoxes oneDay={oneDay} isLoading={isLoading} />
         <OptionsList data={data} />
       </ScrollView>

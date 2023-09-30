@@ -52,11 +52,9 @@ function Dashboard() {
     if (nextPage === "1") {
       setNoOrders(results.data.orders);
       setOrders(results.data.data);
-      console.log(orders);
       return setIsLoading(false);
     }
     setOrders([...orders, ...results.data.data]);
-    console.log(orders);
     setIsLoading(false);
   };
 

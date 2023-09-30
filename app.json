@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "الزعيم - المندوب",
-    "slug": "alzaim-driver",
+    "name": "جوهرة الشمال - المندوب",
+    "slug": "alamen-driver",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alzaim.driver",
+      "bundleIdentifier": "com.alamen.driver",
       "buildNumber": "1.0.1"
     },
     "android": {
@@ -28,7 +28,7 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.alzaim.driver",
+      "package": "com.alamen.driver",
       "versionCode": 2
     },
     "web": {
@@ -39,6 +39,11 @@
       "color": "#FFFFFF",
       "iosDisplayInForeground": true,
       "androidMode": "default"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "22ffebec-67d5-408e-b086-9839cb92914e"
+      }
     }
   }
 }
