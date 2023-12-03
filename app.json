@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "شركة الخيال (الناصرية)- المندوب",
-    "slug": "thiqar-alkhayal-driver",
+    "name": "شركة الخيال (البصرة) - المندوب",
+    "slug": "basra-alkhayal-driver",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alkhayal.thiqar.driver"
+      "bundleIdentifier": "com.alkhayal.basra.driver"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -27,7 +27,7 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.alkhayal.thiqar.driver",
+      "package": "com.alkhayal.basra.driver",
       "versionCode": 1
     },
     "web": {
@@ -41,7 +41,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "95d93511-2fac-4953-928d-7c29a9eb679d"
+        "projectId": "f27a7f8b-e66d-4db7-ac64-db9fb9c507c2"
       }
     }
   }
