@@ -1,19 +1,19 @@
 import Constants from 'expo-constants';
 const settings = {
 	dev: {
-		apiUrl: 'http://ec2-3-137-158-198.us-east-2.compute.amazonaws.com/driver/api',
+		apiUrl: 'https://thiqar.alkhayalexpress.com/driver/api',
 		logo: require('../assets/logo/logo.png'),
-		name: 'شركه سرعه',
+		name: 'شركه الخيال (الناصريه)',
 	},
 	staging: {
-		apiUrl: 'http://ec2-3-137-158-198.us-east-2.compute.amazonaws.com/driver/api',
+		apiUrl: 'https://thiqar.alkhayalexpress.com/driver/api',
 		logo: require('../assets/logo/logo.png'),
-		name: 'شركه سرعه',
+		name: 'شركه الخيال (الناصريه)',
 	},
 	prod: {
-		apiUrl: 'http://ec2-3-137-158-198.us-east-2.compute.amazonaws.com/driver/api',
+		apiUrl: 'https://thiqar.alkhayalexpress.com/driver/api',
 		logo: require('../assets/logo/logo.png'),
-		name: 'شركه سرعه',
+		name: 'شركه الخيال (الناصريه)',
 	},
 };
 

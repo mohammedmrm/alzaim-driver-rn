@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "شركة سرعه - المندوب",
-    "slug": "speedcom-driver",
+    "name": "شركة الخيال (الناصرية)- المندوب",
+    "slug": "thiqar-alkhayal-driver",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.speedcom.driver"
+      "bundleIdentifier": "com.alkhayal.thiqar.driver"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -27,7 +27,7 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.speedcom.driver",
+      "package": "com.alkhayal.thiqar.driver",
       "versionCode": 1
     },
     "web": {
@@ -38,11 +38,6 @@
       "color": "#FFFFFF",
       "iosDisplayInForeground": true,
       "androidMode": "default"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "219e5679-53f3-426d-b6c0-67d9c7412e93"
-      }
     }
   }
 }
