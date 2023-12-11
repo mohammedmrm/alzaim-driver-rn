@@ -1,27 +1,30 @@
-import React, { useState } from "react";
 import "./warnings";
-import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
-import { RootSiblingParent } from "react-native-root-siblings";
-import AppLoading from "expo-app-loading";
+
 import {
-  useFonts,
   Cairo_200ExtraLight,
   Cairo_300Light,
   Cairo_400Regular,
   Cairo_600SemiBold,
   Cairo_700Bold,
   Cairo_900Black,
+  useFonts,
 } from "@expo-google-fonts/cairo";
-import navigationTheme from "./app/navigations/NavigationTheme";
-import AppNavigator from "./app/navigations/AppNavigation";
-import AuthNavigator from "./app/navigations/AuthNavigator";
+import { NavigationContainer } from "@react-navigation/native";
+import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
+import React, { useCallback, useEffect, useState } from "react";
+import { RootSiblingParent } from "react-native-root-siblings";
+
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import OfflineNotice from "./app/components/OfflineNotice";
+import AppNavigator from "./app/navigations/AppNavigation";
+import AuthNavigator from "./app/navigations/AuthNavigator";
+import navigationTheme from "./app/navigations/NavigationTheme";
 import { navigationRef } from "./app/navigations/rootNavigation";
-import { StatusBar } from "expo-status-bar";
 
+SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
@@ -38,16 +41,32 @@ export default function App() {
     const user = await authStorage.getUser();
     if (user.code != "300") setUser(user);
   };
-  if (!isReady)
-    return (
-      <AppLoading
-        startAsync={restoreUser}
-        onFinish={async () => {
-          setIsReady(true);
-        }}
-        onError={(e) => console.log(e)}
-      />
-    );
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await restoreUser();
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        // Tell the application to render
+        setIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+  useEffect(() => {
+    onLayoutRootView();
+  }, [isReady]);
+  const onLayoutRootView = useCallback(async () => {
+    if (isReady) {
+      await SplashScreen.hideAsync();
+    }
+  }, [isReady]);
+
+  if (!isReady) {
+    return null;
+  }
   if (!loaded) {
     return null;
   }
@@ -57,15 +76,7 @@ export default function App() {
       <AuthContext.Provider value={{ user, setUser }}>
         <OfflineNotice />
         <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-          {user ? (
-            user.token ? (
-              <AppNavigator />
-            ) : (
-              <AuthNavigator />
-            )
-          ) : (
-            <AuthNavigator />
-          )}
+          {user?.token ? <AppNavigator /> : <AuthNavigator />}
         </NavigationContainer>
       </AuthContext.Provider>
     </RootSiblingParent>
