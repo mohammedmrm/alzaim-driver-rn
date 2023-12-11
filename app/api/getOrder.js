@@ -38,6 +38,11 @@ const exchange = (token, id, price, note, no) => {
   if (no) url += `&items_no=${no}`;
   return client.post(url, config);
 };
+
+const returnReasons = () => {
+  let url = `/returnReasons.json`;
+  return client.post(url, config);
+};
 export default {
   getOrder,
   arrive,
@@ -45,4 +50,5 @@ export default {
   partReturn,
   exchange,
   postponed,
+  returnReasons,
 };
