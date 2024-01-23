@@ -49,7 +49,7 @@ function NotificationScreen(props) {
   }, []);
   const refreshingMethod = () => {
     setRefreshing(true);
-    //  loadNotification("1");
+    loadNotification("1");
     setRefreshing(false);
   };
 
@@ -76,12 +76,13 @@ function NotificationScreen(props) {
       </AppText>
       <FlatList
         data={messages}
-        keyExtractor={(item) => `${item.id}-${prefix + Date.now()}`.toString()}
+        keyExtractor={(item) =>
+          `${item.id}-${Math.random()}-${Date.now()}`.toString()
+        }
         renderItem={({ item }) => (
           <ListItem
             title={`${item.title} - ${item.order_no}`}
             subTitle={`${item.body} `}
-            itemKey={item.id}
             date={item.date}
             seen={item.client_seen === "1" ? colors.white : colors.unseen}
             image={

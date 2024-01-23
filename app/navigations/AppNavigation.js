@@ -54,7 +54,7 @@ const AppNavigator = (ref) => {
     }
   }, [lastNotificationResponse]);
 
-  registerForPushNotificationsAsync = async () => {
+  const registerForPushNotificationsAsync = async () => {
     try {
       const { status: existingStatus } =
         await Notifications.getPermissionsAsync();

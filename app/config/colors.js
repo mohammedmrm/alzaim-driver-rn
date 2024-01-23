@@ -1,6 +1,6 @@
 export default {
-  primery: "#7d0806",
-  secondery: "#946d69",
+  primery: "#025fb0",
+  secondery: "#6fb8f7",
   ads: "#e3e168",
   gray: "#F2F2F2",
   black: "#222c45",

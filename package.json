@@ -1,6 +1,6 @@
 {
-  "name": "alzaim-driver",
-  "version": "1.0.0",
+  "name": "knari-driver",
+  "version": "1.0.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@bugsnag/expo": "^45.1.1",
     "@expo-google-fonts/cairo": "^0.2.2",
+    "@react-native-async-storage/async-storage": "^1.17.9",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/netinfo": "8.2.0",
     "@react-navigation/bottom-tabs": "^6.3.2",
@@ -50,7 +51,12 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "eslint-plugin-react": "^7.31.10",
+    "lint": "^0.7.0"
   },
   "private": true
 }

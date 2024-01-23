@@ -36,8 +36,13 @@ const Dashboard = () => {
   const loadStatic = async () => {
     setIsLoading(true);
     const results = await getStatistic.get(user.token);
-    setOneDay(results.data.data[0]);
-    setData(results.data.static[0]);
+    try {
+      results && setOneDay(results.data.data[0]);
+      results && setData(results.data.static[0]);
+      console.log(results);
+    } catch (e) {
+      console.log(e);
+    }
     setIsLoading(false);
   };
 
@@ -71,7 +76,7 @@ const Dashboard = () => {
             color: colors.black,
           }}
         >
-          الزعيم
+          كناري
         </Headline>
         <View
           style={{

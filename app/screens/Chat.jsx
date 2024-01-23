@@ -16,9 +16,9 @@ function NotificationScreen(props) {
   const [totalNotificaiton, setTotalNotificaiton] = useState(0);
   const navigator = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   let { user } = useAuth();
-
-  const loadNotification = async () => {
+  const loadChat = async () => {
     setIsLoading(true);
     const results = await getChatListAPI.get(user.token);
     setMessages([...messages, ...results.data.data]);
@@ -26,8 +26,14 @@ function NotificationScreen(props) {
     setIsLoading(false);
   };
   useEffect(() => {
-    loadNotification();
+    loadChat();
   }, []);
+  const refreshingMethod = () => {
+    setRefreshing(true);
+    setMessages([]);
+    loadChat();
+    setRefreshing(false);
+  };
   return (
     <View style={{ paddingTop: Constants.statusBarHeight, flex: 1 }}>
       <AppText style={styles.header}>
@@ -37,12 +43,11 @@ function NotificationScreen(props) {
       {isLoading && <ActivityIndecator visable={isLoading} />}
       <FlatList
         data={messages}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id.toString() + Date.now() + Math.random()}
         renderItem={({ item }) => (
           <ListItem
             title={item.order_no}
             subTitle={item.message}
-            key={item.id + Date.now()}
             date={item.date}
             seen={item.client_seen === "1" ? colors.white : colors.unseen}
             image={
@@ -56,6 +61,8 @@ function NotificationScreen(props) {
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
+        refreshing={refreshing}
+        onRefresh={() => refreshingMethod()}
       />
     </View>
   );

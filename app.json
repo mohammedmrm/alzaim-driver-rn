@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "الزعيم - المندوب",
-    "slug": "alzaim-driver",
+    "name": "كناري - المندوب",
+    "slug": "knari-driver",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./app/assets/logo/logo.png",
@@ -19,7 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.alzaim.driver",
+      "bundleIdentifier": "com.knari.driver",
       "buildNumber": "1.0.1"
     },
     "android": {
@@ -28,7 +28,7 @@
         "foregroundImage": "./app/assets/logo/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.alzaim.driver",
+      "package": "com.knari.driver",
       "versionCode": 2
     },
     "web": {
@@ -39,6 +39,11 @@
       "color": "#FFFFFF",
       "iosDisplayInForeground": true,
       "androidMode": "default"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "05c1316b-763e-484b-86b1-7f65fdc8ea55"
+      }
     }
   }
 }
